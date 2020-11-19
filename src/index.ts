@@ -13,6 +13,10 @@ const books = [
     title: 'City of Glass',
     author: 'Paul Auster',
   },
+  {
+    title: 'Game of Throne',
+    author: 'Georges Martin',
+  },
 ];
 
 const typeDefs = gql`
