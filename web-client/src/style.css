@@ -1,3 +1,16 @@
+.main-ctrn {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left-aside {
+  height: 100vh;
+  width: 300px;
+  background-color: #F6F5F5;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

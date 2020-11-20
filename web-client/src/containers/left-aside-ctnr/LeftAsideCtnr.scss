@@ -1,0 +1,7 @@
+@use '../../styles/variables.scss' as v;
+
+.left-aside {
+  height: 100vh;
+  width: 300px;
+  background-color: v.$primary;
+}
