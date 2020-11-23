@@ -7,8 +7,28 @@
 
 .left-aside {
   height: 100vh;
-  width: 300px;
-  background-color: #F6F5F5;
+  width: 350px;
+  background-color: #E0E0E0;
+}
+
+.avatar {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+.avatar .a-image {
+  width: 200px;
+  height: 200px;
+  border: 5px solid #49BEB7;
+  border-radius: 50%;
+}
+.avatar .a-name {
+  color: #141414;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
 }
 
 * {
