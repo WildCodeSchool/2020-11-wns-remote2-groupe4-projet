@@ -5,9 +5,13 @@
 
 
 // Containers
-
+@use './containers/MainCtnr.scss';
+@use './containers/left-aside-ctnr/LeftAsideCtnr.scss';
 
 // Components
+@use './components/avatar-cpnt/AvatarCpnt.scss';
+@use './components/menu-cpnt/MenuCpnt.scss';
+@use './components/menu-button-cpnt/MenuButtonCpnt.scss';
 
 
 * {
