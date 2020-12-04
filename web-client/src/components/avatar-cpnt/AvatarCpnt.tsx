@@ -6,7 +6,7 @@ const AvatarCpnt = (): JSX.Element => {
       <img
         className="a-image"
         src="https://directemployers.org/wp-content/uploads/2018/08/avatar-JohnDoe.jpg"
-        alt=""
+        alt="avatar"
       ></img>
       <h3 className="a-name">John Doe</h3>
     </div>
