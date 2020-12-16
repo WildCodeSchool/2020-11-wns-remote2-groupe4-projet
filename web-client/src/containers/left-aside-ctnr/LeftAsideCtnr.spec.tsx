@@ -20,4 +20,11 @@ describe('when button clicked', () => {
       true
     );
   });
+
+  it('rotate LeftAsideCtnr icon', () => {
+    render(<LeftAsideCtnr />);
+    const buttonCpnt = screen.getByTestId('buttonCpntTested');
+    fireEvent.click(buttonCpnt);
+    expect(buttonCpnt.classList.contains('rotate-left')).toBe(true);
+  })
 });
