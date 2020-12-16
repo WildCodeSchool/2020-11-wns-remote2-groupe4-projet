@@ -5,6 +5,7 @@
     display:flex;
     justify-content: space-around;
     color: v.$black;
+    flex-direction: row;
     
     &.btn-wrapper-column{
         flex-direction:column;
