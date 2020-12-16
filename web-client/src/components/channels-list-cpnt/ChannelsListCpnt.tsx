@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 import './ChannelsListCpnt.scss';
 
@@ -13,10 +15,25 @@ const ChannelsListCpnt = ({
   title,
   channels,
 }: ChannelsListCpntProps): JSX.Element => {
+  const [isChannelsListOpen, setIsChannelsListOpen] = useState(false);
+
+  const toggleChannelsList = (): void => {
+    setIsChannelsListOpen(!isChannelsListOpen);
+  };
+
   return (
     <div className="channels-list">
-      <h4 className="cl-title">{title}</h4>
-      <ul>
+      <div className="cl-wrapper-title-icon" onClick={toggleChannelsList}>
+        <div
+          className={`cl-caret-icon ${
+            isChannelsListOpen && 'cl-caret-icon-open'
+          }`}
+        >
+          <FontAwesomeIcon icon={faCaretRight} />
+        </div>
+        <h4 className="cl-title">{title}</h4>
+      </div>
+      <ul className={`${!isChannelsListOpen && 'cl-ul-hidden'}`}>
         {channels.map((channel, index) => (
           // The key must be change by an channel.id when the db will be create
           <ChannelsListItemCpnt key={index} channel={channel} />
