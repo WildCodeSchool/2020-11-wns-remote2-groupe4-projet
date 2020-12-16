@@ -1,0 +1,11 @@
+@use '../../styles/variables.scss' as v;
+
+.right-aside {
+    min-height: 100vh;
+    width: 350px;
+    padding: 1rem;
+    background-color: v.$secondary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
