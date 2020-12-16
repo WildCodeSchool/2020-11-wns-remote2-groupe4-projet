@@ -26,5 +26,5 @@ describe('when button clicked', () => {
     const buttonCpnt = screen.getByTestId('buttonCpntTested');
     fireEvent.click(buttonCpnt);
     expect(buttonCpnt.classList.contains('rotate-left')).toBe(true);
-  })
+  });
 });
