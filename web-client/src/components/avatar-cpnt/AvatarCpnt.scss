@@ -14,10 +14,20 @@
         height:150px;
         border: 5px solid v.$ternary;
         border-radius: 50%;
+        transition: width 350ms ease-in-out, height 350ms ease-in-out, margin 350ms ease-in-out ;
+        
+        &.a-image-small{
+            width:75px;
+            height:75px;
+            margin: 40px 0;
+        }
     }
     .a-name{
         color:v.$black;
         font-size:1.5rem;
         margin-top: 0.5rem;
+        &.hide-name{
+            display:none;
+        }
     }
 }
