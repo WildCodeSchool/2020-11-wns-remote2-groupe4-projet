@@ -8,7 +8,7 @@ import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 const LeftAsideCtnr = (): JSX.Element => {
   const [isLeftAsideOpen, setIsLeftAsideOpen] = useState(true);
 
-  const handlLeftAside = (): void => {
+  const toggleLeftAside = (): void => {
     setIsLeftAsideOpen(!isLeftAsideOpen);
   };
 
@@ -17,7 +17,7 @@ const LeftAsideCtnr = (): JSX.Element => {
       <FontAwesomeIcon
         className={`la-arrow-right ${!isLeftAsideOpen && 'rotate-left'}`}
         icon={faArrowCircleLeft}
-        onClick={handlLeftAside}
+        onClick={toggleLeftAside}
       />
       <AvatarCpnt isLeftAsideOpen={isLeftAsideOpen} />
       <MenuCpnt />
