@@ -18,6 +18,7 @@ const LeftAsideCtnr = (): JSX.Element => {
         className={`la-arrow-right ${!isLeftAsideOpen && 'rotate-left'}`}
         icon={faArrowCircleLeft}
         onClick={toggleLeftAside}
+        data-testid="buttonCpntTested"
       />
       <AvatarCpnt isLeftAsideOpen={isLeftAsideOpen} />
       <MenuCpnt />
