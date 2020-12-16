@@ -1,0 +1,8 @@
+.chat-searchbar-wrapper {
+    margin-top: 2rem;
+    width: 100%;
+
+    & > div {
+        width: inherit;
+    }
+}
