@@ -8,11 +8,15 @@
 @use './containers/MainCtnr.scss';
 @use './containers/left-aside-ctnr/LeftAsideCtnr.scss';
 @use './containers/right-aside-ctnr/RightAsideCtnr.scss';
+@use './containers/channels-ctnr/ChannelsCtnr.scss';
 
 // Components
 @use './components/avatar-cpnt/AvatarCpnt.scss';
 @use './components/menu-cpnt/MenuCpnt.scss';
 @use './components/menu-button-cpnt/MenuButtonCpnt.scss';
+@use './components/channels-list-cpnt/ChannelsListCpnt.scss';
+@use './components/channels-list-item-cpnt/ChannelsListItemCpnt.scss';
+@use './components/chat-searchbar-cpnt/ChatSearchBar.scss';
 
 
 * {
