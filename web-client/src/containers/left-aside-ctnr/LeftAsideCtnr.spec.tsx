@@ -3,28 +3,24 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import LeftAsideCtnr from './LeftAsideCtnr';
 
 describe('when button clicked', () => {
-  it('hide the avatar name', () => {
+  it('Hides the avatar name', () => {
     render(<LeftAsideCtnr />);
     const buttonCpnt = screen.getByTestId('buttonCpntTested');
     fireEvent.click(buttonCpnt);
-    expect(
-      screen.getByTestId('avatar-name').classList.contains('hide-name')
-    ).toBe(true);
+    expect(screen.getByTestId('avatar-name').classList).toContain('hide-name');
   });
 
-  it('make image smaller', () => {
+  it('Makes image smaller', () => {
     render(<LeftAsideCtnr />);
     const buttonCpnt = screen.getByTestId('buttonCpntTested');
     fireEvent.click(buttonCpnt);
-    expect(screen.getByRole('img').classList.contains('a-image-small')).toBe(
-      true
-    );
+    expect(screen.getByRole('img').classList).toContain('a-image-small');
   });
 
-  it('rotate LeftAsideCtnr icon', () => {
+  it('Rotates LeftAsideCtnr icon', () => {
     render(<LeftAsideCtnr />);
     const buttonCpnt = screen.getByTestId('buttonCpntTested');
     fireEvent.click(buttonCpnt);
-    expect(buttonCpnt.classList.contains('rotate-left')).toBe(true);
+    expect(buttonCpnt.classList).toContain('rotate-left');
   });
 });
