@@ -12,7 +12,12 @@ const AvatarCpnt = ({ isLeftAsideOpen }: AvatarProps): JSX.Element => {
         src="https://directemployers.org/wp-content/uploads/2018/08/avatar-JohnDoe.jpg"
         alt="avatar"
       ></img>
-      <h3 className={`a-name ${!isLeftAsideOpen && 'hide-name'}`}>John Doe</h3>
+      <h3
+        data-testid="avatar-name"
+        className={`a-name ${!isLeftAsideOpen && 'hide-name'}`}
+      >
+        John Doe
+      </h3>
     </div>
   );
 };

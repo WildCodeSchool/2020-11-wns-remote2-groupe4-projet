@@ -13,20 +13,20 @@
 
   @include m.bpFactory($max: v.$s) {
     max-height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 80%;
-    //transform: translateX(-100%);
+    transform: translateX(0%);
+    transition: transform 350ms ease-in-out;
   }
 
-  &.visible {
+  &.left-aside-visible {
     width: 350px;
 
     @include m.bpFactory($max: v.$s) {
       width: 80%;
       transform: translateX(-100%);
-
     }
   }
 
