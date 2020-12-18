@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import LeftAsideCtnr from './LeftAsideCtnr';
 
-describe('when get the home page', () => {
+describe('LeftAsideCntr by default', () => {
   it('Display the avatar', () => {
     render(<LeftAsideCtnr />);
     const avatar = document.querySelector('.avatar');
