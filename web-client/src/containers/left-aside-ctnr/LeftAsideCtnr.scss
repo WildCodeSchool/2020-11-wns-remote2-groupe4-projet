@@ -2,7 +2,7 @@
 @use '../../styles/mixins' as m;
 
 .left-aside {
-  position:relative;
+  position: relative;
   min-height: 100vh;
   width: 100px;
   background-color: v.$secondary;
@@ -18,7 +18,6 @@
     top: 0;
     left: 0;
     width: 80%;
-    //transform: translateX(-100%);
   }
 
   &.visible {
@@ -31,18 +30,19 @@
     }
   }
 
-  .la-arrow-right{
-    position:absolute;
-    top:20px;
-    right:10px;
+  .la-arrow-right {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 10px;
     transition: transform 500ms ease-in-out;
 
     @include m.bpFactory($max: v.$s) {
       right: -20px;
-        transform: rotate(180deg);
+      transform: rotate(180deg);
     }
     
-    &.rotate-left{
+    &.rotate-left {
       transform: rotate(180deg);
 
       @include m.bpFactory($max: v.$s) {

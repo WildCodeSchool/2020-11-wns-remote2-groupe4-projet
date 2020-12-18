@@ -34,6 +34,7 @@
   }
 }
 .left-aside .la-arrow-right {
+  cursor: pointer;
   position: absolute;
   top: 20px;
   right: 10px;
@@ -52,6 +53,69 @@
   .left-aside .la-arrow-right.rotate-left {
     transform: rotate(0deg);
   }
+}
+
+.right-aside {
+  position: relative;
+  min-height: 100vh;
+  width: 100px;
+  padding: 1rem;
+  background-color: #E0E0E0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: width 350ms ease-in-out;
+}
+@media only screen and (max-width: 760px) {
+  .right-aside {
+    max-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 80%;
+  }
+}
+.right-aside.ra-visible {
+  width: 350px;
+}
+@media only screen and (max-width: 760px) {
+  .right-aside.ra-visible {
+    width: 80%;
+    transform: translateX(-100%);
+  }
+}
+.right-aside .ra-title {
+  color: #141414;
+  font-weight: bold;
+}
+.right-aside .ra-title.ra-title-mini {
+  padding-left: 1rem;
+}
+.right-aside .ra-arrow-left {
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  transition: transform 500ms ease-in-out;
+}
+@media only screen and (max-width: 760px) {
+  .right-aside .ra-arrow-left {
+    left: -20px;
+    transform: rotate(0deg);
+  }
+}
+.right-aside .ra-arrow-left.rotate-right {
+  transform: rotate(-180deg);
+}
+@media only screen and (max-width: 760px) {
+  .right-aside .ra-arrow-left.rotate-right {
+    transform: rotate(-180deg);
+  }
+}
+
+.channels-ctnr {
+  margin: 1rem 0rem;
+  width: 100%;
 }
 
 .avatar {
@@ -148,6 +212,62 @@
   text-decoration: underline;
   cursor: pointer;
   margin-bottom: 20px;
+}
+
+.channels-list {
+  margin: 1rem 0rem;
+  line-height: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-wrapper-title-icon {
+  cursor: pointer;
+  display: flex;
+  padding: 0 0.5rem;
+}
+
+.cl-caret-icon {
+  transform: rotate(0deg);
+  transition: all 300ms ease-in-out;
+  padding: 0 0.5rem;
+}
+.cl-caret-icon:hover {
+  background-color: rgba(73, 190, 182, 0.3);
+  border-radius: 5px;
+}
+.cl-caret-icon.cl-caret-icon-open {
+  transform: rotate(90deg);
+}
+
+.cl-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-ul-hidden {
+  display: none;
+}
+
+.cl-title-icon {
+  padding: 0 0.5rem;
+  color: #49BEB7;
+}
+
+.channels-list-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chat-searchbar-wrapper {
+  margin-top: 2rem;
+  width: 100%;
+}
+.chat-searchbar-wrapper > div {
+  width: inherit;
 }
 
 * {

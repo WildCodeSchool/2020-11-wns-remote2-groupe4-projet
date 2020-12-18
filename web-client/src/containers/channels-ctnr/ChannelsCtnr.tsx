@@ -4,7 +4,11 @@ import './ChannelsCtnr.scss';
 
 import ChannelsListCpnt from '../../components/channels-list-cpnt/ChannelsListCpnt';
 
-const ChannelsCtnr = (): JSX.Element => {
+export type ChannelsCtnrProps = {
+  isRightAsideOpen: boolean;
+};
+
+const ChannelsCtnr = ({ isRightAsideOpen }: ChannelsCtnrProps): JSX.Element => {
   return (
     <div className="channels-ctnr">
       <ChannelsListCpnt
@@ -14,6 +18,7 @@ const ChannelsCtnr = (): JSX.Element => {
           'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
         ]}
+        isRightAsideOpen={isRightAsideOpen}
       />
       <ChannelsListCpnt
         title="Personnel"
@@ -22,6 +27,7 @@ const ChannelsCtnr = (): JSX.Element => {
           'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
         ]}
+        isRightAsideOpen={isRightAsideOpen}
       />
     </div>
   );

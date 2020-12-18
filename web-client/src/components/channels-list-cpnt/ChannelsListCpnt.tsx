@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCaretRight,
+  faDesktop,
+  faMugHot,
+} from '@fortawesome/free-solid-svg-icons';
 
 import './ChannelsListCpnt.scss';
 
@@ -9,11 +13,13 @@ import ChannelsListItemCpnt from '../channels-list-item-cpnt/ChannelsListItemCpn
 export type ChannelsListCpntProps = {
   title: string;
   channels: string[];
+  isRightAsideOpen: boolean;
 };
 
 const ChannelsListCpnt = ({
   title,
   channels,
+  isRightAsideOpen,
 }: ChannelsListCpntProps): JSX.Element => {
   const [isChannelsListOpen, setIsChannelsListOpen] = useState(false);
 
@@ -31,7 +37,16 @@ const ChannelsListCpnt = ({
         >
           <FontAwesomeIcon icon={faCaretRight} />
         </div>
-        <h4 className="cl-title">{title}</h4>
+        {title == 'Général' ? (
+          <div className="cl-title-icon">
+            <FontAwesomeIcon icon={faDesktop} />
+          </div>
+        ) : (
+          <div className="cl-title-icon">
+            <FontAwesomeIcon icon={faMugHot} />
+          </div>
+        )}
+        {isRightAsideOpen && <h4 className="cl-title">{title}</h4>}
       </div>
       <ul className={`${!isChannelsListOpen && 'cl-ul-hidden'}`}>
         {channels.map((channel, index) => (

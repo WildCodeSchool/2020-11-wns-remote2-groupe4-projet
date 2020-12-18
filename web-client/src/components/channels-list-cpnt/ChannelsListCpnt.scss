@@ -1,3 +1,5 @@
+@use '../../styles/variables.scss' as v;
+
 .channels-list {
   margin: 1rem 0rem;
   line-height: 1.5rem;
@@ -35,4 +37,9 @@
 
 .cl-ul-hidden {
   display: none;
+}
+
+.cl-title-icon {
+ padding: 0 0.5rem;
+ color: v.$ternary;
 }
