@@ -21,7 +21,7 @@
     transition: transform 350ms ease-in-out;
   }
 
-  &.visible {
+  &.left-aside-visible {
     width: 350px;
 
     @include m.bpFactory($max: v.$s) {

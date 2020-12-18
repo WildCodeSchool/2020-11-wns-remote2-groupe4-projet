@@ -2,6 +2,26 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import LeftAsideCtnr from './LeftAsideCtnr';
 
+describe('when get the home page', () => {
+  it('Display the avatar', () => {
+    render(<LeftAsideCtnr />);
+    const avatar = document.querySelector('.avatar');
+    expect(avatar).toBeInTheDocument();
+  });
+
+  it('Display the menu', () => {
+    render(<LeftAsideCtnr />);
+    const menu = document.querySelector('.menu');
+    expect(menu).toBeInTheDocument();
+  });
+
+  it('Display the menu buttons', () => {
+    render(<LeftAsideCtnr />);
+    const buttonsMenu = document.querySelector('.btn-wrapper');
+    expect(buttonsMenu).toBeInTheDocument();
+  });
+});
+
 describe('when button clicked', () => {
   it('Hides the avatar name', () => {
     render(<LeftAsideCtnr />);

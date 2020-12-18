@@ -13,7 +13,7 @@ const LeftAsideCtnr = (): JSX.Element => {
   };
 
   return (
-    <aside className={`left-aside ${isLeftAsideOpen && 'visible'}`}>
+    <aside className={`left-aside ${isLeftAsideOpen && 'left-aside-visible'}`}>
       <FontAwesomeIcon
         className={`la-arrow-right ${!isLeftAsideOpen && 'rotate-left'}`}
         icon={faArrowCircleLeft}
