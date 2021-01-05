@@ -18,17 +18,19 @@
 @media only screen and (max-width: 760px) {
   .left-aside {
     max-height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 80%;
+    transform: translateX(0%);
+    transition: transform 350ms ease-in-out;
   }
 }
-.left-aside.visible {
+.left-aside.left-aside-visible {
   width: 350px;
 }
 @media only screen and (max-width: 760px) {
-  .left-aside.visible {
+  .left-aside.left-aside-visible {
     width: 80%;
     transform: translateX(-100%);
   }
@@ -120,15 +122,20 @@
 
 .avatar {
   width: 100%;
-  height: 175px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 20px 0;
 }
+@media only screen and (max-width: 760px) {
+  .avatar {
+    height: 100px;
+  }
+}
 .avatar .a-image {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border: 5px solid #49BEB7;
   border-radius: 50%;
   transition: width 350ms ease-in-out, height 350ms ease-in-out, margin 350ms ease-in-out;
@@ -201,6 +208,7 @@
   display: flex;
   justify-content: space-around;
   color: #141414;
+  flex-direction: row;
 }
 .btn-wrapper.btn-wrapper-column {
   flex-direction: column;
