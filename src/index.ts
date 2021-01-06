@@ -1,44 +1,18 @@
 import 'reflect-metadata';
 import express from 'express';
-import { ApolloServer, gql } from 'apollo-server-express';
-
+import { ApolloServer } from 'apollo-server-express';
+import { buildSchema } from 'type-graphql';
 import { createConnection } from 'typeorm';
 
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-  {
-    title: 'Game of Throne',
-    author: 'Georges Martin',
-  },
-];
-
-const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-  }
-  type Query {
-    books: [Book]
-  }
-`;
-
-const bookResolvers = {
-  Query: {
-    books: () => books,
-  },
-};
+import UserResolvers from './resolvers/UserResolver';
 
 const main = async () => {
   await createConnection();
 
-  const server = new ApolloServer({ typeDefs, resolvers: bookResolvers });
+  const schema = await buildSchema({
+    resolvers: [UserResolvers],
+  });
+  const server = new ApolloServer({ schema });
 
   const app = express();
   server.applyMiddleware({ app });
