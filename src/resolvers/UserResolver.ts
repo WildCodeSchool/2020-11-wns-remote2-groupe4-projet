@@ -1,38 +1,38 @@
 import { Resolver, Query, Mutation, Arg } from 'type-graphql';
-import User from '../models/User';
+import AppUser from '../models/AppUser';
 import { CreateUserInput, UpdateUserInput } from '../inputs/UserInput';
 
 @Resolver()
 export default class UserResoler {
-  @Query(() => User)
-  user(@Arg('id') id: string): Promise<User | undefined> {
-    return User.findOne(id);
+  @Query(() => AppUser)
+  user(@Arg('id') id: string): Promise<AppUser | undefined> {
+    return AppUser.findOne(id);
   }
 
-  @Query(() => [User])
-  users(): Promise<User[]> {
-    return User.find();
+  @Query(() => [AppUser])
+  users(): Promise<AppUser[]> {
+    return AppUser.find();
   }
 
-  @Mutation(() => User)
-  async createUser(@Arg('data') data: CreateUserInput): Promise<User> {
-    const user = User.create(data);
-    await user.save();
-    return user;
+  @Mutation(() => AppUser)
+  async createUser(@Arg('data') data: CreateUserInput): Promise<AppUser> {
+    const appUser = AppUser.create(data);
+    await appUser.save();
+    return appUser;
   }
 
-  @Mutation(() => User)
+  @Mutation(() => AppUser)
   async updateUser(
     @Arg('id') id: string,
     @Arg('data') data: UpdateUserInput
-  ): Promise<User> {
-    const user = await User.findOne(id);
+  ): Promise<AppUser> {
+    const appUser = await AppUser.findOne(id);
 
-    if (!user) throw new Error("This user doesn't exist");
+    if (!appUser) throw new Error("This user doesn't exist");
 
-    Object.assign(user, data);
+    Object.assign(appUser, data);
 
-    await user.save();
-    return user;
+    await appUser.save();
+    return appUser;
   }
 }

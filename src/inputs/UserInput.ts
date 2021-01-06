@@ -23,6 +23,7 @@ export class CreateUserInput {
   address!: string;
 }
 
+@InputType()
 export class UpdateUserInput {
   @Field()
   id!: string;
