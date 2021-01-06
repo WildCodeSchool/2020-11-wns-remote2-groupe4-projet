@@ -1,48 +1,23 @@
 import 'reflect-metadata';
 import express from 'express';
-import { ApolloServer, gql } from 'apollo-server-express';
-
+import { ApolloServer } from 'apollo-server-express';
+import { buildSchema } from 'type-graphql';
 import { createConnection } from 'typeorm';
 
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-  {
-    title: 'Game of Throne',
-    author: 'Georges Martin',
-  },
-];
-
-const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-  }
-  type Query {
-    books: [Book]
-  }
-`;
-
-const bookResolvers = {
-  Query: {
-    books: () => books,
-  },
-};
+import UserResolvers from './resolvers/UserResolver'; 
 
 const main = async () => {
+  console.log('i am here');
   await createConnection();
-
-  const server = new ApolloServer({ typeDefs, resolvers: bookResolvers });
+  console.log('ici404');
+  const schema = await buildSchema({
+    resolvers: [UserResolvers],
+  });
+  const server = new ApolloServer({ schema });
 
   const app = express();
   server.applyMiddleware({ app });
-
+  console.log('hi');
   app.listen({ port: 4000 }, () =>
     console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
   );
