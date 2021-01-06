@@ -20,6 +20,7 @@ const RightAsideCtnr = (): JSX.Element => {
         className={`ra-arrow-left ${!isRightAsideOpen && 'rotate-right'}`}
         icon={faArrowCircleRight}
         onClick={toggleRightAside}
+        data-testid="ArrowIconRightAsideCtnr"
       />
       <h3 className={`ra-title ${!isRightAsideOpen && 'ra-title-mini'}`}>
         Chat
