@@ -6,8 +6,8 @@ on:
   pull_request:
 
 
-jobs1:
-  build:
+jobs:
+  test-front:
     runs-on: ubuntu-latest
 
     strategy:
