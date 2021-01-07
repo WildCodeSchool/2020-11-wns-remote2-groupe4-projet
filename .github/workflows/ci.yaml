@@ -24,21 +24,3 @@ jobs:
       working-directory: ./web-client
       env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-  lint:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install modules
-      run: npm i
-    - name: Run ESLint
-      run: npm run lint-action
