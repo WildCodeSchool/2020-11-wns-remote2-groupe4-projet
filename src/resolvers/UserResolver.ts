@@ -35,4 +35,9 @@ export default class UserResoler {
     await appUser.save();
     return appUser;
   }
+
+  @Mutation(() => AppUser)
+  deleteUser(@Arg('id') id: string): void {
+    AppUser.delete(id);
+  }
 }
