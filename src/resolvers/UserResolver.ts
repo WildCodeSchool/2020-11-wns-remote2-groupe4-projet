@@ -37,7 +37,15 @@ export default class UserResoler {
   }
 
   @Mutation(() => AppUser)
-  deleteUser(@Arg('id') id: string): void {
-    AppUser.delete(id);
+  async deleteUser(@Arg('id') id: string): Promise<AppUser> {
+    const appUser = await AppUser.findOne(id);
+
+    if (!appUser) throw new Error("This user doesn't exist");
+
+    if (appUser !== undefined) {
+      await AppUser.remove(appUser);
+    }
+
+    return appUser;
   }
 }
