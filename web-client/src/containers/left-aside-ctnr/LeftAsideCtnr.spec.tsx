@@ -17,7 +17,7 @@ describe('LeftAsideCntr by default', () => {
 
   it('Display the menu buttons', () => {
     render(<LeftAsideCtnr />);
-    const buttonsMenu = document.querySelector('.btn-wrappe');
+    const buttonsMenu = document.querySelector('.btn-wrapper');
     expect(buttonsMenu).toBeInTheDocument();
   });
 });
