@@ -14,7 +14,7 @@ const main = async () => {
   });
   const server = new ApolloServer({ schema });
 
-                    const app = express();
+  const app = express();
   server.applyMiddleware({ app });
 
   app.listen({ port: 4000 }, () =>
