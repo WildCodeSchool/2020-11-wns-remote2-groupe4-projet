@@ -8,9 +8,9 @@ export default class AppUser extends BaseEntity {
   @Field(() => ID)
   id!: string;
 
-        @Column()
-        @Field(() => String)
-        firstname!: string;
+  @Column()
+  @Field(() => String)
+  firstname!: string;
 
   @Column()
   @Field(() => String)
