@@ -25,25 +25,22 @@ export class CreateUserInput {
 
 @InputType()
 export class UpdateUserInput {
-  @Field()
-  id!: string;
-
-  @Field()
+  @Field({ nullable: true })
   firstname?: string;
 
-  @Field()
+  @Field({ nullable: true })
   lastname?: string;
 
-  @Field()
+  @Field({ nullable: true })
   email?: string;
 
-  @Field()
+  @Field({ nullable: true })
   @MinLength(8)
   password?: string;
 
-  @Field()
+  @Field({ nullable: true })
   phone?: string;
 
-  @Field()
+  @Field({ nullable: true })
   address?: string;
 }
