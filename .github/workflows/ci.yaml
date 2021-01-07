@@ -41,4 +41,4 @@ jobs:
     - name: Install modules
       run: npm i
     - name: Run ESLint
-      run: npm run lint-action
+      run: npm run lint-action 
