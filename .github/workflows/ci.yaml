@@ -22,6 +22,8 @@ jobs:
     - name: Run tests
       run: npm test
       working-directory: ./web-client
+      env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   lint:
     runs-on: ubuntu-latest
