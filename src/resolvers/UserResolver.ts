@@ -42,10 +42,7 @@ export default class UserResoler {
 
     if (!appUser) throw new Error("This user doesn't exist");
 
-    if (appUser !== undefined) {
-      await AppUser.remove(appUser);
-    }
-
+    await AppUser.remove(appUser);
     return appUser;
   }
 }
