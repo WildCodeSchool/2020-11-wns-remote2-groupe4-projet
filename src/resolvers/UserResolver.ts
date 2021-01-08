@@ -3,7 +3,7 @@ import AppUser from '../models/AppUser';
 import { CreateUserInput, UpdateUserInput } from '../inputs/UserInput';
 
 @Resolver()
-export default class UserResoler {
+export default class UserResolver {
   @Query(() => AppUser)
   user(@Arg('id') id: string): Promise<AppUser | undefined> {
     return AppUser.findOne(id);
