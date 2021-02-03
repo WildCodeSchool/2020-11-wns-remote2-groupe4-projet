@@ -1,0 +1,14 @@
+@use '../../styles/variables.scss' as v;
+
+.loginForm {
+    box-sizing: border-box;
+    width: min-content;
+    background-color: v.$ternary;
+    padding: 1rem;
+    .l-wrapperInput {
+        margin: 2rem 0;
+    }
+    .lu-input{
+        padding: 10px;
+    }
+}

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './ChannelsListItemCpnt.scss';
-
 export type ChannelsListItemCpntProps = {
   channel: string;
 };

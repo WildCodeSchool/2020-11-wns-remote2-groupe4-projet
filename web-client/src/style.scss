@@ -2,7 +2,7 @@
 @forward './styles/variables';
 
 // Views
-
+@use './views/login/ViewLogin.scss';
 
 // Containers
 @use './containers/MainCtnr.scss';
@@ -17,8 +17,7 @@
 @use './components/channels-list-cpnt/ChannelsListCpnt.scss';
 @use './components/channels-list-item-cpnt/ChannelsListItemCpnt.scss';
 @use './components/chat-searchbar-cpnt/ChatSearchBar.scss';
-
-
+@use './components/loginForm-cpnt/LoginFormCpnt.scss';
 * {
   box-sizing: border-box;
   margin: 0;

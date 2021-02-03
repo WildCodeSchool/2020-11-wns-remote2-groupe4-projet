@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import ViewLogin from '../views/ViewLogin';
-import ViewDashboard from '../views/ViewDashboard';
+import ViewLogin from '../views/login/ViewLogin';
+import ViewDashboard from '../views/dashboard/ViewDashboard';
 import MainCtnr from '../containers/MainCtnr';
 
 const ProjectRouter = (): JSX.Element => {

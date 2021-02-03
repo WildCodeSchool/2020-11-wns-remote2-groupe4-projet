@@ -1,0 +1,8 @@
+@use '../../styles/variables.scss' as v;
+.viewLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:v.$primary;
+    min-height: 100vh;
+}

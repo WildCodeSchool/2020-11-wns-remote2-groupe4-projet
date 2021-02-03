@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './ChannelsCtnr.scss';
-
 import ChannelsListCpnt from '../../components/channels-list-cpnt/ChannelsListCpnt';
 
 export type ChannelsCtnrProps = {
