@@ -10,17 +10,18 @@ type FormData = {
 const CREATE_SESSION = gql`
   mutation CreateSession($email: String!, $password: String!) {
     createSession(input: { email: $email, password: $password }) {
-      user
+      firstname
+      lastname
     }
   }
 `;
 
 const LoginFormCpnt = (): JSX.Element => {
-  const { register, handleSubmit, errors } = useForm();
-  const [createSession, { data }] = useMutation(CREATE_SESSION);
+  const { register, handleSubmit, errors } = useForm<FormData>();
+  const [createSession] = useMutation(CREATE_SESSION);
 
   const onSubmit = handleSubmit(({ email, password }) => {
-    console.log(email, password);
+    createSession({ variables: { email, password } });
   });
 
   return (
