@@ -27,7 +27,7 @@
 .viewSignIn {
   box-sizing: border-box;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -391,6 +391,20 @@
   justify-content: space-evenly;
   border-radius: 5px;
 }
+@media only screen and (max-width: 760px) {
+  .sign-in-form {
+    width: 100%;
+    padding: 0px 50px;
+    min-height: 100vh;
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .sign-in-form {
+    padding: 30px 20px;
+    font-size: 0.8rem;
+  }
+}
 .sign-in-form .sif-title {
   text-align: center;
 }
@@ -406,6 +420,13 @@
   flex-direction: column;
   margin: 20px 0;
 }
+@media only screen and (max-width: 460px) {
+  .sign-in-form .sif-names-fieldset .sif-wrapper-input,
+.sign-in-form .sif-details-fieldset .sif-wrapper-input,
+.sign-in-form .sif-passwords-fieldset .sif-wrapper-input {
+    margin: 10px 0;
+  }
+}
 .sign-in-form .sif-names-fieldset .sif-wrapper-input .sif-label,
 .sign-in-form .sif-details-fieldset .sif-wrapper-input .sif-label,
 .sign-in-form .sif-passwords-fieldset .sif-wrapper-input .sif-label {
@@ -418,6 +439,13 @@
   border: none;
   border-radius: 30px;
 }
+@media only screen and (max-width: 460px) {
+  .sign-in-form .sif-names-fieldset .sif-wrapper-input .sif-input,
+.sign-in-form .sif-details-fieldset .sif-wrapper-input .sif-input,
+.sign-in-form .sif-passwords-fieldset .sif-wrapper-input .sif-input {
+    padding: 5px;
+  }
+}
 .sign-in-form .sif-names-fieldset .sif-wrapper-input .form-error,
 .sign-in-form .sif-details-fieldset .sif-wrapper-input .form-error,
 .sign-in-form .sif-passwords-fieldset .sif-wrapper-input .form-error {
@@ -429,6 +457,11 @@
   display: flex;
   justify-content: space-evenly;
 }
+@media only screen and (max-width: 760px) {
+  .sign-in-form .sif-names-fieldset {
+    flex-direction: column;
+  }
+}
 .sign-in-form .sif-submit {
   padding: 8px 35px;
   align-self: center;
@@ -436,6 +469,16 @@
   border-radius: 20px;
   cursor: pointer;
   font-size: 1rem;
+}
+@media only screen and (max-width: 760px) {
+  .sign-in-form .sif-submit {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .sign-in-form .sif-submit {
+    font-size: 0.8rem;
+  }
 }
 .sign-in-form .sif-submit:hover {
   background-color: #cbf3f0;
