@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { gql, useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
 
 type FormData = {
   email: string;
@@ -26,6 +27,7 @@ const LoginFormCpnt = (): JSX.Element => {
 
   return (
     <form onSubmit={onSubmit} className="loginForm">
+      <h1 className="l-title">WildHub</h1>
       <div className="l-userEmail l-wrapperInput ">
         <label htmlFor="email" className="lu-labelEmail">
           Email
@@ -38,11 +40,11 @@ const LoginFormCpnt = (): JSX.Element => {
           id="userEmail"
           placeholder="exemple@gmail.com"
         />
-        {errors.email && <span>Ce champ est requis</span>}
+        {errors.email && <span className="lu-error">Ce champ est requis</span>}
       </div>
       <div className="l-userPass l-wrapperInput ">
         <label htmlFor="password" className="lu-labelPassword">
-          Password
+          Mot de passe
         </label>
         <input
           type="password"
@@ -51,10 +53,15 @@ const LoginFormCpnt = (): JSX.Element => {
           ref={register({ required: true })}
           id="userPassword"
         />
-        {errors.password && <span>Ce champ est requis</span>}
+        {errors.password && (
+          <span className="lu-error">Ce champ est requis</span>
+        )}
       </div>
 
-      <input type="submit" className="l-submit" />
+      <input type="submit" className="l-submit" value="Connexion" />
+      <p className="l-sign-in-link">
+        <Link to="/sign-in">Inscription</Link>
+      </p>
     </form>
   );
 };

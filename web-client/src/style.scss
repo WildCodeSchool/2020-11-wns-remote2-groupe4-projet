@@ -1,8 +1,12 @@
 @use './styles/variables' as v;
+@use './styles/fonts';
+
 @forward './styles/variables';
+@forward './styles/fonts';
 
 // Views
 @use './views/login/ViewLogin.scss';
+@use './views//sign-in/ViewSignIn';
 
 // Containers
 @use './containers/MainCtnr.scss';
@@ -18,8 +22,11 @@
 @use './components/channels-list-item-cpnt/ChannelsListItemCpnt.scss';
 @use './components/chat-searchbar-cpnt/ChatSearchBar.scss';
 @use './components/loginForm-cpnt/LoginFormCpnt.scss';
+@use './components/sign-in-form-cpnt/SignInFormCpnt';
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Montserrat';
 }

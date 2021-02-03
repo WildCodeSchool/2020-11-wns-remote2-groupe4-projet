@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import ViewLogin from '../views/login/ViewLogin';
 import ViewDashboard from '../views/dashboard/ViewDashboard';
+import ViewSignIn from '../views/sign-in/ViewSignIn';
 import MainCtnr from '../containers/MainCtnr';
 
 const ProjectRouter = (): JSX.Element => {
@@ -10,6 +11,7 @@ const ProjectRouter = (): JSX.Element => {
     <Router>
       <Switch>
         <Route path="/login" component={ViewLogin} />
+        <Route path="/sign-in" component={ViewSignIn} />
         <MainCtnr>
           <Route exact path="/" component={ViewDashboard} />
         </MainCtnr>

@@ -1,0 +1,95 @@
+/* ************************** */
+/* ************************** */
+/* ***** SignInFormCpnt ***** */
+/* ************************** */
+/* ************************** */
+
+@use '../../styles/variables.scss' as v;
+@use '../../styles/mixins' as m;
+
+.sign-in-form {
+  box-sizing: border-box;
+  width: min-content;
+  background-color: v.$ternary;
+  padding: 40px 30px;
+  width: 700px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 5px;
+
+  .sif-title {
+    text-align: center;
+  }
+
+  .sif-names-fieldset,
+  .sif-details-fieldset,
+  .sif-passwords-fieldset {
+    border: none;
+
+    .sif-wrapper-input {
+      display: flex;
+      flex-direction: column;
+      margin: 20px 0;
+
+      .sif-label {
+        margin: 0 0 5px 15px;
+      }
+      .sif-input {
+        padding: 10px;
+        border: none;
+        border-radius: 30px;
+      }
+
+      .form-error {
+        font-size: 0.8rem;
+        color: v.$accent;
+        margin: 3px 0 0 15px;
+      }
+    }
+  }
+
+  .sif-names-fieldset {
+    display: flex;
+    justify-content: space-evenly;
+
+    .sifnm-firstname {
+    }
+
+    .sifnm-lastname {
+    }
+  }
+
+  .sif-details-fieldset {
+    .sifdf-email {
+    }
+
+    .sifdf-phone {
+    }
+
+    .sifdf-address {
+    }
+  }
+
+  .sif-passwords-fieldset {
+    .sifpf-password {
+    }
+
+    .sifpf-verify-password {
+    }
+  }
+
+  .sif-submit {
+    padding: 8px 35px;
+    align-self: center;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: v.$ternary-hover;
+    }
+  }
+}
