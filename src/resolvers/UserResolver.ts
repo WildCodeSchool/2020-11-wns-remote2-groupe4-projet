@@ -1,4 +1,4 @@
-import { compare } from 'bcrypt';
+import { hash, compare } from 'bcrypt';
 import { Resolver, Query, Mutation, Arg, Ctx } from 'type-graphql';
 import AppUser from '../models/AppUser';
 import { CreateUserInput, UpdateUserInput } from '../inputs/UserInput';
@@ -19,6 +19,8 @@ export default class UserResolver {
 
   @Mutation(() => AppUser)
   async createUser(@Arg('data') data: CreateUserInput): Promise<AppUser> {
+    data.password = await hash(data.password, 10);
+
     const appUser = AppUser.create(data);
     await appUser.save();
     return appUser;

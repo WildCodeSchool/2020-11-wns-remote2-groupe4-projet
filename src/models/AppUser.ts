@@ -1,14 +1,16 @@
-import { hash } from 'bcrypt';
 import {
   Entity,
   BaseEntity,
   PrimaryGeneratedColumn,
   Column,
-  BeforeInsert,
+  OneToMany,
+  ManyToMany,
 } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
 
 import UserSession from './UserSession';
+import Message from './Message';
+import Channel from './Channel';
 
 @Entity()
 @ObjectType()
@@ -41,10 +43,15 @@ export default class AppUser extends BaseEntity {
   @Field(() => String)
   address!: string;
 
-  @BeforeInsert()
-  async hashPassword(): Promise<void> {
-    this.password = await hash(this.password, 10);
-  }
+  @OneToMany(() => Message, (message) => message.author)
+  @Field(() => [Message])
+  messages!: Message[];
+
+  @ManyToMany(() => Channel, (channel) => channel.users, {
+    lazy: true,
+  })
+  @Field(() => [Channel])
+  channels!: Promise<Channel[]>;
 }
 
 export async function getUserFromSessionId(

@@ -2,6 +2,12 @@ import { Field, InputType } from 'type-graphql';
 import { MinLength } from 'class-validator';
 
 @InputType()
+export class AppUserIdInput {
+  @Field(() => String)
+  id!: string;
+}
+
+@InputType()
 export class CreateUserInput {
   @Field()
   firstname!: string;
