@@ -8,6 +8,7 @@
 @use '../../styles/mixins' as m;
 
 .viewSignIn {
+  position: relative;
   box-sizing: border-box;
   width: 100vw;
   min-height: 100vh;
@@ -15,4 +16,20 @@
   justify-content: center;
   align-items: center;
   background-color: v.$primary;
+  
+  .v-return {
+    position :absolute;
+    top: 20px;
+    left: 20px;
+    color:v.$black;
+    font-size: 1.8rem;
+
+    @include m.bpFactory($max: v.$m) {
+      font-size: 1.5rem;
+    }
+
+    @include m.bpFactory($max: v.$xs) {
+      font-size: 1.3rem;
+    }
+  }
 }

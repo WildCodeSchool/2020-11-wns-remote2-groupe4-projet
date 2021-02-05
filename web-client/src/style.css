@@ -25,6 +25,7 @@
 /* ************************** */
 /* ************************** */
 .viewSignIn {
+  position: relative;
   box-sizing: border-box;
   width: 100vw;
   min-height: 100vh;
@@ -32,6 +33,23 @@
   justify-content: center;
   align-items: center;
   background-color: #F6F5F5;
+}
+.viewSignIn .v-return {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #141414;
+  font-size: 1.8rem;
+}
+@media only screen and (max-width: 980px) {
+  .viewSignIn .v-return {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .viewSignIn .v-return {
+    font-size: 1.3rem;
+  }
 }
 
 .main-ctrn {
@@ -340,6 +358,15 @@
   flex-direction: column;
   border-radius: 5px;
 }
+@media only screen and (max-width: 760px) {
+  .loginForm {
+    width: 100%;
+    padding: 0px 50px;
+    min-height: 100vh;
+    font-size: 0.9rem;
+    justify-content: center;
+  }
+}
 .loginForm .l-title {
   text-align: center;
 }
@@ -349,7 +376,8 @@
   flex-direction: column;
   text-align: center;
 }
-.loginForm .l-wrapperInput .lu-labelEmail, .loginForm .l-wrapperInput .lu-labelPassword {
+.loginForm .l-wrapperInput .lu-labelEmail,
+.loginForm .l-wrapperInput .lu-labelPassword {
   margin: 0 0 5px 15px;
 }
 .loginForm .l-wrapperInput .lu-error {
@@ -372,6 +400,15 @@
 }
 .loginForm .l-submit:hover {
   background-color: #cbf3f0;
+}
+.loginForm .l-sign-in-link {
+  padding: 15px 0px;
+}
+.loginForm .l-sign-in-link a {
+  color: #F6F5F5;
+}
+.loginForm .l-sign-in-link a:hover {
+  color: #E0E0E0;
 }
 
 /* ************************** */

@@ -2,6 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { gql, useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 type FormData = {
   email: string;
@@ -21,8 +23,18 @@ const LoginFormCpnt = (): JSX.Element => {
   const { register, handleSubmit, errors } = useForm<FormData>();
   const [createSession] = useMutation(CREATE_SESSION);
 
-  const onSubmit = handleSubmit(({ email, password }) => {
-    createSession({ variables: { email, password } });
+  const history = useHistory();
+
+  const onSubmit = handleSubmit(async ({ email, password }) => {
+    try {
+      await createSession({ variables: { email, password } });
+      setTimeout(() => {
+        history.push('/dashboard');
+      }, 2000);
+      toast.success('Vous êtes connecté', {});
+    } catch (error) {
+      toast.error(`${error}`, {});
+    }
   });
 
   return (
@@ -62,6 +74,17 @@ const LoginFormCpnt = (): JSX.Element => {
       <p className="l-sign-in-link">
         <Link to="/sign-in">Inscription</Link>
       </p>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </form>
   );
 };

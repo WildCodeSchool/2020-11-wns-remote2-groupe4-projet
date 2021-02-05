@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { gql, useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 type FormData = {
   firstname: string;
@@ -46,15 +47,17 @@ const SignInFormCpnt = (): JSX.Element => {
   const history = useHistory();
 
   const submitSignIn = handleSubmit(
-    ({ firstname, lastname, email, password, phone, address }) => {
+    async ({ firstname, lastname, email, password, phone, address }) => {
       try {
-        createUser({
+        await createUser({
           variables: { firstname, lastname, email, password, phone, address },
         });
+        setTimeout(() => {
+          history.push('/login');
+        }, 2000);
+        toast.success('Vous êtes maintenant inscrit', {});
       } catch (error) {
         console.log('error');
-      } finally {
-        history.push('/login');
       }
     }
   );
@@ -183,6 +186,17 @@ const SignInFormCpnt = (): JSX.Element => {
         </div>
       </fieldset>
       <input type="submit" className="sif-submit" value="Inscription" />
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </form>
   );
 };

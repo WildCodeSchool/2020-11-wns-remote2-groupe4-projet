@@ -10,10 +10,11 @@ const ProjectRouter = (): JSX.Element => {
   return (
     <Router>
       <Switch>
+        <Route exact path="/" component={ViewLogin} />
         <Route path="/login" component={ViewLogin} />
         <Route path="/sign-in" component={ViewSignIn} />
         <MainCtnr>
-          <Route exact path="/" component={ViewDashboard} />
+          <Route exact path="/dashboard" component={ViewDashboard} />
         </MainCtnr>
       </Switch>
     </Router>
