@@ -36,13 +36,15 @@
 }
 .viewSignIn .v-return {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 30px;
+  left: 30px;
   color: #141414;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
 }
 @media only screen and (max-width: 980px) {
   .viewSignIn .v-return {
+    top: 20px;
+    left: 20px;
     font-size: 1.5rem;
   }
 }
@@ -357,6 +359,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 5px;
+  box-shadow: 0px 4px 10px 8px #cfd6d5;
 }
 @media only screen and (max-width: 760px) {
   .loginForm {
@@ -427,6 +430,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   border-radius: 5px;
+  box-shadow: 0px 4px 10px 8px #cfd6d5;
 }
 @media only screen and (max-width: 760px) {
   .sign-in-form {
