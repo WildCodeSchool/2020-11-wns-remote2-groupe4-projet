@@ -1,8 +1,22 @@
-import { Arg, Mutation, Query, Resolver } from 'type-graphql';
+import {
+  Arg,
+  Ctx,
+  Mutation,
+  Publisher,
+  PubSub,
+  Query,
+  Resolver,
+  Root,
+  Subscription,
+} from 'type-graphql';
 import { CreateMessageInput, UpdateMessageInput } from '../inputs/MessageInput';
 import AppUser from '../models/AppUser';
 import Channel from '../models/Channel';
 import Message from '../models/Message';
+
+type NewMessagePayload = {
+  message: Message;
+};
 
 @Resolver()
 export default class MessageResolver {
@@ -66,8 +80,14 @@ export default class MessageResolver {
 
   //create message
   @Mutation(() => Message)
-  async createMessage(@Arg('data') data: CreateMessageInput): Promise<Message> {
+  async createMessage(
+    @Arg('data') data: CreateMessageInput,
+    @Ctx() context: { user: AppUser | null },
+    @PubSub('NEW_MESSAGE') publishNewMessage: Publisher<NewMessagePayload>
+  ): Promise<Message> {
     try {
+      if (!context.user) throw new Error('You are not authenticated.');
+
       const user = await AppUser.findOne(data.authorId);
       if (!user) throw new Error('User not found.');
 
@@ -83,6 +103,9 @@ export default class MessageResolver {
       message.channel = Promise.resolve(channel);
 
       await message.save();
+
+      publishNewMessage({ message });
+
       return message;
     } catch (err) {
       console.log(err);
@@ -116,5 +139,10 @@ export default class MessageResolver {
 
     await Message.remove(messageToDelete);
     return 'Message deleted.';
+  }
+
+  @Subscription({ topics: 'NEW_MESSAGE' })
+  newMessage(@Root() newMessagePayload: NewMessagePayload): Message {
+    return newMessagePayload.message;
   }
 }
