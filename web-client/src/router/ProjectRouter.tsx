@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import ViewLogin from '../views/login/ViewLogin';
 import ViewDashboard from '../views/dashboard/ViewDashboard';
-import ViewSignIn from '../views/sign-in/ViewSignIn';
+import ViewSignIn from '../views/sign-in/ViewSignUp';
 import MainCtnr from '../containers/MainCtnr';
 
 const ProjectRouter = (): JSX.Element => {

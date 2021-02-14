@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SignInFormCpnt from '../../components/sign-in-form-cpnt/SignInFormCpnt';
+import SignInFormCpnt from '../../components/sign-in-form-cpnt/SignUpFormCpnt';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 

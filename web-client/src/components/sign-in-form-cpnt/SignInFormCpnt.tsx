@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { gql, useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
@@ -41,7 +41,10 @@ const CREATE_USER = gql`
 `;
 
 const SignInFormCpnt = (): JSX.Element => {
-  const { register, handleSubmit, errors } = useForm<FormData>();
+  const { register, handleSubmit, errors, watch } = useForm<FormData>({});
+  const password = useRef({});
+  password.current = watch('password', '');
+
   const [createUser] = useMutation(CREATE_USER);
 
   const history = useHistory();
@@ -157,11 +160,19 @@ const SignInFormCpnt = (): JSX.Element => {
             className="sifpfp-password-input sif-input"
             type="password"
             name="password"
-            ref={register({ required: true })}
+            ref={register({
+              required: 'Vous devez spécifier un mot de passe',
+              minLength: {
+                value: 8,
+                message: 'Le mot de passe doit avoir au moins 8 caractères',
+              },
+            })}
             id="password"
           />
           {errors.password && (
-            <span className="sifpfp-error form-error">Ce champ est requis</span>
+            <span className="sifpfp-error form-error">
+              {errors.password.message}
+            </span>
           )}
         </div>
         <div className="sifpf-verify-password sif-wrapper-input ">
@@ -175,12 +186,16 @@ const SignInFormCpnt = (): JSX.Element => {
             className="sifpfvp-verify-password-input sif-input"
             type="password"
             name="verifyPassword"
-            ref={register({ required: true })}
+            ref={register({
+              validate: (value) =>
+                value === password.current ||
+                'Le mot de passe ne correspond pas',
+            })}
             id="verifyPassword"
           />
           {errors.verifyPassword && (
             <span className="sifpfvp-error form-error">
-              Ce champ est requis
+              {errors.verifyPassword.message}
             </span>
           )}
         </div>
