@@ -14,7 +14,7 @@ type FormData = {
   address: string;
 };
 
-const CREATE_USER = gql`
+export const CREATE_USER = gql`
   mutation CreateUser(
     $firstname: String!
     $lastname: String!
@@ -40,7 +40,7 @@ const CREATE_USER = gql`
   }
 `;
 
-const SignInFormCpnt = (): JSX.Element => {
+const SignUpFormCpnt = (): JSX.Element => {
   const { register, handleSubmit, errors, watch } = useForm<FormData>({});
   const password = useRef({});
   password.current = watch('password', '');
@@ -82,9 +82,12 @@ const SignInFormCpnt = (): JSX.Element => {
             name="firstname"
             ref={register({ required: true })}
             id="firstname"
+            aria-label="firstname"
           />
           {errors.firstname && (
-            <span className="sifnmf-error form-error">Ce champ est requis</span>
+            <span className="sifnmf-error form-error" role="alert">
+              Ce champ est requis
+            </span>
           )}
         </div>
         <div className="sifnm-lastname sif-wrapper-input ">
@@ -97,9 +100,12 @@ const SignInFormCpnt = (): JSX.Element => {
             name="lastname"
             ref={register({ required: true })}
             id="lastname"
+            aria-label="lastname"
           />
           {errors.lastname && (
-            <span className="sifnml-error form-error">Ce champ est requis</span>
+            <span className="sifnml-error form-error" role="alert">
+              Ce champ est requis
+            </span>
           )}
         </div>
       </fieldset>
@@ -115,9 +121,12 @@ const SignInFormCpnt = (): JSX.Element => {
             ref={register({ required: true })}
             id="email"
             placeholder="john.doe@gmail.com"
+            aria-label="email"
           />
           {errors.email && (
-            <span className="sifdf-error form-error">Ce champ est requis</span>
+            <span className="sifdf-error form-error" role="alert">
+              Ce champ est requis
+            </span>
           )}
         </div>
         <div className="sifdf-phone sif-wrapper-input ">
@@ -130,9 +139,12 @@ const SignInFormCpnt = (): JSX.Element => {
             name="phone"
             ref={register({ required: true })}
             id="phone"
+            aria-label="phone"
           />
           {errors.phone && (
-            <span className="sifdf-error form-error">Ce champ est requis</span>
+            <span className="sifdf-error form-error" role="alert">
+              Ce champ est requis
+            </span>
           )}
         </div>
         <div className="sifdf-address sif-wrapper-input ">
@@ -145,9 +157,12 @@ const SignInFormCpnt = (): JSX.Element => {
             name="address"
             ref={register({ required: true })}
             id="address"
+            aria-label="address"
           />
           {errors.address && (
-            <span className="sifdf-error form-error">Ce champ est requis</span>
+            <span className="sifdf-error form-error" role="alert">
+              Ce champ est requis
+            </span>
           )}
         </div>
       </fieldset>
@@ -168,9 +183,10 @@ const SignInFormCpnt = (): JSX.Element => {
               },
             })}
             id="password"
+            aria-label="password"
           />
           {errors.password && (
-            <span className="sifpfp-error form-error">
+            <span className="sifpfp-error form-error" role="alert">
               {errors.password.message}
             </span>
           )}
@@ -192,9 +208,10 @@ const SignInFormCpnt = (): JSX.Element => {
                 'Le mot de passe ne correspond pas',
             })}
             id="verifyPassword"
+            aria-label="verifyPassword"
           />
           {errors.verifyPassword && (
-            <span className="sifpfvp-error form-error">
+            <span className="sifpfvp-error form-error" role="alert">
               {errors.verifyPassword.message}
             </span>
           )}
@@ -216,4 +233,4 @@ const SignInFormCpnt = (): JSX.Element => {
   );
 };
 
-export default SignInFormCpnt;
+export default SignUpFormCpnt;
