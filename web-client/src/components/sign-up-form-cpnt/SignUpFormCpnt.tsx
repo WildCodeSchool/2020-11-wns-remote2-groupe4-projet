@@ -66,7 +66,7 @@ const SignUpFormCpnt = (): JSX.Element => {
   );
 
   return (
-    <form className="sign-in-form" onSubmit={submitSignIn}>
+    <form className="sign-up-form" onSubmit={submitSignIn}>
       <h1 className="sif-title">WildHub</h1>
       <fieldset className="sif-names-fieldset">
         <div className="sifnm-firstname sif-wrapper-input ">

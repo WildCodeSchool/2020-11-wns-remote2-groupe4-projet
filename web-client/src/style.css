@@ -419,7 +419,7 @@
 /* ***** SignInFormCpnt ***** */
 /* ************************** */
 /* ************************** */
-.sign-in-form {
+.sign-up-form {
   box-sizing: border-box;
   width: min-content;
   background-color: #49BEB7;
@@ -433,7 +433,7 @@
   box-shadow: 0px 4px 10px 8px #cfd6d5;
 }
 @media only screen and (max-width: 760px) {
-  .sign-in-form {
+  .sign-up-form {
     width: 100%;
     padding: 0px 50px;
     min-height: 100vh;
@@ -441,69 +441,69 @@
   }
 }
 @media only screen and (max-width: 460px) {
-  .sign-in-form {
+  .sign-up-form {
     padding: 30px 20px;
     font-size: 0.8rem;
   }
 }
-.sign-in-form .sif-title {
+.sign-up-form .sif-title {
   text-align: center;
 }
-.sign-in-form .sif-names-fieldset,
-.sign-in-form .sif-details-fieldset,
-.sign-in-form .sif-passwords-fieldset {
+.sign-up-form .sif-names-fieldset,
+.sign-up-form .sif-details-fieldset,
+.sign-up-form .sif-passwords-fieldset {
   border: none;
 }
-.sign-in-form .sif-names-fieldset .sif-wrapper-input,
-.sign-in-form .sif-details-fieldset .sif-wrapper-input,
-.sign-in-form .sif-passwords-fieldset .sif-wrapper-input {
+.sign-up-form .sif-names-fieldset .sif-wrapper-input,
+.sign-up-form .sif-details-fieldset .sif-wrapper-input,
+.sign-up-form .sif-passwords-fieldset .sif-wrapper-input {
   display: flex;
   flex-direction: column;
   margin: 20px 0;
 }
 @media only screen and (max-width: 460px) {
-  .sign-in-form .sif-names-fieldset .sif-wrapper-input,
-.sign-in-form .sif-details-fieldset .sif-wrapper-input,
-.sign-in-form .sif-passwords-fieldset .sif-wrapper-input {
+  .sign-up-form .sif-names-fieldset .sif-wrapper-input,
+.sign-up-form .sif-details-fieldset .sif-wrapper-input,
+.sign-up-form .sif-passwords-fieldset .sif-wrapper-input {
     margin: 10px 0;
   }
 }
-.sign-in-form .sif-names-fieldset .sif-wrapper-input .sif-label,
-.sign-in-form .sif-details-fieldset .sif-wrapper-input .sif-label,
-.sign-in-form .sif-passwords-fieldset .sif-wrapper-input .sif-label {
+.sign-up-form .sif-names-fieldset .sif-wrapper-input .sif-label,
+.sign-up-form .sif-details-fieldset .sif-wrapper-input .sif-label,
+.sign-up-form .sif-passwords-fieldset .sif-wrapper-input .sif-label {
   margin: 0 0 5px 15px;
 }
-.sign-in-form .sif-names-fieldset .sif-wrapper-input .sif-input,
-.sign-in-form .sif-details-fieldset .sif-wrapper-input .sif-input,
-.sign-in-form .sif-passwords-fieldset .sif-wrapper-input .sif-input {
+.sign-up-form .sif-names-fieldset .sif-wrapper-input .sif-input,
+.sign-up-form .sif-details-fieldset .sif-wrapper-input .sif-input,
+.sign-up-form .sif-passwords-fieldset .sif-wrapper-input .sif-input {
   padding: 10px;
   border: none;
   border-radius: 30px;
 }
 @media only screen and (max-width: 460px) {
-  .sign-in-form .sif-names-fieldset .sif-wrapper-input .sif-input,
-.sign-in-form .sif-details-fieldset .sif-wrapper-input .sif-input,
-.sign-in-form .sif-passwords-fieldset .sif-wrapper-input .sif-input {
+  .sign-up-form .sif-names-fieldset .sif-wrapper-input .sif-input,
+.sign-up-form .sif-details-fieldset .sif-wrapper-input .sif-input,
+.sign-up-form .sif-passwords-fieldset .sif-wrapper-input .sif-input {
     padding: 5px;
   }
 }
-.sign-in-form .sif-names-fieldset .sif-wrapper-input .form-error,
-.sign-in-form .sif-details-fieldset .sif-wrapper-input .form-error,
-.sign-in-form .sif-passwords-fieldset .sif-wrapper-input .form-error {
+.sign-up-form .sif-names-fieldset .sif-wrapper-input .form-error,
+.sign-up-form .sif-details-fieldset .sif-wrapper-input .form-error,
+.sign-up-form .sif-passwords-fieldset .sif-wrapper-input .form-error {
   font-size: 0.8rem;
   color: #A64456;
   margin: 3px 0 0 15px;
 }
-.sign-in-form .sif-names-fieldset {
+.sign-up-form .sif-names-fieldset {
   display: flex;
   justify-content: space-evenly;
 }
 @media only screen and (max-width: 760px) {
-  .sign-in-form .sif-names-fieldset {
+  .sign-up-form .sif-names-fieldset {
     flex-direction: column;
   }
 }
-.sign-in-form .sif-submit {
+.sign-up-form .sif-submit {
   padding: 8px 35px;
   align-self: center;
   border: none;
@@ -512,16 +512,16 @@
   font-size: 1rem;
 }
 @media only screen and (max-width: 760px) {
-  .sign-in-form .sif-submit {
+  .sign-up-form .sif-submit {
     font-size: 0.9rem;
   }
 }
 @media only screen and (max-width: 460px) {
-  .sign-in-form .sif-submit {
+  .sign-up-form .sif-submit {
     font-size: 0.8rem;
   }
 }
-.sign-in-form .sif-submit:hover {
+.sign-up-form .sif-submit:hover {
   background-color: #cbf3f0;
 }
 

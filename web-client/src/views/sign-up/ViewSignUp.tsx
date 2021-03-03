@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SignUpFormCpnt from '../../components/sign-in-form-cpnt/SignUpFormCpnt';
+import SignUpFormCpnt from '../../components/sign-up-form-cpnt/SignUpFormCpnt';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
-const ViewSignIn = (): JSX.Element => {
+const ViewSignUp = (): JSX.Element => {
   return (
     <main className="viewSignIn">
-      <Link to="/login">
+      <Link to="/sign-in">
         <FontAwesomeIcon className="v-return" icon={faArrowCircleLeft} />
       </Link>
       <SignUpFormCpnt />
@@ -15,4 +15,4 @@ const ViewSignIn = (): JSX.Element => {
   );
 };
 
-export default ViewSignIn;
+export default ViewSignUp;
