@@ -24,19 +24,19 @@ export default class ChannelResolver {
   //get all channels
   @Query(() => [Channel])
   channels(): Promise<Channel[]> {
-    return Channel.find({ relations: ['messages'] });
+    return Channel.find();
   }
 
   //get channel by id
   @Query(() => Channel)
   channelById(@Arg('id') id: string): Promise<Channel | undefined> {
-    return Channel.findOne(id, { relations: ['messages'] });
+    return Channel.findOne(id);
   }
 
   //get channel's users
   @Query(() => [AppUser])
   async channelUsers(@Arg('id') id: string): Promise<AppUser[] | undefined> {
-    const channel = await Channel.findOne(id, { relations: ['messages'] });
+    const channel = await Channel.findOne(id);
 
     if (!channel) throw new Error('No channel found.');
 
@@ -47,7 +47,7 @@ export default class ChannelResolver {
   //get channel's messages
   @Query(() => [Message])
   async channelMessages(@Arg('id') id: string): Promise<Message[] | undefined> {
-    const channel = await Channel.findOne(id, { relations: ['messages'] });
+    const channel = await Channel.findOne(id);
 
     if (!channel) throw new Error('No channel found.');
 

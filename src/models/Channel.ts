@@ -22,7 +22,9 @@ export default class Channel extends BaseEntity {
   @Field(() => String)
   title!: string;
 
-  @OneToMany(() => Message, (message) => message.channel)
+  @OneToMany(() => Message, (message) => message.channel, {
+    lazy: true,
+  })
   @Field(() => [Message])
   messages!: Message[];
 
