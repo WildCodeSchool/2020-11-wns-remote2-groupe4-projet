@@ -20,6 +20,7 @@ export default class UserResolver {
   @Mutation(() => AppUser)
   async createUser(@Arg('data') data: CreateUserInput): Promise<AppUser> {
     const appUser = AppUser.create(data);
+    if (!appUser) throw new Error('impossible de créer un user');
     await appUser.save();
     return appUser;
   }

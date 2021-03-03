@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 
-import './RightAsideCtnr.scss';
-
 import ChatSearchBar from '../../components/chat-searchbar-cpnt/ChatSearchBar';
 import ChannelsCtnr from '../channels-ctnr/ChannelsCtnr';
 

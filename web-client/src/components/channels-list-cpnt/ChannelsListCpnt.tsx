@@ -6,8 +6,6 @@ import {
   faMugHot,
 } from '@fortawesome/free-solid-svg-icons';
 
-import './ChannelsListCpnt.scss';
-
 import ChannelsListItemCpnt from '../channels-list-item-cpnt/ChannelsListItemCpnt';
 
 export type ChannelsListCpntProps = {
