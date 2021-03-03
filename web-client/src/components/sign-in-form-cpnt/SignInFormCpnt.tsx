@@ -19,7 +19,7 @@ const CREATE_SESSION = gql`
   }
 `;
 
-const LoginFormCpnt = (): JSX.Element => {
+const SignInFormCpnt = (): JSX.Element => {
   const { register, handleSubmit, errors } = useForm<FormData>();
   const [createSession] = useMutation(CREATE_SESSION);
 
@@ -72,7 +72,7 @@ const LoginFormCpnt = (): JSX.Element => {
 
       <input type="submit" className="l-submit" value="Connexion" />
       <p className="l-sign-in-link">
-        <Link to="/sign-in">Inscription</Link>
+        <Link to="/sign-up">Inscription</Link>
       </p>
       <ToastContainer
         position="bottom-center"
@@ -89,4 +89,4 @@ const LoginFormCpnt = (): JSX.Element => {
   );
 };
 
-export default LoginFormCpnt;
+export default SignInFormCpnt;

@@ -5,8 +5,8 @@
 @forward './styles/fonts';
 
 // Views
-@use './views/login/ViewLogin.scss';
-@use './views//sign-in/ViewSignUp';
+@use './views/sign-in/ViewSignIn.scss';
+@use './views//sign-up/ViewSignUp';
 
 // Containers
 @use './containers/MainCtnr.scss';
@@ -21,8 +21,8 @@
 @use './components/channels-list-cpnt/ChannelsListCpnt.scss';
 @use './components/channels-list-item-cpnt/ChannelsListItemCpnt.scss';
 @use './components/chat-searchbar-cpnt/ChatSearchBar.scss';
-@use './components/loginForm-cpnt/LoginFormCpnt.scss';
-@use './components/sign-in-form-cpnt/SignUpFormCpnt';
+@use './components/sign-in-form-cpnt/SignInFormCpnt';
+@use './components/sign-up-form-cpnt/SignUpFormCpnt';
 
 * {
   box-sizing: border-box;
