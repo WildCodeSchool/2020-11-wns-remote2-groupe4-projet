@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { gql, useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
@@ -10,9 +10,16 @@ type FormData = {
   password: string;
 };
 
+type UserDatasType = {
+  id: string;
+  firstname: string;
+  lastname: string;
+};
+
 const CREATE_SESSION = gql`
   mutation CreateSession($email: String!, $password: String!) {
     createSession(input: { email: $email, password: $password }) {
+      id
       firstname
       lastname
     }
@@ -20,8 +27,13 @@ const CREATE_SESSION = gql`
 `;
 
 const SignInFormCpnt = (): JSX.Element => {
+  const [userDatas, setUserDatas] = useState<UserDatasType>();
   const { register, handleSubmit, errors } = useForm<FormData>();
-  const [createSession] = useMutation(CREATE_SESSION);
+  const [createSession] = useMutation(CREATE_SESSION, {
+    onCompleted: (data) => {
+      setUserDatas(data.createSession);
+    },
+  });
 
   const history = useHistory();
 
@@ -31,7 +43,7 @@ const SignInFormCpnt = (): JSX.Element => {
       setTimeout(() => {
         history.push('/dashboard');
       }, 2000);
-      toast.success('Vous êtes connecté', {});
+      toast.success(`Vous êtes connecté`, {});
     } catch (error) {
       toast.error(`${error}`, {});
     }
