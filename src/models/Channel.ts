@@ -26,7 +26,7 @@ export default class Channel extends BaseEntity {
     lazy: true,
   })
   @Field(() => [Message])
-  messages!: Message[];
+  messages!: Promise<Message[]>;
 
   @ManyToMany(() => AppUser, (user) => user.channels, {
     lazy: true,

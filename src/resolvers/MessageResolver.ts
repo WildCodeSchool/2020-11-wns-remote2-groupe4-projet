@@ -41,9 +41,6 @@ export default class MessageResolver {
       where: { channel: channelId },
     });
 
-    if (!messagesByChannelId.length)
-      throw new Error('No messages for this channel.');
-
     return messagesByChannelId;
   }
 
@@ -55,9 +52,6 @@ export default class MessageResolver {
     const messagesByAuthorId = await Message.find({
       where: { author: authorId },
     });
-
-    if (!messagesByAuthorId.length)
-      throw new Error('No messages for this user.');
 
     return messagesByAuthorId;
   }
@@ -72,9 +66,6 @@ export default class MessageResolver {
       where: { author: authorId, channel: channelId },
     });
 
-    if (!messagesByAuthorIdAndChannelId.length)
-      throw new Error('No messages for this user on this channel.');
-
     return messagesByAuthorIdAndChannelId;
   }
 
@@ -88,7 +79,7 @@ export default class MessageResolver {
     try {
       if (!context.user) throw new Error('You are not authenticated.');
 
-      const user = await AppUser.findOne(data.authorId);
+      const user = await AppUser.findOne(context.user.id);
       if (!user) throw new Error('User not found.');
 
       const channel = await Channel.findOne(data.channelId);

@@ -6,9 +6,6 @@ export class CreateMessageInput {
   content!: string;
 
   @Field()
-  authorId!: string;
-
-  @Field()
   channelId!: string;
 }
 

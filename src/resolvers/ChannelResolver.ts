@@ -13,7 +13,6 @@ import { CreateChannelInput } from '../inputs/ChannelInput';
 import { AppUserIdInput } from '../inputs/UserInput';
 import AppUser from '../models/AppUser';
 import Channel from '../models/Channel';
-import Message from '../models/Message';
 
 type NewChannelPayload = {
   channel: Channel;
@@ -31,28 +30,6 @@ export default class ChannelResolver {
   @Query(() => Channel)
   channelById(@Arg('id') id: string): Promise<Channel | undefined> {
     return Channel.findOne(id);
-  }
-
-  //get channel's users
-  @Query(() => [AppUser])
-  async channelUsers(@Arg('id') id: string): Promise<AppUser[] | undefined> {
-    const channel = await Channel.findOne(id);
-
-    if (!channel) throw new Error('No channel found.');
-
-    const channelUsers = channel.users;
-    return channelUsers;
-  }
-
-  //get channel's messages
-  @Query(() => [Message])
-  async channelMessages(@Arg('id') id: string): Promise<Message[] | undefined> {
-    const channel = await Channel.findOne(id);
-
-    if (!channel) throw new Error('No channel found.');
-
-    const channelUsers = channel.messages;
-    return channelUsers;
   }
 
   //create channel
