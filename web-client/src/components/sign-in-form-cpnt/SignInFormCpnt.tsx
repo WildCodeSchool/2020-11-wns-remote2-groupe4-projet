@@ -14,7 +14,7 @@ type FormData = {
   password: string;
 };
 
-type UserDatasType = {
+type UserType = {
   id: string;
   firstname: string;
   lastname: string;
@@ -33,7 +33,7 @@ const CREATE_SESSION = gql`
 const SignInFormCpnt = ({
   handleIsAuthenticated,
 }: SignInFormProps): JSX.Element => {
-  const [userDatas, setUserDatas] = useState<UserDatasType>();
+  const [userDatas, setUserDatas] = useState<UserType>();
   const { register, handleSubmit, errors } = useForm<FormData>();
   const [createSession] = useMutation(CREATE_SESSION, {
     onCompleted: (data) => {
