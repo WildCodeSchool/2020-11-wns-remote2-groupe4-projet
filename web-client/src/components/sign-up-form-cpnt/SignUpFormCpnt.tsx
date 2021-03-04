@@ -56,7 +56,7 @@ const SignUpFormCpnt = (): JSX.Element => {
           variables: { firstname, lastname, email, password, phone, address },
         });
         setTimeout(() => {
-          history.push('/login');
+          history.push('/sign-in');
         }, 2000);
         toast.success('Vous êtes maintenant inscrit', {});
       } catch (error) {

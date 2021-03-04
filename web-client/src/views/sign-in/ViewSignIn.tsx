@@ -1,10 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import SignInFormCpnt from '../../components/sign-in-form-cpnt/SignInFormCpnt';
 
-const ViewSignIn = (): JSX.Element => {
+type SignInFormProps = {
+  handleIsAuthenticated: () => void;
+};
+
+const ViewSignIn = ({
+  handleIsAuthenticated,
+}: SignInFormProps): JSX.Element => {
   return (
     <main className="viewLogin">
-      <SignInFormCpnt />
+      <SignInFormCpnt handleIsAuthenticated={handleIsAuthenticated} />
     </main>
   );
 };
