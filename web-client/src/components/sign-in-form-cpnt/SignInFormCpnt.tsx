@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+
+import { CREATE_SESSION } from '../../queries/sessionQueries';
 
 type SignInFormProps = {
   handleIsAuthenticated: () => void;
@@ -14,32 +16,11 @@ type FormData = {
   password: string;
 };
 
-type UserType = {
-  id: string;
-  firstname: string;
-  lastname: string;
-};
-
-const CREATE_SESSION = gql`
-  mutation CreateSession($email: String!, $password: String!) {
-    createSession(input: { email: $email, password: $password }) {
-      id
-      firstname
-      lastname
-    }
-  }
-`;
-
 const SignInFormCpnt = ({
   handleIsAuthenticated,
 }: SignInFormProps): JSX.Element => {
-  const [userDatas, setUserDatas] = useState<UserType>();
   const { register, handleSubmit, errors } = useForm<FormData>();
-  const [createSession] = useMutation(CREATE_SESSION, {
-    onCompleted: (data) => {
-      setUserDatas(data.createSession);
-    },
-  });
+  const [createSession] = useMutation(CREATE_SESSION);
 
   const history = useHistory();
 

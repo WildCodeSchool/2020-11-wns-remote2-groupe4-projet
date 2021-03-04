@@ -1,19 +1,15 @@
 import { createContext, Dispatch } from 'react';
 
-import { Action } from './actions/userAction';
-
-type userProps = {
-  id: string;
-  firstname: string;
-};
+import { userLoggedInProps } from '../interfaces/userInterface';
+import { Action } from '../actions/userAction';
 
 type TInitialState = {
-  user: userProps | null;
+  userLoggedIn: userLoggedInProps | null;
 };
 
 // initial state declared
 const initialState = {
-  user: null,
+  userLoggedIn: null,
 };
 
 const AppContext = createContext<{

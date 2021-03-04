@@ -1,4 +1,5 @@
-export type userProps = {
+export type userLoggedInProps = {
   id: string;
   firstname: string;
+  lastname: string;
 };

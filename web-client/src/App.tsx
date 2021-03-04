@@ -4,11 +4,11 @@ import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 import userReducer from './reducers/userReducer';
-import AppContext from './AppContext';
+import UserContext from './contexts/UserContext';
 import ProjectRouter from './router/ProjectRouter';
 
 const initialState = {
-  user: null,
+  userLoggedIn: null,
 };
 
 const App = (): JSX.Element => {
@@ -16,9 +16,9 @@ const App = (): JSX.Element => {
 
   return (
     <div className="App">
-      <AppContext.Provider value={{ state, dispatch }}>
+      <UserContext.Provider value={{ state, dispatch }}>
         <ProjectRouter />
-      </AppContext.Provider>
+      </UserContext.Provider>
     </div>
   );
 };

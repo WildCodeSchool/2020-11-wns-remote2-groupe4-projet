@@ -1,20 +1,16 @@
-import { userProps } from '../interfaces/userInterface';
+import { userLoggedInProps } from '../interfaces/userInterface';
 import { Action } from '../actions/userAction';
 
 type AppState = {
-  user: userProps | null;
+  userLoggedIn: userLoggedInProps | null;
 };
 
-// function reducer
 const userReducer = (state: AppState, action: Action): AppState => {
-  // define actions
   switch (action.type) {
     case 'USER_FETCHED':
-      // new state to return
-      return { ...state, user: action.user };
+      return { ...state, userLoggedIn: action.userLoggedIn };
     case 'USER_DELETED':
-      // new state to return
-      return { user: null };
+      return { userLoggedIn: null };
     default:
       return state;
   }
