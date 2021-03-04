@@ -17,6 +17,12 @@ export default class UserResolver {
     return AppUser.find();
   }
 
+  @Query(() => AppUser)
+  amIAuthenticated(@Ctx() { user }: { user: AppUser | null }): AppUser {
+    if (!user) throw Error('You are not authenticated');
+    return user;
+  }
+
   @Mutation(() => AppUser)
   async createUser(@Arg('data') data: CreateUserInput): Promise<AppUser> {
     data.password = await hash(data.password, 10);

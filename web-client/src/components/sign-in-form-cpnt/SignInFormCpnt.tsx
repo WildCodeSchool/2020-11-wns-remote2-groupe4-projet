@@ -1,37 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { gql, useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
+type SignInFormProps = {
+  handleIsAuthenticated: () => void;
+};
+
 type FormData = {
   email: string;
   password: string;
 };
 
+type UserType = {
+  id: string;
+  firstname: string;
+  lastname: string;
+};
+
 const CREATE_SESSION = gql`
   mutation CreateSession($email: String!, $password: String!) {
     createSession(input: { email: $email, password: $password }) {
+      id
       firstname
       lastname
     }
   }
 `;
 
-const SignInFormCpnt = (): JSX.Element => {
+const SignInFormCpnt = ({
+  handleIsAuthenticated,
+}: SignInFormProps): JSX.Element => {
+  const [userDatas, setUserDatas] = useState<UserType>();
   const { register, handleSubmit, errors } = useForm<FormData>();
-  const [createSession] = useMutation(CREATE_SESSION);
+  const [createSession] = useMutation(CREATE_SESSION, {
+    onCompleted: (data) => {
+      setUserDatas(data.createSession);
+    },
+  });
 
   const history = useHistory();
 
   const onSubmit = handleSubmit(async ({ email, password }) => {
     try {
       await createSession({ variables: { email, password } });
+      handleIsAuthenticated();
       setTimeout(() => {
         history.push('/dashboard');
       }, 2000);
-      toast.success('Vous êtes connecté', {});
+      toast.success(`Vous êtes connecté`, {});
     } catch (error) {
       toast.error(`${error}`, {});
     }
