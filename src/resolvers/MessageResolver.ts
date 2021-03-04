@@ -18,6 +18,11 @@ type NewMessagePayload = {
   message: Message;
 };
 
+type NewChannelMessagePayload = {
+  channelId: string;
+  message: Message;
+};
+
 @Resolver()
 export default class MessageResolver {
   //get one message
@@ -104,6 +109,42 @@ export default class MessageResolver {
     }
   }
 
+  //create message
+  @Mutation(() => Message)
+  async createChannelMessage(
+    @Arg('data') data: CreateMessageInput,
+    @Ctx() context: { user: AppUser | null },
+    @PubSub('NEW_CHANNEL_MESSAGE')
+    publishNewChannelMessage: Publisher<NewChannelMessagePayload>
+  ): Promise<Message> {
+    try {
+      if (!context.user) throw new Error('You are not authenticated.');
+      console.log(context.user.id);
+      const user = await AppUser.findOne(context.user.id);
+      if (!user) throw new Error('User not found.');
+      console.log(user);
+      const channel = await Channel.findOne(data.channelId);
+      if (!channel) throw new Error('Channel not found.');
+
+      if (!data.content || data.content.trim() === '')
+        throw new Error('Message is empty.');
+
+      const message = new Message();
+      message.content = data.content;
+      message.author = Promise.resolve(user);
+      message.channel = Promise.resolve(channel);
+
+      await message.save();
+
+      publishNewChannelMessage({ channelId: data.channelId, message });
+
+      return message;
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+  }
+
   //update message
   @Mutation(() => Message)
   async updateMessage(
@@ -132,8 +173,21 @@ export default class MessageResolver {
     return 'Message deleted.';
   }
 
+  // Sub to get all new messages
   @Subscription({ topics: 'NEW_MESSAGE' })
   newMessage(@Root() newMessagePayload: NewMessagePayload): Message {
     return newMessagePayload.message;
+  }
+
+  // Sub to get all new messages of a channel
+  @Subscription({
+    topics: 'NEW_CHANNEL_MESSAGE',
+    filter: ({ payload, args }) => payload.channelId === args.channelId,
+  })
+  newChannelMessage(
+    @Root() newChannelMessagePayload: NewChannelMessagePayload,
+    @Arg('channelId') channelId: string
+  ): Message {
+    return newChannelMessagePayload.message;
   }
 }

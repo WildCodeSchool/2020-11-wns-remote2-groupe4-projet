@@ -32,7 +32,6 @@ export default class AppUser extends BaseEntity {
   email!: string;
 
   @Column()
-  @Field(() => String)
   password!: string;
 
   @Column()
