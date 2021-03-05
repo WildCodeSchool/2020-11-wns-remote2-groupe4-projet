@@ -12,8 +12,8 @@ const ViewDashboard = (): JSX.Element => {
   useEffect(() => {
     if (data) {
       userLoggedIn.dispatch({
-        type: 'USER_FETCHED',
-        userLoggedIn: data.amIAuthenticated,
+        type: 'USER_LOGGED_FETCH',
+        userLoggedInDetails: data.amIAuthenticated,
       });
     }
   }, [data]);

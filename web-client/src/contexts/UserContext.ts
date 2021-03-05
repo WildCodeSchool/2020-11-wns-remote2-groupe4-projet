@@ -4,12 +4,12 @@ import { userLoggedInProps } from '../interfaces/userInterface';
 import { Action } from '../actions/userAction';
 
 type TInitialState = {
-  userLoggedIn: userLoggedInProps | null;
+  userLoggedInDetails: userLoggedInProps | null;
 };
 
 // initial state declared
 const initialState = {
-  userLoggedIn: null,
+  userLoggedInDetails: null,
 };
 
 const AppContext = createContext<{

@@ -8,7 +8,7 @@ import UserContext from './contexts/UserContext';
 import ProjectRouter from './router/ProjectRouter';
 
 const initialState = {
-  userLoggedIn: null,
+  userLoggedInDetails: null,
 };
 
 const App = (): JSX.Element => {
