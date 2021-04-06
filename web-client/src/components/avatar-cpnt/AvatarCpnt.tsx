@@ -1,10 +1,12 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import UserContext from '../../contexts/UserContext';
 type AvatarProps = {
   isLeftAsideOpen: boolean;
 };
 
 const AvatarCpnt = ({ isLeftAsideOpen }: AvatarProps): JSX.Element => {
+  const userLoggedIn = useContext(UserContext);
+
   return (
     <div className="avatar">
       <img
@@ -16,7 +18,8 @@ const AvatarCpnt = ({ isLeftAsideOpen }: AvatarProps): JSX.Element => {
         data-testid="avatar-name"
         className={`a-name ${!isLeftAsideOpen && 'hide-name'}`}
       >
-        John Doe
+        {`${userLoggedIn.state.userLoggedInDetails?.firstname}
+        ${userLoggedIn.state.userLoggedInDetails?.lastname}`}
       </h3>
     </div>
   );

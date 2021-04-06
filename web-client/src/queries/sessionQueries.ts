@@ -9,3 +9,9 @@ export const CREATE_SESSION = gql`
     }
   }
 `;
+
+export const DELETE_SESSION = gql`
+  mutation {
+    deleteSession
+  }
+`;
