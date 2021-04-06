@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 
 import ProtectedRoute from './ProtectedRoute';
 import ViewSignIn from '../views/sign-in/ViewSignIn';
 import ViewDashboard from '../views/dashboard/ViewDashboard';
 import ViewSignUp from '../views/sign-up/ViewSignUp';
 import MainCtnr from '../containers/MainCtnr';
-
-const AM_I_AUTHENTICATED = gql`
-  query AmIAuthenticated {
-    amIAuthenticated {
-      firstname
-      lastname
-    }
-  }
-`;
+import { AM_I_AUTHENTICATED } from '../queries/userQueries';
 
 const ProjectRouter = (): JSX.Element => {
   const { loading, data } = useQuery(AM_I_AUTHENTICATED);
