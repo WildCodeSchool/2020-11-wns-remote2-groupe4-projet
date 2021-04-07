@@ -1,11 +1,11 @@
 import { userLoggedInProps } from '../interfaces/userInterface';
-import { Action } from '../actions/userAction';
+import { UserAction } from '../actions/userAction';
 
-type AppState = {
+type UserState = {
   userLoggedInDetails: userLoggedInProps | null;
 };
 
-const userReducer = (state: AppState, action: Action): AppState => {
+const userReducer = (state: UserState, action: UserAction): UserState => {
   switch (action.type) {
     case 'USER_LOGGED_FETCH':
       return { ...state, userLoggedInDetails: action.userLoggedInDetails };
