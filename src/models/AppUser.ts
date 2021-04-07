@@ -11,6 +11,7 @@ import { ObjectType, Field, ID } from 'type-graphql';
 import UserSession from './UserSession';
 import Message from './Message';
 import Channel from './Channel';
+import CalendarEvent from './CalendarEvent';
 
 @Entity()
 @ObjectType()
@@ -46,11 +47,21 @@ export default class AppUser extends BaseEntity {
   @Field(() => [Message])
   messages!: Message[];
 
+  @OneToMany(() => CalendarEvent, (CalendarEvent) => CalendarEvent.author)
+  @Field(() => [CalendarEvent])
+  events!: CalendarEvent[];
+
   @ManyToMany(() => Channel, (channel) => channel.users, {
     lazy: true,
   })
   @Field(() => [Channel])
   channels!: Promise<Channel[]>;
+
+  @ManyToMany(() => CalendarEvent, (calendarEvent) => calendarEvent.users, {
+    lazy: true,
+  })
+  @Field(() => [CalendarEvent])
+  calendarEvents!: Promise<CalendarEvent[]>;
 }
 
 export async function getUserFromSessionId(
