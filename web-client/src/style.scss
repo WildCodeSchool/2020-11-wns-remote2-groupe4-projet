@@ -1,4 +1,4 @@
-@use './styles/variables' as v;
+@use './styles/variables'as v;
 @use './styles/fonts';
 
 @forward './styles/variables';
@@ -7,12 +7,14 @@
 // Views
 @use './views/sign-in/ViewSignIn.scss';
 @use './views//sign-up/ViewSignUp';
+@use './views/dashboard/ViewDashboard';
 
 // Containers
 @use './containers/MainCtnr.scss';
 @use './containers/left-aside-ctnr/LeftAsideCtnr.scss';
 @use './containers/right-aside-ctnr/RightAsideCtnr.scss';
 @use './containers/channels-ctnr/ChannelsCtnr.scss';
+@use './containers/calendar-ctnr/CalendarCtnr';
 
 // Components
 @use './components/avatar-cpnt/AvatarCpnt.scss';

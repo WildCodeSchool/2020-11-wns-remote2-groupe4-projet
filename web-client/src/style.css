@@ -54,6 +54,12 @@
   }
 }
 
+.main-dashboard {
+  min-width: 600px;
+  display: flex;
+  justify-content: center;
+}
+
 .main-ctrn {
   position: relative;
   display: flex;
@@ -173,6 +179,11 @@
 
 .channels-ctnr {
   margin: 1rem 0rem;
+  width: 100%;
+}
+
+.calendar-section {
+  margin-top: 25px;
   width: 100%;
 }
 
