@@ -1,51 +1,81 @@
 @use '../../styles/variables.scss' as v;
 
 .channels-list {
-  margin: 1rem 0rem;
   line-height: 1.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
 
-.cl-wrapper-title-icon {
-  cursor: pointer;
-  display: flex;
-  padding: 0 0.5rem;
-}
+  .cl-wrapper-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
 
-.cl-caret-icon {
-  transform: rotate(0deg);
-  transition: all 300ms ease-in-out;
-  padding: 0 0.5rem;
-  border: none;
-  background: transparent;
+    .cl-wrapper-title-icon {
+      cursor: pointer;
+      display: flex;
+    }
 
-  &:focus {
-    outline: 1px solid v.$ternary;
+    .cl-caret-icon {
+      transform: rotate(0deg);
+      transition: all 300ms ease-in-out;
+      padding: 0 0.5rem;
+      border: none;
+      background: transparent;
+
+      &:focus {
+        box-shadow: inset 0 0 0 1px v.$ternary;
+      }
+
+      &:hover {
+        background-color: rgba(73, 190, 182, 0.3);
+        border-radius: 5px;
+      }
+
+      &.cl-caret-icon-open {
+        transform: rotate(90deg);
+      }
+    }
+
+    .cl-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .cl-title-icon {
+      padding: 0 0.5rem;
+      color: v.$ternary;
+    }
+
+    .cl-wrapper-plus-icon {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .cl-plus-icon {
+      border: none;
+      padding: 0;
+      background-color: transparent;
+      cursor: pointer;
+
+      & > * {
+        color: v.$ternary;
+        font-size: 20px;
+      }
+    }
   }
 
-  &:hover {
-    background-color: rgba(73, 190, 182, 0.3);
-    border-radius: 5px;
+  .cl-ul {
+    margin-top: 0.75rem;
+
+    & > * + * {
+      margin-top: 0.2rem;
+    }
   }
 
-  &.cl-caret-icon-open {
-    transform: rotate(90deg);
+  .cl-ul-hidden {
+    display: none;
   }
-}
-
-.cl-title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.cl-ul-hidden {
-  display: none;
-}
-
-.cl-title-icon {
-  padding: 0 0.5rem;
-  color: v.$ternary;
 }

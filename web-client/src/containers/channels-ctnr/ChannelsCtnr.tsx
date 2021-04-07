@@ -1,32 +1,32 @@
 import React from 'react';
 
 import ChannelsListCpnt from '../../components/channels-list-cpnt/ChannelsListCpnt';
+import useSubscribeToNewChannel from '../../hooks/useSubscribeToNewChannel';
 
 export type ChannelsCtnrProps = {
   isRightAsideOpen: boolean;
 };
 
 const ChannelsCtnr = ({ isRightAsideOpen }: ChannelsCtnrProps): JSX.Element => {
+  const { loading, error, data } = useSubscribeToNewChannel();
+
   return (
     <div className="channels-ctnr">
-      <ChannelsListCpnt
-        title="Général"
-        channels={[
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-        ]}
-        isRightAsideOpen={isRightAsideOpen}
-      />
-      <ChannelsListCpnt
-        title="Personnel"
-        channels={[
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-        ]}
-        isRightAsideOpen={isRightAsideOpen}
-      />
+      {loading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>Erreur...</div>
+      ) : (
+        !!data && (
+          <>
+            <ChannelsListCpnt
+              title="Public"
+              channels={data.user.channels}
+              isRightAsideOpen={isRightAsideOpen}
+            />
+          </>
+        )
+      )}
     </div>
   );
 };

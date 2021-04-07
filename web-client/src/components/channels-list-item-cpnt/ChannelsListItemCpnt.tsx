@@ -1,13 +1,13 @@
 import React from 'react';
 
 export type ChannelsListItemCpntProps = {
-  channel: string;
+  channel: { id: string; title: string };
 };
 
 const ChannelsListItemCpnt = ({
   channel,
 }: ChannelsListItemCpntProps): JSX.Element => {
-  return <div className="channels-list-item">{channel}</div>;
+  return <li className="channels-list-item">{channel.title}</li>;
 };
 
 export default ChannelsListItemCpnt;
