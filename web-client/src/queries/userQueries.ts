@@ -9,3 +9,29 @@ export const AM_I_AUTHENTICATED = gql`
     }
   }
 `;
+
+export const GET_USER_CHANNELS = gql`
+  query GetUserChannels($id: String!) {
+    user(id: $id) {
+      channels {
+        id
+        title
+        messages {
+          id
+          content
+          author {
+            id
+            firstname
+            lastname
+          }
+          sentAt
+        }
+        users {
+          id
+          firstname
+          lastname
+        }
+      }
+    }
+  }
+`;

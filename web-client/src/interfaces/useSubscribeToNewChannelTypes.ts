@@ -1,29 +1,21 @@
 import { ApolloError } from '@apollo/client';
+import { Channel } from './channelInterface';
 
-interface Channel {
+export type UserData = {
+  user: { channels: Channel[] };
+};
+
+export type UserParams = {
   id: string;
-  title: string;
-}
+};
 
-interface UserInfoRetrieved {
-  channels: Channel[];
-}
-
-export interface UserData {
-  user: UserInfoRetrieved;
-}
-
-export interface UserParams {
-  id: string;
-}
-
-export interface NewChannelForUser {
+export type NewChannelForUser = {
   newChannelForUser: Channel;
-}
+};
 
-export interface NewChannelForUserParams {
+export type NewChannelForUserParams = {
   userId: string;
-}
+};
 
 export type UseSubscribeToNewChannelReturn = {
   loading: boolean;

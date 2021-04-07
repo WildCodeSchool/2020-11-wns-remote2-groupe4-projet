@@ -8,10 +8,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import ChannelsListItemCpnt from '../channels-list-item-cpnt/ChannelsListItemCpnt';
+import { Channel } from '../../interfaces/channelInterface';
 
 export type ChannelsListCpntProps = {
   title: string;
-  channels: { id: string; title: string }[];
+  channels: Channel[];
   isRightAsideOpen: boolean;
 };
 

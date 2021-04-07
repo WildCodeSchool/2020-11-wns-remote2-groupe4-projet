@@ -8,8 +8,8 @@ import {
   UserParams,
   UseSubscribeToNewChannelReturn,
 } from '../interfaces/useSubscribeToNewChannelTypes';
-import { GET_USER_CHANNELS } from '../graphql/user';
-import { SUBSCRIBE_TO_NEW_CHANNEL } from '../graphql/channel';
+import { GET_USER_CHANNELS } from '../queries/userQueries';
+import { SUBSCRIBE_TO_NEW_CHANNEL } from '../subscriptions/channelSubscription';
 
 const useSubscribeToNewChannel = (): UseSubscribeToNewChannelReturn => {
   const { loading, error, data, subscribeToMore } = useQuery<
@@ -40,6 +40,8 @@ const useSubscribeToNewChannel = (): UseSubscribeToNewChannelReturn => {
                 {
                   id: subscriptionData.data.newChannelForUser.id,
                   title: subscriptionData.data.newChannelForUser.title,
+                  messages: subscriptionData.data.newChannelForUser.messages,
+                  users: subscriptionData.data.newChannelForUser.users,
                 },
               ],
             },

@@ -1,7 +1,9 @@
 import React from 'react';
 
+import { Channel } from '../../interfaces/channelInterface';
+
 export type ChannelsListItemCpntProps = {
-  channel: { id: string; title: string };
+  channel: Channel;
 };
 
 const ChannelsListItemCpnt = ({

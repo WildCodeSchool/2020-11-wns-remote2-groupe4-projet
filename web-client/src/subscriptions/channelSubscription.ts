@@ -5,6 +5,21 @@ export const SUBSCRIBE_TO_NEW_CHANNEL = gql`
     newChannelForUser(userId: $userId) {
       id
       title
+      messages {
+        id
+        sentAt
+        content
+        author {
+          id
+          firstname
+          lastname
+        }
+      }
+      users {
+        id
+        firstname
+        lastname
+      }
     }
   }
 `;
