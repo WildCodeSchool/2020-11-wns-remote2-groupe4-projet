@@ -33,7 +33,7 @@ export default class CalendarEvent extends BaseEntity {
   @Field(() => Boolean)
   eventAllDay!: boolean;
 
-  @ManyToOne(() => AppUser, (AppUser) => AppUser.calendarEvents, {
+  @ManyToOne(() => AppUser, (user) => user.eventsCreatedByUser, {
     lazy: true,
   })
   @Field(() => AppUser)

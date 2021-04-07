@@ -47,15 +47,15 @@ export default class AppUser extends BaseEntity {
   @Field(() => [Message])
   messages!: Message[];
 
-  @OneToMany(() => CalendarEvent, (CalendarEvent) => CalendarEvent.author)
-  @Field(() => [CalendarEvent])
-  events!: CalendarEvent[];
-
   @ManyToMany(() => Channel, (channel) => channel.users, {
     lazy: true,
   })
   @Field(() => [Channel])
   channels!: Promise<Channel[]>;
+
+  @OneToMany(() => CalendarEvent, (CalendarEvent) => CalendarEvent.author)
+  @Field(() => [CalendarEvent])
+  eventsCreatedByUser!: Promise<CalendarEvent[]>;
 
   @ManyToMany(() => CalendarEvent, (calendarEvent) => calendarEvent.users, {
     lazy: true,
