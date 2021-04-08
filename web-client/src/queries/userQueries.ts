@@ -9,3 +9,17 @@ export const AM_I_AUTHENTICATED = gql`
     }
   }
 `;
+
+export const GET_EVENTS_CREATED_BY_USER_AUTHENTICATED = gql`
+  query User($id: String!) {
+    user(id: $id) {
+      eventsCreatedByUser {
+        eventTitle
+        eventStart
+        eventEnd
+        eventAllDay
+        eventContent
+      }
+    }
+  }
+`;

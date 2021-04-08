@@ -9,6 +9,9 @@ export class CalendarEventIdInput {
 @InputType()
 export class CreateCalendarEventInput {
   @Field()
+  eventTitle!: string;
+
+  @Field()
   eventStart!: Date;
 
   @Field()

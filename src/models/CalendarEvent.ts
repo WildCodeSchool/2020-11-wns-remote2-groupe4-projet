@@ -18,6 +18,10 @@ export default class CalendarEvent extends BaseEntity {
   id!: string;
 
   @Column()
+  @Field(() => String)
+  eventTitle!: string;
+
+  @Column()
   @Field(() => Date)
   eventStart!: Date;
 
