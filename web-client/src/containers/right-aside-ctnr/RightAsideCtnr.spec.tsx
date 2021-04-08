@@ -1,10 +1,16 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { MockedProvider } from '@apollo/client/testing';
+
 import RightAsideCtnr from './RightAsideCtnr';
 
 describe('RightAsideCtnr by default', () => {
   beforeEach(() => {
-    render(<RightAsideCtnr />);
+    render(
+      <MockedProvider>
+        <RightAsideCtnr />
+      </MockedProvider>
+    );
   });
 
   it('should be open', () => {
@@ -35,7 +41,11 @@ describe('RightAsideCtnr by default', () => {
 
 describe('When arrow button on RightAsideCtnr is clicked for the first time', () => {
   beforeEach(() => {
-    render(<RightAsideCtnr />);
+    render(
+      <MockedProvider>
+        <RightAsideCtnr />
+      </MockedProvider>
+    );
     const arrowButton = screen.getByTestId('ArrowIconRightAsideCtnr');
     fireEvent.click(arrowButton);
   });

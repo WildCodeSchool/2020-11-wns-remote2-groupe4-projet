@@ -29,8 +29,12 @@ const ChannelsListCpnt = ({
 
   return (
     <div className="channels-list">
-      <div className="cl-wrapper-header" role="wrapper-title-channels-list">
-        <div className="cl-wrapper-title-icon" onClick={toggleChannelsList}>
+      <div className="cl-wrapper-header">
+        <div
+          className="cl-wrapper-title-icon"
+          role="wrapper-title-channels-list"
+          onClick={toggleChannelsList}
+        >
           <button
             className={`cl-caret-icon ${
               isChannelsListOpen && 'cl-caret-icon-open'
