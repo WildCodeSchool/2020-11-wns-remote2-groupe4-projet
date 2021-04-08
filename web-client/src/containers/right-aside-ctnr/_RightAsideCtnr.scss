@@ -18,6 +18,8 @@
     top: 0;
     left: 100%;
     width: 80%;
+    transform: translateX(-100%);
+    transition: transform 350ms ease-in-out;
   }
 
   & > * + * {
@@ -28,8 +30,8 @@
     width: 350px;
 
     @include m.bpFactory($max: v.$s) {
-      width: 80%;
-      transform: translateX(-100%);
+      max-width: 300px;
+      transform: translateX(0%);
     }
   }
 

@@ -10,14 +10,14 @@
   flex-direction: column;
   justify-content: space-between;
 
-  transition : width 350ms ease-in-out;
+  transition: width 350ms ease-in-out;
 
   @include m.bpFactory($max: v.$s) {
     max-height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    width: 80%;
+    width: 300px;
     transform: translateX(0%);
     transition: transform 350ms ease-in-out;
   }
@@ -26,7 +26,7 @@
     width: 350px;
 
     @include m.bpFactory($max: v.$s) {
-      width: 80%;
+      width: 300px;
       transform: translateX(-100%);
     }
   }
@@ -42,7 +42,7 @@
       right: -20px;
       transform: rotate(180deg);
     }
-    
+
     &.rotate-left {
       transform: rotate(180deg);
 
