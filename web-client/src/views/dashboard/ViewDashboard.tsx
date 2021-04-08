@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import UserContext from '../../contexts/UserContext';
 import { AM_I_AUTHENTICATED } from '../../queries/userQueries';
 import CalendarCtnr from '../../containers/calendar-ctnr/CalendarCtnr';
+import CalendarEventFormCpnt from '../../components/calendar-event-form-cpnt/CalendarEventFormCpnt';
 
 const ViewDashboard = (): JSX.Element => {
   const { loading, data } = useQuery(AM_I_AUTHENTICATED);
@@ -20,7 +21,14 @@ const ViewDashboard = (): JSX.Element => {
 
   return (
     <div className="main-dashboard">
-      {loading ? <p>loading...</p> : <CalendarCtnr />}
+      {loading ? (
+        <p>loading...</p>
+      ) : (
+        <>
+          <CalendarCtnr />
+          <CalendarEventFormCpnt />
+        </>
+      )}
     </div>
   );
 };
