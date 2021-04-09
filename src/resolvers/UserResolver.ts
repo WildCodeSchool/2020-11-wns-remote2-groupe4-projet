@@ -79,4 +79,23 @@ export default class UserResolver {
     setSessionIdCookie(userSession.uuid);
     return user;
   }
+
+  @Mutation(() => Boolean)
+  async deleteSession(
+    @Ctx() context: { user: AppUser | null }
+  ): Promise<boolean> {
+    const authenticationError = new Error(
+      'Incorrect username and/or password.'
+    );
+    if (!context.user) throw authenticationError;
+
+    const session = await UserSession.find({
+      where: { user: context.user.id },
+    });
+    if (!session) throw new Error('Session not found.');
+
+    await UserSession.remove(session);
+
+    return true;
+  }
 }
