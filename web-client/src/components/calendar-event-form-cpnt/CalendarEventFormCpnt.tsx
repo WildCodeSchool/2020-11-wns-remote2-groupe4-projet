@@ -1,8 +1,14 @@
 import { useMutation } from '@apollo/client';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import { CREATE_NEW_EVENT } from '../../queries/calendarEventQueries';
+
+type CalendarEventFormCpntProps = {
+  closeCalendarForm: () => void;
+};
 
 type CalendarFormData = {
   eventAllDay: boolean;
@@ -14,7 +20,9 @@ type CalendarFormData = {
   eventTitle: string;
 };
 
-const CalendarEventFormCpnt = (): JSX.Element => {
+const CalendarEventFormCpnt = ({
+  closeCalendarForm,
+}: CalendarEventFormCpntProps): JSX.Element => {
   const { register, handleSubmit } = useForm<CalendarFormData>({});
   const [createCalendarEvent] = useMutation(CREATE_NEW_EVENT);
 
@@ -38,6 +46,7 @@ const CalendarEventFormCpnt = (): JSX.Element => {
             eventContent,
           },
         });
+        closeCalendarForm();
       } catch (error) {
         console.log(error);
       }
@@ -46,6 +55,7 @@ const CalendarEventFormCpnt = (): JSX.Element => {
 
   return (
     <form className="calendar-form" onSubmit={submitNewEvent}>
+      <FontAwesomeIcon icon={faTimesCircle} onClick={closeCalendarForm} />
       <h2 className="cf-title">Créez un nouvel évènement</h2>
       <div className="cf-input-container">
         <label htmlFor="event-title" className="cfic-label">

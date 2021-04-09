@@ -50,7 +50,7 @@ const CalendarCtnr = (): JSX.Element => {
         }}
         droppable={true}
         initialView="dayGridMonth"
-        weekends={true}
+        weekends={false}
         editable={true}
         events={eventsArrayFormated}
         //eventContent={{ html: '<i>some html</i>' }}

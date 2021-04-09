@@ -55,6 +55,7 @@
 }
 
 .main-dashboard {
+  position: relative;
   min-width: 600px;
   display: flex;
   flex-direction: column;
@@ -543,8 +544,12 @@
 /* ************************** */
 /* ************************** */
 .calendar-form {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
   box-sizing: border-box;
-  min-width: min-content;
+  min-width: 500px;
   background-color: #49BEB7;
   padding: 40px 30px;
   max-width: 95%;

@@ -1,6 +1,7 @@
 @use '../../styles/variables.scss'as v;
 
 .main-dashboard {
+  position: relative;
   min-width: 600px;
   display: flex;
   flex-direction: column;
