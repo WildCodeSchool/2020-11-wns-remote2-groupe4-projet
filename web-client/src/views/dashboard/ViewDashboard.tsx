@@ -5,6 +5,7 @@ import UserContext from '../../contexts/UserContext';
 import { AM_I_AUTHENTICATED } from '../../queries/userQueries';
 import CalendarCtnr from '../../containers/calendar-ctnr/CalendarCtnr';
 import CalendarEventFormCpnt from '../../components/calendar-event-form-cpnt/CalendarEventFormCpnt';
+import DisplayFormButtonCpnt from '../../components/display-form-button-cpnt/DisplayFormButtonCpnt';
 
 const ViewDashboard = (): JSX.Element => {
   const { loading, data } = useQuery(AM_I_AUTHENTICATED);
@@ -26,6 +27,7 @@ const ViewDashboard = (): JSX.Element => {
       ) : (
         <>
           <CalendarCtnr />
+          <DisplayFormButtonCpnt />
           <CalendarEventFormCpnt />
         </>
       )}
