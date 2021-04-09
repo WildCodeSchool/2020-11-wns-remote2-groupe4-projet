@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import UserContext from '../../contexts/UserContext';
 import { AM_I_AUTHENTICATED } from '../../queries/userQueries';
@@ -37,10 +37,27 @@ const ViewDashboard = (): JSX.Element => {
       ) : (
         <>
           <CalendarCtnr />
-          <FontAwesomeIcon icon={faPlusSquare} onClick={displayCalendarForm} />
-          {isCalendarFormDisplayed && (
-            <CalendarEventFormCpnt closeCalendarForm={closeCalendarForm} />
-          )}
+          <div className="md-button-form-wrapper">
+            <FontAwesomeIcon
+              className={`mdbfw-close-form-button ${
+                isCalendarFormDisplayed && 'button-active'
+              }`}
+              icon={faTimesCircle}
+              onClick={closeCalendarForm}
+            />
+            <button
+              className={`mdbfw-open-form-button ${
+                !isCalendarFormDisplayed && 'button-active'
+              }`}
+              onClick={displayCalendarForm}
+            >
+              Créer un nouvel évènement
+            </button>
+            <CalendarEventFormCpnt
+              closeCalendarForm={closeCalendarForm}
+              isCalendarFormDisplayed={isCalendarFormDisplayed}
+            />
+          </div>
         </>
       )}
     </div>

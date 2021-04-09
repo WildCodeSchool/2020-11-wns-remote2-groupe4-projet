@@ -1,9 +1,59 @@
 @use '../../styles/variables.scss'as v;
 
 .main-dashboard {
+  box-sizing: border-box;
   position: relative;
-  min-width: 600px;
+  height: 100vh;
+  overflow: scroll;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+
+  .md-button-form-wrapper {
+    position: relative;
+    box-sizing: border-box;
+    margin: 20px 0;
+    background-color: v.$ternary;
+    border-radius: 5px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .mdbfw-open-form-button {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0 35px;
+      background-color: v.$ternary;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      color: v.$primary;
+      max-height: 0;
+      transition: max-height 250ms ease-in-out, padding 250ms ease-in-out;
+
+      &.button-active {
+        max-height: 200px;
+        padding: 8px 35px;
+      }
+    }
+
+    .mdbfw-close-form-button {
+      position: absolute;
+      right: 30px;
+      top: 10px;
+      font-size: 0;
+      opacity: 0;
+      cursor: pointer;
+      transition: right 250ms ease-in-out, opacity 250ms ease-in-out;
+
+
+      &.button-active {
+        font-size: 2rem;
+        right: 10px;
+        opacity: 1;
+      }
+    }
+  }
 }
