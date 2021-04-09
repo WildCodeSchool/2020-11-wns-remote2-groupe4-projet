@@ -25,6 +25,7 @@
 @use './components/chat-searchbar-cpnt/ChatSearchBar.scss';
 @use './components/sign-in-form-cpnt/SignInFormCpnt';
 @use './components/sign-up-form-cpnt/SignUpFormCpnt';
+@use './components/calendar-event-form-cpnt/CalendarEventFormCpnt';
 
 * {
   box-sizing: border-box;

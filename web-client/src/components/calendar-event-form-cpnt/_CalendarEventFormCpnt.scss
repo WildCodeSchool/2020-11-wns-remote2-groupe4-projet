@@ -1,0 +1,73 @@
+/* ************************** */
+/* ************************** */
+/* ***** CalendarFormCpnt *** */
+/* ************************** */
+/* ************************** */
+
+@use '../../styles/variables.scss' as v;
+@use '../../styles/mixins' as m;
+
+.calendar-form {
+  box-sizing: border-box;
+  min-width: min-content;
+  background-color: v.$ternary;
+  padding: 40px 30px;
+  max-width: 95%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px 8px #cfd6d5;
+
+  .cf-title {
+    text-align: center;
+    margin: 0 0 25px 0;
+  }
+
+  .cf-input-container {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    .cfic-label, .cficb-label {}
+    .cfic-input, .cficbc-input {
+      padding: 10px;
+      margin: 3px 0;
+      border: none;
+      border-radius: 30px;
+    }
+
+    .cfic-box {
+      .cficb-box-child {
+        display: flex;
+        justify-content: space-evenly;
+      }
+    }
+
+  }
+  .checkbox-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    .cfic-checkbox {
+        margin: 0 20px 0 0;
+        width: 25px;
+        height: 25px;
+    }
+  }
+
+  .cfic-submit {
+    padding: 8px 35px;
+    align-self: center;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: v.$ternary-hover;
+    }
+  }
+}

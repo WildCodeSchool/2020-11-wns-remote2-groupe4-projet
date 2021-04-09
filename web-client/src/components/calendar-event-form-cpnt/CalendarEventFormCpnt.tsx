@@ -8,7 +8,9 @@ type CalendarFormData = {
   eventAllDay: boolean;
   eventContent: string;
   eventStart: Date;
+  eventStartTime: Date;
   eventEnd: Date;
+  eventEndTime: Date;
   eventTitle: string;
 };
 
@@ -17,20 +19,21 @@ const CalendarEventFormCpnt = (): JSX.Element => {
   const [createCalendarEvent] = useMutation(CREATE_NEW_EVENT);
 
   const submitNewEvent = handleSubmit(
-    async ({ eventTitle, eventStart, eventEnd, eventAllDay, eventContent }) => {
-      console.log({
-        eventTitle,
-        eventStart,
-        eventEnd,
-        eventAllDay,
-        eventContent,
-      });
+    async ({
+      eventTitle,
+      eventStart,
+      eventStartTime,
+      eventEnd,
+      eventEndTime,
+      eventAllDay,
+      eventContent,
+    }) => {
       try {
         await createCalendarEvent({
           variables: {
             eventTitle,
-            eventStart,
-            eventEnd,
+            eventStart: `${eventStart} ${eventStartTime}`,
+            eventEnd: `${eventEnd} ${eventEndTime}`,
             eventAllDay,
             eventContent,
           },
@@ -58,36 +61,60 @@ const CalendarEventFormCpnt = (): JSX.Element => {
         />
       </div>
       <div className="cf-input-container">
-        <label htmlFor="event-start-date" className="cfic-label">
-          Date de début
-        </label>
-        <input
-          type="date"
-          name="eventStart"
-          className="cfic-input"
-          ref={register({ required: true })}
-          id="event-start-date"
-          aria-label="event start date"
-        />
+        <div className="cfic-box">
+          <label htmlFor="event-start-date" className="cficb-label">
+            Date de début
+          </label>
+          <div className="cficb-box-child">
+            <input
+              type="date"
+              name="eventStart"
+              className="cficbc-input"
+              ref={register({ required: true })}
+              id="event-start-date"
+              aria-label="event start date"
+            />
+            <input
+              type="time"
+              name="eventStartTime"
+              className="cficbc-input"
+              ref={register({ required: true })}
+              id="event-start-date-time"
+              aria-label="event start date time"
+            />
+          </div>
+        </div>
       </div>
       <div className="cf-input-container">
-        <label htmlFor="event-end-date" className="cfic-label">
-          Date de fin
-        </label>
-        <input
-          type="date"
-          name="eventEnd"
-          className="cfic-input"
-          ref={register({ required: true })}
-          id="event-end-date"
-          aria-label="event end date"
-        />
+        <div className="cfic-box">
+          <label htmlFor="event-end-date" className="cfic-label">
+            Date de fin
+          </label>
+          <div className="cficb-box-child">
+            <input
+              type="date"
+              name="eventEnd"
+              className="cfic-input"
+              ref={register({ required: true })}
+              id="event-end-date"
+              aria-label="event end date"
+            />
+            <input
+              type="time"
+              name="eventEndTime"
+              className="cfic-input"
+              ref={register({ required: true })}
+              id="event-end-date-time"
+              aria-label="event end date time"
+            />
+          </div>
+        </div>
       </div>
       <div className="cf-input-container checkbox-container">
         <input
           type="checkbox"
           name="eventAllDay"
-          className="cfic-input"
+          className="cfic-input cfic-checkbox"
           ref={register()}
           id="event-all-day"
           aria-label="event all day"
