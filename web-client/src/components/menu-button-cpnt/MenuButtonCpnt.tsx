@@ -13,7 +13,7 @@ const MenuButtonCpnt = ({ isLeftAsideOpen }: MenuButtonProps): JSX.Element => {
 
   const history = useHistory();
 
-  const onDeconnexionClick = async () => {
+  const logoutClick = async () => {
     try {
       await deleteSession();
       history.push('/');
@@ -25,7 +25,7 @@ const MenuButtonCpnt = ({ isLeftAsideOpen }: MenuButtonProps): JSX.Element => {
   return (
     <div className={`btn-wrapper ${!isLeftAsideOpen && 'btn-wrapper-column'}`}>
       <button className="menu-btn parameters">Paramètres</button>
-      <button className="menu-btn deconnexion" onClick={onDeconnexionClick}>
+      <button className="menu-btn deconnexion" onClick={logoutClick}>
         Déconnexion
       </button>
     </div>
