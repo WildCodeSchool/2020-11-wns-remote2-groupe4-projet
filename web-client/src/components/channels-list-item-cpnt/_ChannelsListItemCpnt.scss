@@ -1,5 +1,14 @@
+@use '../../styles/variables.scss' as v;
+
 .channels-list-item {
-    overflow: hidden;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 1rem;
+
+  &:hover {
+    background-color: #d9d9d9;
+    cursor: pointer;
     text-overflow: ellipsis;
-    white-space: nowrap;
+  }
 }

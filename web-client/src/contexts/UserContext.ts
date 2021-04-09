@@ -1,20 +1,20 @@
 import { createContext, Dispatch } from 'react';
 
 import { userLoggedInProps } from '../interfaces/userInterface';
-import { Action } from '../actions/userAction';
+import { UserAction } from '../actions/userAction';
 
-type TInitialState = {
+export type UserInitialState = {
   userLoggedInDetails: userLoggedInProps | null;
 };
 
 // initial state declared
-const initialState = {
+export const userInitialState = {
   userLoggedInDetails: null,
 };
 
-const AppContext = createContext<{
-  state: TInitialState;
-  dispatch: Dispatch<Action>;
-}>({ state: initialState, dispatch: () => null });
+const UserContext = createContext<{
+  state: UserInitialState;
+  dispatch: Dispatch<UserAction>;
+}>({ state: userInitialState, dispatch: () => null });
 
-export default AppContext;
+export default UserContext;

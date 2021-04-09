@@ -1,17 +1,131 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import ChannelsListCpnt from './ChannelsListCpnt';
+import { Channel } from '../../interfaces/channelInterface';
+
+const mockChannels: Channel[] = [
+  {
+    id: '1',
+    title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    messages: [
+      {
+        id: '1',
+        sentAt: new Date(),
+        content: 'Blablabla 1',
+        author: {
+          id: '1',
+          firstname: 'Jonh',
+          lastname: 'Doe',
+        },
+      },
+      {
+        id: '2',
+        sentAt: new Date(),
+        content: 'Blablabla 2',
+        author: {
+          id: '2',
+          firstname: 'Jane',
+          lastname: 'Doe',
+        },
+      },
+    ],
+    users: [
+      {
+        id: '1',
+        firstname: 'Jonh',
+        lastname: 'Doe',
+      },
+      {
+        id: '2',
+        firstname: 'Jane',
+        lastname: 'Doe',
+      },
+    ],
+  },
+  {
+    id: '2',
+    title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    messages: [
+      {
+        id: '1',
+        sentAt: new Date(),
+        content: 'Blablabla 1',
+        author: {
+          id: '1',
+          firstname: 'Jonh',
+          lastname: 'Doe',
+        },
+      },
+      {
+        id: '2',
+        sentAt: new Date(),
+        content: 'Blablabla 2',
+        author: {
+          id: '2',
+          firstname: 'Jane',
+          lastname: 'Doe',
+        },
+      },
+    ],
+    users: [
+      {
+        id: '1',
+        firstname: 'Jonh',
+        lastname: 'Doe',
+      },
+      {
+        id: '2',
+        firstname: 'Jane',
+        lastname: 'Doe',
+      },
+    ],
+  },
+  {
+    id: '3',
+    title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    messages: [
+      {
+        id: '1',
+        sentAt: new Date(),
+        content: 'Blablabla 1',
+        author: {
+          id: '1',
+          firstname: 'Jonh',
+          lastname: 'Doe',
+        },
+      },
+      {
+        id: '2',
+        sentAt: new Date(),
+        content: 'Blablabla 2',
+        author: {
+          id: '2',
+          firstname: 'Jane',
+          lastname: 'Doe',
+        },
+      },
+    ],
+    users: [
+      {
+        id: '1',
+        firstname: 'Jonh',
+        lastname: 'Doe',
+      },
+      {
+        id: '2',
+        firstname: 'Jane',
+        lastname: 'Doe',
+      },
+    ],
+  },
+];
 
 describe('When RightAsideCtnr is open', () => {
   beforeEach(() => {
     render(
       <ChannelsListCpnt
-        title="Général"
-        channels={[
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-        ]}
+        title="Public"
+        channels={mockChannels}
         isRightAsideOpen={true}
       />
     );
@@ -30,12 +144,8 @@ describe('When RightAsideCtnr is closed', () => {
   beforeEach(() => {
     render(
       <ChannelsListCpnt
-        title="Général"
-        channels={[
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-        ]}
+        title="Public"
+        channels={mockChannels}
         isRightAsideOpen={false}
       />
     );
@@ -54,12 +164,8 @@ describe('When caret icon is clicked for the first time', () => {
   beforeEach(() => {
     render(
       <ChannelsListCpnt
-        title="Général"
-        channels={[
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-        ]}
+        title="Public"
+        channels={mockChannels}
         isRightAsideOpen={true}
       />
     );

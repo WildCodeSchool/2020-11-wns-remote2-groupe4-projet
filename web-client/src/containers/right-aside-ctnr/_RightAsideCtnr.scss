@@ -2,61 +2,66 @@
 @use '../../styles/mixins' as m;
 
 .right-aside {
-    position: relative;
-    min-height: 100vh;
-    width: 100px;
-    padding: 1rem;
-    background-color: v.$secondary;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  position: relative;
+  min-height: 100vh;
+  width: 100px;
+  background-color: v.$secondary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    transition: width 350ms ease-in-out;
+  transition: width 350ms ease-in-out;
+
+  @include m.bpFactory($max: v.$s) {
+    max-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 80%;
+    transform: translateX(-100%);
+    transition: transform 350ms ease-in-out;
+  }
+
+  & > * + * {
+    margin-top: 1.5rem;
+  }
+
+  &.ra-visible {
+    width: 350px;
 
     @include m.bpFactory($max: v.$s) {
-        max-height: 100vh;
-        position: absolute;
-        top: 0;
-        left: 100%;
-        width: 80%;
-      }
-    
-      &.ra-visible {
-        width: 350px;
-    
-        @include m.bpFactory($max: v.$s) {
-            width: 80%;
-            transform: translateX(-100%);
-        }
+      max-width: 300px;
+      transform: translateX(0%);
+    }
+  }
+
+  .ra-title {
+    color: v.$black;
+    font-weight: bold;
+
+    &.ra-title-mini {
+      padding-left: 1rem;
+    }
+  }
+
+  .ra-arrow-left {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    transition: transform 500ms ease-in-out;
+
+    @include m.bpFactory($max: v.$s) {
+      left: -20px;
+      transform: rotate(0deg);
     }
 
-    .ra-title {
-        color: v.$black;
-        font-weight: bold;
-    
-        &.ra-title-mini {
-            padding-left: 1rem;
-        }
+    &.rotate-right {
+      transform: rotate(-180deg);
+
+      @include m.bpFactory($max: v.$s) {
+        transform: rotate(-180deg);
+      }
     }
-    
-    .ra-arrow-left {
-        cursor: pointer;
-        position: absolute;
-        top: 20px;
-        left: 10px;
-        transition: transform 500ms ease-in-out;
-    
-        @include m.bpFactory($max: v.$s) {
-            left: -20px;
-            transform: rotate(0deg);
-        }
-    
-        &.rotate-right{
-            transform: rotate(-180deg);
-    
-            @include m.bpFactory($max: v.$s) {
-            transform: rotate(-180deg);
-            }
-        }
-    }
+  }
 }
