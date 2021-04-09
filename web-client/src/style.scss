@@ -6,13 +6,15 @@
 
 // Views
 @use './views/sign-in/ViewSignIn.scss';
-@use './views//sign-up/ViewSignUp';
+@use './views/sign-up/ViewSignUp';
+@use './views/dashboard/ViewDashboard';
 
 // Containers
 @use './containers/MainCtnr.scss';
 @use './containers/left-aside-ctnr/LeftAsideCtnr.scss';
 @use './containers/right-aside-ctnr/RightAsideCtnr.scss';
 @use './containers/channels-ctnr/ChannelsCtnr.scss';
+@use './containers/channel-messages-ctnr/ChannelMessagesCtnr.scss';
 
 // Components
 @use './components/avatar-cpnt/AvatarCpnt.scss';
@@ -23,6 +25,8 @@
 @use './components/chat-searchbar-cpnt/ChatSearchBar.scss';
 @use './components/sign-in-form-cpnt/SignInFormCpnt';
 @use './components/sign-up-form-cpnt/SignUpFormCpnt';
+@use './components/message-cpnt/MessageCpnt';
+@use './components/autosize-textarea-cpnt/AutosizeTextareaCpnt';
 
 * {
   box-sizing: border-box;
