@@ -43,7 +43,7 @@ const ChannelsListCpnt = ({
           >
             <FontAwesomeIcon icon={faCaretRight} />
           </button>
-          {title == 'Public' ? (
+          {title === 'Public' ? (
             <div className="cl-title-icon">
               <FontAwesomeIcon icon={faDesktop} />
             </div>

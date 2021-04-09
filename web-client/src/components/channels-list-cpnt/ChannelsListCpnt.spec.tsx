@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import ChannelsListCpnt from './ChannelsListCpnt';
 import { Channel } from '../../interfaces/channelInterface';
 
-const mockChannel: Channel[] = [
+const mockChannels: Channel[] = [
   {
     id: '1',
     title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
@@ -125,7 +125,7 @@ describe('When RightAsideCtnr is open', () => {
     render(
       <ChannelsListCpnt
         title="Public"
-        channels={mockChannel}
+        channels={mockChannels}
         isRightAsideOpen={true}
       />
     );
@@ -145,7 +145,7 @@ describe('When RightAsideCtnr is closed', () => {
     render(
       <ChannelsListCpnt
         title="Public"
-        channels={mockChannel}
+        channels={mockChannels}
         isRightAsideOpen={false}
       />
     );
@@ -165,7 +165,7 @@ describe('When caret icon is clicked for the first time', () => {
     render(
       <ChannelsListCpnt
         title="Public"
-        channels={mockChannel}
+        channels={mockChannels}
         isRightAsideOpen={true}
       />
     );
