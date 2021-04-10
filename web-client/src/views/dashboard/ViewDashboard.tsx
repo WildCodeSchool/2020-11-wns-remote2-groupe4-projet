@@ -33,11 +33,15 @@ const ViewDashboard = (): JSX.Element => {
   return (
     <div className="main-dashboard">
       {loading ? (
-        <p>loading...</p>
+        <div className="loader"></div>
       ) : (
         <>
           <CalendarCtnr />
-          <div className="md-button-form-wrapper">
+          <div
+            className={`md-button-form-wrapper ${
+              isCalendarFormDisplayed && 'large'
+            }`}
+          >
             <FontAwesomeIcon
               className={`mdbfw-close-form-button ${
                 isCalendarFormDisplayed && 'button-active'

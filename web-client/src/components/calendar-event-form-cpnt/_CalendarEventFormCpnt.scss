@@ -18,7 +18,7 @@
   border-radius: 5px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 400ms ease-in-out, padding 400ms ease-in-out;
+  transition: max-height 400ms ease-in-out 250ms, padding 400ms ease-in-out 250ms;
 
   &.form-active {
     padding: 40px 30px;

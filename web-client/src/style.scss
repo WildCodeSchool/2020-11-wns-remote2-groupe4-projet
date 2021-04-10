@@ -4,6 +4,9 @@
 @forward './styles/variables';
 @forward './styles/fonts';
 
+// Templates
+@use './styles/templates/loader';
+
 // Views
 @use './views/sign-in/ViewSignIn.scss';
 @use './views//sign-up/ViewSignUp';

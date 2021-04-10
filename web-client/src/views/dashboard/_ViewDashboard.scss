@@ -1,3 +1,9 @@
+/* ************************** */
+/* ************************** */
+/* ***** VIEW DASHBOARD ***** */
+/* ************************** */
+/* ************************** */
+
 @use '../../styles/variables.scss'as v;
 
 .main-dashboard {
@@ -16,10 +22,17 @@
     margin: 20px 0;
     background-color: v.$ternary;
     border-radius: 5px;
-    width: 80%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: width 250ms ease-in-out;
+    overflow: hidden;
+
+    &.large {
+      width: 80%;
+      overflow: visible;
+    }
 
     .mdbfw-open-form-button {
       box-sizing: border-box;
@@ -31,7 +44,7 @@
       font-size: 1rem;
       color: v.$primary;
       max-height: 0;
-      transition: max-height 250ms ease-in-out, padding 250ms ease-in-out;
+      transition: max-height 250ms ease-in-out 250ms, padding 250ms ease-in-out 250ms;
 
       &.button-active {
         max-height: 200px;
@@ -45,14 +58,18 @@
       top: 10px;
       font-size: 0;
       opacity: 0;
+      transform: scale(1);
       cursor: pointer;
-      transition: right 250ms ease-in-out, opacity 250ms ease-in-out;
-
+      transition: right 250ms ease-in-out 250ms, opacity 250ms ease-in-out 250ms, transform 150ms ease-in-out;
 
       &.button-active {
         font-size: 2rem;
         right: 10px;
         opacity: 1;
+      }
+
+      &:hover {
+        transform: scale(.9);
       }
     }
   }
