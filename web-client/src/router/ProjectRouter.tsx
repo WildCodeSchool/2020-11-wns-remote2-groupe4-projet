@@ -22,7 +22,7 @@ const ProjectRouter = (): JSX.Element => {
   return (
     <Router>
       {loading ? (
-        <p>LOADING...</p>
+        <div className="loader"></div>
       ) : (
         <Switch>
           <Route exact path="/">
