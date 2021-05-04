@@ -1,0 +1,64 @@
+@use '../../styles/variables.scss' as v;
+
+.message {
+  display: flex;
+  flex-direction: column;
+
+  .m-header {
+    margin: 1.5rem 0 0.5rem 0;
+
+    &.mh-on-left {
+      align-self: flex-start;
+    }
+
+    &.mh-on-right {
+      align-self: flex-end;
+    }
+  }
+
+  .m-content-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    margin: 0.1rem 0;
+
+    &.on-left {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+
+      & > * + * {
+        margin-right: 0.5rem;
+      }
+    }
+
+    &.on-right {
+      justify-content: flex-end;
+
+      & > * + * {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  .m-content {
+    border-radius: 5px;
+    padding: 0.5em;
+
+    width: max-content;
+    max-width: 75%;
+    word-break: break-word;
+
+    &.color-left {
+      background-color: rgba(136, 225, 220, 0.5);
+    }
+
+    &.color-right {
+      background-color: rgba(16, 176, 168, 0.5);
+    }
+  }
+
+  .m-time {
+    font-size: v.$p-xs;
+    font-style: italic;
+  }
+}

@@ -1,0 +1,13 @@
+@use '../../styles/variables.scss' as v;
+
+.textarea {
+  resize: none;
+  padding: 0.7rem 0.5rem;
+  background-color: v.$primary;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    font-size: v.$p-xs;
+  }
+}
