@@ -20,16 +20,12 @@ export default class CalendarEventResolver {
     @Arg('data') data: CreateCalendarEventInput,
     @Ctx() { user }: { user: AppUser | null }
   ): Promise<CalendarEvent | undefined> {
-    try {
-      const calendarEvent = CalendarEvent.create(data);
-      if (!user) throw new Error('You are not authenticated.');
-      if (!calendarEvent) throw new Error("impossible de créer l'évènement");
-      calendarEvent.author = Promise.resolve(user);
-      await calendarEvent.save();
-      return calendarEvent;
-    } catch (error) {
-      console.log(error);
-    }
+    const calendarEvent = CalendarEvent.create(data);
+    if (!user) throw new Error('You are not authenticated.');
+    if (!calendarEvent) throw new Error("impossible de créer l'évènement");
+    calendarEvent.author = Promise.resolve(user);
+    await calendarEvent.save();
+    return calendarEvent;
   }
 
   @Mutation(() => [CalendarEvent])
@@ -37,6 +33,6 @@ export default class CalendarEventResolver {
     const allCalendarEventsToDelete = await CalendarEvent.find();
     if (!allCalendarEventsToDelete) throw new Error("C'est vide ");
     await CalendarEvent.remove(allCalendarEventsToDelete);
-    return 'tous les messages ont été effacés';
+    return 'tous les évènements ont été effacés';
   }
 }

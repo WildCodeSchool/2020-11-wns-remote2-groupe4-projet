@@ -11,16 +11,16 @@ import {
   EventFormated,
 } from '../../interfaces/eventInterface';
 
-const eventsArray = (data: [EventFromDataInterface]): EventFormated[] => {
-  const formatedEventsArray: EventFormated[] = [];
-  data.forEach((event) => {
-    const eventFormatted = {
+const getEventsFormatted = (
+  data: [EventFromDataInterface]
+): EventFormated[] => {
+  const formatedEventsArray = data.map((event) => {
+    return {
       title: event.eventTitle,
       start: event.eventStart,
       end: event.eventEnd,
       allDay: event.eventAllDay,
     };
-    formatedEventsArray.push(eventFormatted);
   });
   return formatedEventsArray;
 };
@@ -36,7 +36,7 @@ const CalendarCtnr = (): JSX.Element => {
 
   useEffect(() => {
     if (data)
-      setEventsArrayFormated(eventsArray(data.user.eventsCreatedByUser));
+      setEventsArrayFormated(getEventsFormatted(data.user.eventsCreatedByUser));
   }, [data]);
   return (
     <section className="calendar-section">

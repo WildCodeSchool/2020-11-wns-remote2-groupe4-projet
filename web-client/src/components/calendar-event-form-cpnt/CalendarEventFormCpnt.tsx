@@ -36,20 +36,16 @@ const CalendarEventFormCpnt = ({
       eventAllDay,
       eventContent,
     }) => {
-      try {
-        await createCalendarEvent({
-          variables: {
-            eventTitle,
-            eventStart: `${eventStart} ${eventStartTime}`,
-            eventEnd: `${eventEnd} ${eventEndTime}`,
-            eventAllDay,
-            eventContent,
-          },
-        });
-        closeCalendarForm();
-      } catch (error) {
-        console.log(error);
-      }
+      await createCalendarEvent({
+        variables: {
+          eventTitle,
+          eventStart: `${eventStart} ${eventStartTime}`,
+          eventEnd: `${eventEnd} ${eventEndTime}`,
+          eventAllDay,
+          eventContent,
+        },
+      });
+      closeCalendarForm();
     }
   );
 
