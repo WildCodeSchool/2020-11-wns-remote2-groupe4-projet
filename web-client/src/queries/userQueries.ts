@@ -35,3 +35,17 @@ export const GET_USER_CHANNELS = gql`
     }
   }
 `;
+
+export const GET_EVENTS_CREATED_BY_USER_AUTHENTICATED = gql`
+  query User($id: String!) {
+    user(id: $id) {
+      eventsCreatedByUser {
+        eventTitle
+        eventStart
+        eventEnd
+        eventAllDay
+        eventContent
+      }
+    }
+  }
+`;
