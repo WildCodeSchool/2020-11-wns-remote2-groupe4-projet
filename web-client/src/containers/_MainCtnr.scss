@@ -1,6 +1,8 @@
+@use '../styles/variables.scss' as v;
+@use '../styles/mixins' as m;
+
 .main-ctrn {
   position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
 }

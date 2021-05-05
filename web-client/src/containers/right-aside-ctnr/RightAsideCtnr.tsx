@@ -24,7 +24,10 @@ const RightAsideCtnr = (): JSX.Element => {
         Chat
       </h3>
       {isRightAsideOpen && <ChatSearchBar />}
-      <ChannelsCtnr isRightAsideOpen={isRightAsideOpen} />
+      <ChannelsCtnr
+        isRightAsideOpen={isRightAsideOpen}
+        toggleRightAside={toggleRightAside}
+      />
     </aside>
   );
 };

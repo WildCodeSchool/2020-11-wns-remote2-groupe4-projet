@@ -5,9 +5,13 @@ import useSubscribeToNewChannel from '../../hooks/useSubscribeToNewChannel';
 
 export type ChannelsCtnrProps = {
   isRightAsideOpen: boolean;
+  toggleRightAside: () => void;
 };
 
-const ChannelsCtnr = ({ isRightAsideOpen }: ChannelsCtnrProps): JSX.Element => {
+const ChannelsCtnr = ({
+  isRightAsideOpen,
+  toggleRightAside,
+}: ChannelsCtnrProps): JSX.Element => {
   const { loading, error, data } = useSubscribeToNewChannel();
 
   return (
@@ -23,6 +27,7 @@ const ChannelsCtnr = ({ isRightAsideOpen }: ChannelsCtnrProps): JSX.Element => {
               title="Public"
               channels={data.user.channels}
               isRightAsideOpen={isRightAsideOpen}
+              toggleRightAside={toggleRightAside}
             />
           </>
         )

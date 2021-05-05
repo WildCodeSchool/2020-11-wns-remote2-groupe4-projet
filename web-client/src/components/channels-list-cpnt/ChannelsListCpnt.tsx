@@ -14,12 +14,14 @@ export type ChannelsListCpntProps = {
   title: string;
   channels: Channel[];
   isRightAsideOpen: boolean;
+  toggleRightAside: () => void;
 };
 
 const ChannelsListCpnt = ({
   title,
   channels,
   isRightAsideOpen,
+  toggleRightAside,
 }: ChannelsListCpntProps): JSX.Element => {
   const [isChannelsListOpen, setIsChannelsListOpen] = useState(false);
 
@@ -65,7 +67,11 @@ const ChannelsListCpnt = ({
       </div>
       <ul className={`cl-ul ${!isChannelsListOpen && 'cl-ul-hidden'}`}>
         {channels.map((channel) => (
-          <ChannelsListItemCpnt key={channel.id} channel={channel} />
+          <ChannelsListItemCpnt
+            key={channel.id}
+            channel={channel}
+            toggleRightAside={toggleRightAside}
+          />
         ))}
       </ul>
     </div>
