@@ -1,0 +1,62 @@
+@use '../../styles/variables.scss' as v;
+@use '../../styles/mixins' as m;
+
+.left-aside {
+  position: relative;
+  min-height: 100vh;
+  width: v.$aside-close-default;
+  background-color: v.$secondary;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition: width 350ms ease-in-out;
+
+  @include m.bpFactory($max: v.$s) {
+    max-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    transform: translateX(0%);
+    transition: transform 350ms ease-in-out;
+  }
+
+  &.left-aside-visible {
+    width: v.$aside-open-default;
+
+    @include m.bpFactory($max: v.$l) {
+      width: v.$aside-m;
+    }
+
+    @include m.bpFactory($max: v.$m) {
+      width: v.$aside-s;
+    }
+
+    @include m.bpFactory($max: v.$s) {
+      width: 80%;
+      transform: translateX(-100%);
+    }
+  }
+
+  .la-arrow-right {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    transition: transform 500ms ease-in-out;
+
+    @include m.bpFactory($max: v.$s) {
+      right: -20px;
+      transform: rotate(180deg);
+    }
+
+    &.rotate-left {
+      transform: rotate(180deg);
+
+      @include m.bpFactory($max: v.$s) {
+        transform: rotate(0deg);
+      }
+    }
+  }
+}

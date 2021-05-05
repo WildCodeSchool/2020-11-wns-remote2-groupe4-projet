@@ -1,17 +1,41 @@
-@use './styles/variables' as v;
+@use './styles/variables'as v;
+@use './styles/fonts';
+
 @forward './styles/variables';
+@forward './styles/fonts';
+
+// Templates
+@use './styles/templates/loader';
 
 // Views
-
+@use './views/sign-in/ViewSignIn.scss';
+@use './views/sign-up/ViewSignUp';
+@use './views/dashboard/ViewDashboard';
 
 // Containers
-
+@use './containers/MainCtnr.scss';
+@use './containers/left-aside-ctnr/LeftAsideCtnr.scss';
+@use './containers/right-aside-ctnr/RightAsideCtnr.scss';
+@use './containers/channels-ctnr/ChannelsCtnr.scss';
+@use './containers/calendar-ctnr/CalendarCtnr';
+@use './containers/channel-messages-ctnr/ChannelMessagesCtnr.scss';
 
 // Components
-
+@use './components/avatar-cpnt/AvatarCpnt.scss';
+@use './components/menu-cpnt/MenuCpnt.scss';
+@use './components/menu-button-cpnt/MenuButtonCpnt.scss';
+@use './components/channels-list-cpnt/ChannelsListCpnt.scss';
+@use './components/channels-list-item-cpnt/ChannelsListItemCpnt.scss';
+@use './components/chat-searchbar-cpnt/ChatSearchBar.scss';
+@use './components/sign-in-form-cpnt/SignInFormCpnt';
+@use './components/sign-up-form-cpnt/SignUpFormCpnt';
+@use './components/calendar-event-form-cpnt/CalendarEventFormCpnt';
+@use './components/message-cpnt/MessageCpnt';
+@use './components/autosize-textarea-cpnt/AutosizeTextareaCpnt';
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Montserrat';
 }

@@ -1,0 +1,76 @@
+/* ************************** */
+/* ************************** */
+/* ***** VIEW DASHBOARD ***** */
+/* ************************** */
+/* ************************** */
+
+@use '../../styles/variables.scss'as v;
+
+.main-dashboard {
+  box-sizing: border-box;
+  position: relative;
+  height: 100vh;
+  overflow: scroll;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .md-button-form-wrapper {
+    position: relative;
+    box-sizing: border-box;
+    margin: 20px 0;
+    background-color: v.$ternary;
+    border-radius: 5px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: width 250ms ease-in-out;
+    overflow: hidden;
+
+    &.large {
+      width: 80%;
+      overflow: visible;
+    }
+
+    .mdbfw-open-form-button {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0 35px;
+      background-color: v.$ternary;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      color: v.$primary;
+      max-height: 0;
+      transition: max-height 250ms ease-in-out 250ms, padding 250ms ease-in-out 250ms;
+
+      &.button-active {
+        max-height: 200px;
+        padding: 8px 35px;
+      }
+    }
+
+    .mdbfw-close-form-button {
+      position: absolute;
+      right: 30px;
+      top: 10px;
+      font-size: 0;
+      opacity: 0;
+      transform: scale(1);
+      cursor: pointer;
+      transition: right 250ms ease-in-out 250ms, opacity 250ms ease-in-out 250ms, transform 150ms ease-in-out;
+
+      &.button-active {
+        font-size: 2rem;
+        right: 10px;
+        opacity: 1;
+      }
+
+      &:hover {
+        transform: scale(.9);
+      }
+    }
+  }
+}

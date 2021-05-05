@@ -1,0 +1,22 @@
+@use '../../styles/variables.scss' as v;
+@use '../../styles/mixins' as m;
+
+.btn-wrapper{
+    display:flex;
+    justify-content: space-around;
+    color: v.$black;
+    flex-direction: row;
+    
+    &.btn-wrapper-column{
+        flex-direction:column;
+        font-size: 0.5rem;
+    }
+
+    .menu-btn {
+        border: none;
+        background-color: transparent;
+        text-decoration: underline;
+        cursor: pointer;
+        margin-bottom:20px;
+    }
+}

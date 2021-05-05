@@ -1,51 +1,33 @@
 import 'reflect-metadata';
-import express from 'express';
-import { ApolloServer, gql } from 'apollo-server-express';
-
 import { createConnection } from 'typeorm';
+import { createServer } from 'http';
+import { execute, subscribe } from 'graphql';
 
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-  {
-    title: 'Game of Throne',
-    author: 'Georges Martin',
-  },
-];
-
-const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-  }
-  type Query {
-    books: [Book]
-  }
-`;
-
-const bookResolvers = {
-  Query: {
-    books: () => books,
-  },
-};
+import { getExpressServer } from './express-server';
+import { SubscriptionServer } from 'subscriptions-transport-ws';
 
 const main = async () => {
   await createConnection();
 
-  const server = new ApolloServer({ typeDefs, resolvers: bookResolvers });
+  const {
+    expressServer,
+    apolloServer,
+    graphQLSchema,
+  } = await getExpressServer();
 
-  const app = express();
-  server.applyMiddleware({ app });
+  const server = createServer(expressServer);
+  server.listen({ port: 4000 }, () => {
+    console.log(
+      `🚀 Server ready at http://localhost:4000${apolloServer.graphqlPath}`
+    );
 
-  app.listen({ port: 4000 }, () =>
-    console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
-  );
+    // Set up the WebSocket for handling GraphQL subscriptions
+    new SubscriptionServer(
+      { execute, subscribe, schema: graphQLSchema },
+      { server, path: apolloServer.graphqlPath }
+    );
+    console.log('Server has started!');
+  });
 };
 
 main();

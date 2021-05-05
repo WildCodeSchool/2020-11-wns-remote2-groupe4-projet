@@ -1,0 +1,23 @@
+@use '../../styles/variables.scss' as v;
+
+.channels-list-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #d9d9d9;
+    text-overflow: ellipsis;
+  }
+
+  .cl-button {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: start;
+  }
+}

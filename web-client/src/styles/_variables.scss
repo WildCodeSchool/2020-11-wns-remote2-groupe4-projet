@@ -1,12 +1,25 @@
 // colors
-$primary: #F6F5F5;
-$secondary: #E0E0E0;
-$ternary: #49BEB7;
+$primary: #f6f5f5;
+$secondary: #e0e0e0;
+$ternary: #49beb7;
+$ternary-hover: #cbf3f0;
 $black: #141414;
+$accent: #a64456;
 
 // BreakPoints
-$xs: 360px;
+$xs: 460px;
 $s: 760px;
 $m: 980px;
 $l: 1200px;
-$xl: 1440px;
+$xl: 1920px;
+
+// FONTS
+$p-regular-size: 1rem;
+$p-s: 0.9rem;
+$p-xs: 0.8rem;
+
+// Special variables
+$aside-open-default: 350px;
+$aside-close-default: 100px;
+$aside-s: 250px;
+$aside-m: 300px;
