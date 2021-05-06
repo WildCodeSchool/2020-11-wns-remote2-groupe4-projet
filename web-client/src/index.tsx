@@ -11,15 +11,20 @@ import {
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { createUploadLink } from 'apollo-upload-client';
 import { getMainDefinition } from '@apollo/client/utilities';
+import { API_BASE_URL } from './config';
 
 const GRAPHQL_ENDPOINT = '/graphql';
 
 const httpLink = createUploadLink({
-  uri: GRAPHQL_ENDPOINT,
+  uri: `${API_BASE_URL}${GRAPHQL_ENDPOINT}`,
 });
 
+const webSocketProtocolAndHost = API_BASE_URL?.startsWith('http')
+  ? API_BASE_URL.replace('http', 'ws')
+  : `${document.location.origin.replace('http', 'ws')}${API_BASE_URL}`;
+
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000${GRAPHQL_ENDPOINT}`,
+  uri: `${webSocketProtocolAndHost}${GRAPHQL_ENDPOINT}`,
   options: {
     reconnect: true,
   },
