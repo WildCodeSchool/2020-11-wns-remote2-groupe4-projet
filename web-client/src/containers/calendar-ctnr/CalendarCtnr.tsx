@@ -25,6 +25,10 @@ const getEventsFormatted = (
   return formatedEventsArray;
 };
 
+const eventDatasOnDragStart = (eventInfo: any) => {
+  console.log(eventInfo);
+};
+
 const CalendarCtnr = (): JSX.Element => {
   const userLoggedIn = useContext(UserContext);
   const [eventsArrayFormated, setEventsArrayFormated] = useState<
@@ -48,12 +52,12 @@ const CalendarCtnr = (): JSX.Element => {
           center: 'title',
           right: 'dayGridMonth,dayGridWeek,dayGridDay',
         }}
+        editable={true}
         droppable={true}
         initialView="dayGridMonth"
         weekends={false}
-        editable={true}
         events={eventsArrayFormated}
-        //eventContent={{ html: '<i>some html</i>' }}
+        eventDragStart={eventDatasOnDragStart}
       />
     </section>
   );

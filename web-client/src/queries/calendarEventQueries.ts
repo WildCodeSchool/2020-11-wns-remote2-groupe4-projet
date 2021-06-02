@@ -2,6 +2,7 @@ import { gql } from '@apollo/client';
 
 export const CREATE_NEW_EVENT = gql`
   mutation CreateCalendarEvent(
+    $eventId: String!
     $eventTitle: String!
     $eventStart: DateTime!
     $eventEnd: DateTime!
@@ -10,6 +11,7 @@ export const CREATE_NEW_EVENT = gql`
   ) {
     createCalendarEvent(
       data: {
+        eventId: $eventId
         eventTitle: $eventTitle
         eventStart: $eventStart
         eventEnd: $eventEnd
@@ -17,6 +19,7 @@ export const CREATE_NEW_EVENT = gql`
         eventAllDay: $eventAllDay
       }
     ) {
+      eventId
       eventTitle
     }
   }
