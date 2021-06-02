@@ -16,6 +16,7 @@ const getEventsFormatted = (
 ): EventFormated[] => {
   const formatedEventsArray = data.map((event) => {
     return {
+      id: event.eventId,
       title: event.eventTitle,
       start: event.eventStart,
       end: event.eventEnd,
