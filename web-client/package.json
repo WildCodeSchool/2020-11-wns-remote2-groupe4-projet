@@ -54,5 +54,5 @@
     "@types/apollo-upload-client": "^14.1.0",
     "sass": "^1.29.0"
   },
-  "proxy": "http://localhost:4000"
+  "proxy": "http://api:4000"
 }

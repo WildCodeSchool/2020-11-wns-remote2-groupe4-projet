@@ -16,10 +16,16 @@ const GRAPHQL_ENDPOINT = '/graphql';
 
 const httpLink = createUploadLink({
   uri: GRAPHQL_ENDPOINT,
+  credentials: 'include',
 });
 
+const webSocketProtocolAndHost = `${document.location.origin.replace(
+  'http',
+  'ws'
+)}${GRAPHQL_ENDPOINT}`;
+
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000${GRAPHQL_ENDPOINT}`,
+  uri: webSocketProtocolAndHost,
   options: {
     reconnect: true,
   },
