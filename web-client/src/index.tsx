@@ -17,6 +17,7 @@ const GRAPHQL_ENDPOINT = '/graphql';
 
 const httpLink = createUploadLink({
   uri: `${API_BASE_URL}${GRAPHQL_ENDPOINT}`,
+  credentials: 'include',
 });
 
 const webSocketProtocolAndHost = API_BASE_URL?.startsWith('http')
