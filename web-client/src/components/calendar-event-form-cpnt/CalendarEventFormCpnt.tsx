@@ -1,7 +1,6 @@
 import { useMutation } from '@apollo/client';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { v4 as uuidv4 } from 'uuid';
 
 import { CREATE_NEW_EVENT } from '../../queries/calendarEventQueries';
 
@@ -11,7 +10,6 @@ type CalendarEventFormCpntProps = {
 };
 
 type CalendarFormData = {
-  eventId: string;
   eventAllDay: boolean;
   eventContent: string;
   eventStart: Date;
@@ -40,7 +38,6 @@ const CalendarEventFormCpnt = ({
     }) => {
       await createCalendarEvent({
         variables: {
-          eventId: uuidv4(),
           eventTitle,
           eventStart: `${eventStart} ${eventStartTime}`,
           eventEnd: `${eventEnd} ${eventEndTime}`,

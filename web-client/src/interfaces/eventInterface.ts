@@ -1,5 +1,5 @@
 export type EventFromDataInterface = {
-  eventId: string;
+  id: string;
   eventAllDay: boolean;
   eventContent: string;
   eventStart: Date;

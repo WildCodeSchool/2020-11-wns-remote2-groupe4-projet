@@ -29,8 +29,7 @@
     "react-scripts": "4.0.0",
     "react-toastify": "^7.0.3",
     "subscriptions-transport-ws": "^0.9.18",
-    "typescript": "^4.0.5",
-    "uuid": "^8.3.2"
+    "typescript": "^4.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -53,7 +52,6 @@
   },
   "devDependencies": {
     "@types/apollo-upload-client": "^14.1.0",
-    "@types/uuid": "^8.3.0",
     "sass": "^1.29.0"
   },
   "proxy": "http://api:4000"

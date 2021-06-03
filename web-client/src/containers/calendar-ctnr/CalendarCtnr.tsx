@@ -16,7 +16,7 @@ const getEventsFormatted = (
 ): EventFormated[] => {
   const formatedEventsArray = data.map((event) => {
     return {
-      id: event.eventId,
+      id: event.id,
       title: event.eventTitle,
       start: event.eventStart,
       end: event.eventEnd,
@@ -26,8 +26,8 @@ const getEventsFormatted = (
   return formatedEventsArray;
 };
 
-const eventDatasOnDragStart = (eventInfo: any) => {
-  console.log(eventInfo);
+const eventDatasOnDragStop = (eventInfo: any) => {
+  console.log('dragStop : ', eventInfo);
 };
 
 const CalendarCtnr = (): JSX.Element => {
@@ -58,7 +58,7 @@ const CalendarCtnr = (): JSX.Element => {
         initialView="dayGridMonth"
         weekends={false}
         events={eventsArrayFormated}
-        eventDragStart={eventDatasOnDragStart}
+        eventDrop={eventDatasOnDragStop}
       />
     </section>
   );
