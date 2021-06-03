@@ -8,9 +8,17 @@ import UserContext, { userInitialState } from './contexts/UserContext';
 import ProjectRouter from './router/ProjectRouter';
 import ChannelContext, { channelInitialState } from './contexts/ChannelContext';
 import channelReducer from './reducers/channelReducer';
+import calendarReducer from './reducers/calendarReducer';
+import CalendarContext, {
+  calendarInitialState,
+} from './contexts/CalendarContext';
 
 const App = (): JSX.Element => {
   const [state, dispatch] = useReducer(userReducer, userInitialState);
+  const [calendarState, calendarDispatch] = useReducer(
+    calendarReducer,
+    calendarInitialState
+  );
   const [channelState, channelDispatch] = useReducer(
     channelReducer,
     channelInitialState
@@ -20,7 +28,9 @@ const App = (): JSX.Element => {
     <div className="App">
       <UserContext.Provider value={{ state, dispatch }}>
         <ChannelContext.Provider value={{ channelState, channelDispatch }}>
-          <ProjectRouter />
+          <CalendarContext.Provider value={{ calendarState, calendarDispatch }}>
+            <ProjectRouter />
+          </CalendarContext.Provider>
         </ChannelContext.Provider>
       </UserContext.Provider>
     </div>

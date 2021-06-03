@@ -12,5 +12,6 @@ export type EventFormated = {
   title: string;
   start: Date;
   end: Date;
+  eventContent: string;
   allDay: boolean;
 };

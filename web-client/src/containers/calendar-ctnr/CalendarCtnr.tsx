@@ -5,6 +5,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { useQuery, useMutation } from '@apollo/client';
 
 import UserContext from '../../contexts/UserContext';
+import CalendarContext from '../../contexts/CalendarContext';
 import { GET_EVENTS_CREATED_BY_USER_AUTHENTICATED } from '../../queries/userQueries';
 import { UPDATE_EVENT_BY_ID } from '../../queries/calendarEventQueries';
 import {
@@ -22,6 +23,7 @@ const getEventsFormatted = (
       start: event.eventStart,
       end: event.eventEnd,
       allDay: event.eventAllDay,
+      eventContent: event.eventContent,
     };
   });
   return formatedEventsArray;
@@ -29,6 +31,7 @@ const getEventsFormatted = (
 
 const CalendarCtnr = (): JSX.Element => {
   const userLoggedIn = useContext(UserContext);
+  const calendarContext = useContext(CalendarContext);
   const [eventsArrayFormated, setEventsArrayFormated] = useState<
     EventFormated[]
   >([]);
@@ -52,8 +55,13 @@ const CalendarCtnr = (): JSX.Element => {
   };
 
   useEffect(() => {
-    if (data)
+    if (data) {
       setEventsArrayFormated(getEventsFormatted(data.user.eventsCreatedByUser));
+      calendarContext.calendarDispatch({
+        type: 'CALENDAR_ADD_EVENTS',
+        calendarEvents: getEventsFormatted(data.user.eventsCreatedByUser),
+      });
+    }
   }, [data]);
   return (
     <section className="calendar-section">
