@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
-import FullCalendar from '@fullcalendar/react';
+import FullCalendar, { EventDropArg } from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 
 import UserContext from '../../contexts/UserContext';
 import { GET_EVENTS_CREATED_BY_USER_AUTHENTICATED } from '../../queries/userQueries';
+import { UPDATE_EVENT_BY_ID } from '../../queries/calendarEventQueries';
 import {
   EventFromDataInterface,
   EventFormated,
@@ -26,18 +27,29 @@ const getEventsFormatted = (
   return formatedEventsArray;
 };
 
-const eventDatasOnDragStop = (eventInfo: any) => {
-  console.log('dragStop : ', eventInfo);
-};
-
 const CalendarCtnr = (): JSX.Element => {
   const userLoggedIn = useContext(UserContext);
   const [eventsArrayFormated, setEventsArrayFormated] = useState<
     EventFormated[]
   >([]);
+
   const { data } = useQuery(GET_EVENTS_CREATED_BY_USER_AUTHENTICATED, {
     variables: { id: userLoggedIn.state.userLoggedInDetails?.id },
   });
+
+  const [updateCalendarEvent] = useMutation(UPDATE_EVENT_BY_ID);
+
+  const eventDatasOnDragStop = async (eventInfo: EventDropArg) => {
+    const eventUpdated = eventInfo.event;
+
+    await updateCalendarEvent({
+      variables: {
+        id: eventUpdated._def.publicId,
+        eventStart: eventUpdated._instance?.range.start,
+        eventEnd: eventUpdated._instance?.range.start,
+      },
+    });
+  };
 
   useEffect(() => {
     if (data)
