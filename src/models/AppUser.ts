@@ -21,11 +21,11 @@ export default class AppUser extends BaseEntity {
   id!: string;
 
   @Column()
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   firstname!: string;
 
   @Column()
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   lastname!: string;
 
   @Column()
