@@ -2,17 +2,20 @@ import React from 'react';
 
 import ChannelsListCpnt from '../../components/channels-list-cpnt/ChannelsListCpnt';
 import useSubscribeToNewChannel from '../../hooks/useSubscribeToNewChannel';
+import { userLoggedInProps } from '../../interfaces/userInterface';
 
 export type ChannelsCtnrProps = {
   isRightAsideOpen: boolean;
   toggleRightAside: () => void;
+  user: userLoggedInProps;
 };
 
 const ChannelsCtnr = ({
   isRightAsideOpen,
   toggleRightAside,
+  user,
 }: ChannelsCtnrProps): JSX.Element => {
-  const { loading, error, data } = useSubscribeToNewChannel();
+  const { loading, error, data } = useSubscribeToNewChannel(user.id);
 
   return (
     <div className="channels-ctnr">
