@@ -36,7 +36,7 @@ const CalendarEventFormCpnt = ({
       eventAllDay,
       eventContent,
     }) => {
-      await createCalendarEvent({
+      const result = await createCalendarEvent({
         variables: {
           eventTitle,
           eventStart: `${eventStart} ${eventStartTime}`,
