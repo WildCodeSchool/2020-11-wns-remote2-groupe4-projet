@@ -48,7 +48,6 @@ const CalendarEventFormCpnt = ({
             eventContent,
           },
         });
-        console.log({ result });
         if (result) refetch();
         closeCalendarForm();
       } catch (error) {
