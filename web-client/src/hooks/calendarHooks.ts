@@ -26,6 +26,7 @@ const getEventsFormatted = (
 type useDisplayCalendarEventsReturnType = {
   eventsArrayFormated: EventFormated[];
   loading: boolean;
+  refetch: () => void;
 };
 
 export const useDisplayCalendarEvents = (): useDisplayCalendarEventsReturnType => {
@@ -33,9 +34,12 @@ export const useDisplayCalendarEvents = (): useDisplayCalendarEventsReturnType =
   const [eventsArrayFormated, setEventsArrayFormated] = useState<
     EventFormated[]
   >([]);
-  const { data, loading } = useQuery(GET_EVENTS_CREATED_BY_USER_AUTHENTICATED, {
-    variables: { id: userLoggedIn.state.userLoggedInDetails?.id },
-  });
+  const { data, loading, refetch } = useQuery(
+    GET_EVENTS_CREATED_BY_USER_AUTHENTICATED,
+    {
+      variables: { id: userLoggedIn.state.userLoggedInDetails?.id },
+    }
+  );
 
   useEffect(() => {
     if (data) {
@@ -43,5 +47,5 @@ export const useDisplayCalendarEvents = (): useDisplayCalendarEventsReturnType =
     }
   }, [data]);
 
-  return { eventsArrayFormated, loading };
+  return { eventsArrayFormated, loading, refetch };
 };
