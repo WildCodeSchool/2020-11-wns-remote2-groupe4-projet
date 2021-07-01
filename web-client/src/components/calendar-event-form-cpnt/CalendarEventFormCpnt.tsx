@@ -1,6 +1,7 @@
 import { useMutation } from '@apollo/client';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDisplayCalendarEvents } from '../../hooks/calendarHooks';
 
 import { CREATE_NEW_EVENT } from '../../queries/calendarEventQueries';
 
@@ -25,6 +26,7 @@ const CalendarEventFormCpnt = ({
 }: CalendarEventFormCpntProps): JSX.Element => {
   const { register, handleSubmit } = useForm<CalendarFormData>({});
   const [createCalendarEvent] = useMutation(CREATE_NEW_EVENT);
+  const { refetch } = useDisplayCalendarEvents();
 
   const submitNewEvent = handleSubmit(
     async ({
@@ -36,16 +38,21 @@ const CalendarEventFormCpnt = ({
       eventAllDay,
       eventContent,
     }) => {
-      await createCalendarEvent({
-        variables: {
-          eventTitle,
-          eventStart: `${eventStart} ${eventStartTime}`,
-          eventEnd: `${eventEnd} ${eventEndTime}`,
-          eventAllDay,
-          eventContent,
-        },
-      });
-      closeCalendarForm();
+      try {
+        const result = await createCalendarEvent({
+          variables: {
+            eventTitle,
+            eventStart: `${eventStart} ${eventStartTime}`,
+            eventEnd: `${eventEnd} ${eventEndTime}`,
+            eventAllDay,
+            eventContent,
+          },
+        });
+        if (result) refetch();
+        closeCalendarForm();
+      } catch (error) {
+        console.log(error);
+      }
     }
   );
 

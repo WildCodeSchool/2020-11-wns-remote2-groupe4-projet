@@ -1,4 +1,5 @@
 export type EventFromDataInterface = {
+  id: string;
   eventAllDay: boolean;
   eventContent: string;
   eventStart: Date;
@@ -7,8 +8,10 @@ export type EventFromDataInterface = {
 };
 
 export type EventFormated = {
+  id: string;
   title: string;
   start: Date;
   end: Date;
+  eventContent: string;
   allDay: boolean;
 };

@@ -16,7 +16,7 @@ const useSubscribeToNewChannel = (): UseSubscribeToNewChannelReturn => {
     UserData,
     UserParams
   >(GET_USER_CHANNELS, {
-    variables: { id: '8' },
+    variables: { id: '1' },
   });
 
   const [isSubscribedToNewChannel, setIsSubscribedToNewChannel] = useState(
@@ -29,7 +29,7 @@ const useSubscribeToNewChannel = (): UseSubscribeToNewChannelReturn => {
         // Subscription to execute
         document: SUBSCRIBE_TO_NEW_CHANNEL,
         // Variables to pass when executing subscription
-        variables: { userId: '8' },
+        variables: { userId: '1' },
         // Tells how to combine query's currently cached result with subscriptionData pushed by Graphql server
         updateQuery: (prev, { subscriptionData }) => {
           if (!subscriptionData.data) return prev;
