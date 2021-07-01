@@ -23,3 +23,21 @@ export class CreateCalendarEventInput {
   @Field()
   eventAllDay!: boolean;
 }
+
+@InputType()
+export class UpdateCalendarEventInput {
+  @Field({ nullable: true })
+  eventTitle?: string;
+
+  @Field({ nullable: true })
+  eventStart?: Date;
+
+  @Field({ nullable: true })
+  eventEnd?: Date;
+
+  @Field({ nullable: true })
+  eventContent?: string;
+
+  @Field({ nullable: true })
+  eventAllDay?: boolean;
+}

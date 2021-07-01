@@ -1,6 +1,9 @@
 import { Resolver, Query, Mutation, Arg, Ctx } from 'type-graphql';
 import CalendarEvent from '../models/CalendarEvent';
-import { CreateCalendarEventInput } from '../inputs/CalendarEventInput';
+import {
+  CreateCalendarEventInput,
+  UpdateCalendarEventInput,
+} from '../inputs/CalendarEventInput';
 import AppUser from '../models/AppUser';
 
 @Resolver()
@@ -26,6 +29,20 @@ export default class CalendarEventResolver {
     calendarEvent.author = Promise.resolve(user);
     await calendarEvent.save();
     return calendarEvent;
+  }
+
+  @Mutation(() => CalendarEvent)
+  async updateCalendarEvent(
+    @Arg('id') id: string,
+    @Arg('data') data: UpdateCalendarEventInput
+  ): Promise<CalendarEvent | undefined> {
+    const eventCalendar = await CalendarEvent.findOne(id);
+    if (!eventCalendar) throw new Error("There's no event with this id");
+
+    Object.assign(eventCalendar, data);
+
+    await eventCalendar.save();
+    return eventCalendar;
   }
 
   @Mutation(() => [CalendarEvent])
