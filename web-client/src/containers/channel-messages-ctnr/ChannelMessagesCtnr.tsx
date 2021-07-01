@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React, { ChangeEvent, FormEvent, useContext, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,9 +13,13 @@ import { Message } from '../../interfaces/messageInterface';
 import ChannelContext from '../../contexts/ChannelContext';
 import AutosizeTextareaCpnt from '../../components/autosize-textarea-cpnt/AutosizeTextareaCpnt';
 import { CREATE_CHANNEL_MESSAGES } from '../../mutations/messageMutation';
+import useSubscribeToNewChannelMessage from '../../hooks/useSubscribeToNewChannelMessage';
 
 const ChannelMessagesCtnr = (): JSX.Element => {
   const channelContext = useContext(ChannelContext);
+  const { loading, error, data } = useSubscribeToNewChannelMessage(
+    channelContext.channelState.currentChannel!.id
+  );
   const [createChannelMessage] = useMutation(CREATE_CHANNEL_MESSAGES);
 
   const [textareaValue, setTextareaValue] = useState('');
@@ -74,8 +79,8 @@ const ChannelMessagesCtnr = (): JSX.Element => {
 
       <div className="cm-content-wrapper">
         <ul className="cmcw-ul">
-          {channelContext.channelState.currentChannel?.messages?.map(
-            (m: Message, index, arr) => {
+          {data &&
+            data.messagesByChannelId.map((m: Message, index, arr) => {
               if (
                 index >= 1 &&
                 JSON.stringify(m.author) ===
@@ -84,8 +89,7 @@ const ChannelMessagesCtnr = (): JSX.Element => {
                 return <MessageCpnt key={m.id} message={m} />;
               }
               return <MessageCpnt key={m.id} message={m} hasHeader={true} />;
-            }
-          )}
+            })}
         </ul>
 
         <form className="cmcw-form" onSubmit={onSubmitMessage}>

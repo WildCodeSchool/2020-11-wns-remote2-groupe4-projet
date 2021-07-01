@@ -1,17 +1,24 @@
 import { gql } from '@apollo/client';
 
-export const GET_CHANNEL_MESSAGES = gql`
-  query GetChannelMessages($id: String!) {
+export const GET_CHANNEL = gql`
+  query GetChannel($id: String!) {
     channel(id: $id) {
+      id
+      title
       messages {
         id
-        content
         sentAt
+        content
         author {
           id
           firstname
           lastname
         }
+      }
+      users {
+        id
+        firstname
+        lastname
       }
     }
   }
