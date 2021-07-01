@@ -18,7 +18,8 @@ const AvatarCpnt = ({ isLeftAsideOpen }: AvatarProps): JSX.Element => {
         data-testid="avatar-name"
         className={`a-name ${!isLeftAsideOpen && 'hide-name'}`}
       >
-        {`${userLoggedIn.state.userLoggedInDetails?.firstname}
+        {userLoggedIn.state.userLoggedInDetails &&
+          `${userLoggedIn.state.userLoggedInDetails?.firstname}
         ${userLoggedIn.state.userLoggedInDetails?.lastname}`}
       </h3>
     </div>
