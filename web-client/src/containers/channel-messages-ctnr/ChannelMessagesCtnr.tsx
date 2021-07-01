@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import React, { ChangeEvent, FormEvent, useContext, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,8 +17,10 @@ import useSubscribeToNewChannelMessage from '../../hooks/useSubscribeToNewChanne
 
 const ChannelMessagesCtnr = (): JSX.Element => {
   const channelContext = useContext(ChannelContext);
+  const currentChannel = channelContext.channelState.currentChannel;
+  if (!currentChannel) throw new Error('No current channel...');
   const { loading, error, data } = useSubscribeToNewChannelMessage(
-    channelContext.channelState.currentChannel!.id
+    currentChannel.id
   );
   const [createChannelMessage] = useMutation(CREATE_CHANNEL_MESSAGES);
 
