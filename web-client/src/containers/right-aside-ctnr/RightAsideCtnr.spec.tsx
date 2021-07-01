@@ -3,12 +3,25 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 
 import RightAsideCtnr from './RightAsideCtnr';
+import UserContext from '../../contexts/UserContext';
+
+const userInitialState = {
+  userLoggedInDetails: {
+    id: '1',
+    firstname: 'John',
+    lastname: 'Doe',
+  },
+};
 
 describe('RightAsideCtnr by default', () => {
   beforeEach(() => {
     render(
       <MockedProvider>
-        <RightAsideCtnr />
+        <UserContext.Provider
+          value={{ state: userInitialState, dispatch: () => null }}
+        >
+          <RightAsideCtnr />
+        </UserContext.Provider>
       </MockedProvider>
     );
   });
@@ -43,7 +56,11 @@ describe('When arrow button on RightAsideCtnr is clicked for the first time', ()
   beforeEach(() => {
     render(
       <MockedProvider>
-        <RightAsideCtnr />
+        <UserContext.Provider
+          value={{ state: userInitialState, dispatch: () => null }}
+        >
+          <RightAsideCtnr />
+        </UserContext.Provider>
       </MockedProvider>
     );
     const arrowButton = screen.getByTestId('ArrowIconRightAsideCtnr');
