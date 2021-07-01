@@ -3,7 +3,8 @@
 
 .right-aside {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: auto;
   width: v.$aside-close-default;
   background-color: v.$secondary;
   display: flex;
