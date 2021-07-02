@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import ChannelsListCpnt from './ChannelsListCpnt';
 import { Channel } from '../../interfaces/channelInterface';
+import { MockedProvider } from '@apollo/client/testing';
 
 const mockChannels: Channel[] = [
   {
@@ -123,11 +124,14 @@ const mockChannels: Channel[] = [
 describe('When RightAsideCtnr is open', () => {
   beforeEach(() => {
     render(
-      <ChannelsListCpnt
-        title="Public"
-        channels={mockChannels}
-        isRightAsideOpen={true}
-      />
+      <MockedProvider>
+        <ChannelsListCpnt
+          title="Public"
+          channels={mockChannels}
+          isRightAsideOpen={true}
+          toggleRightAside={() => console.log('Hi')}
+        />
+      </MockedProvider>
     );
   });
 
@@ -143,11 +147,14 @@ describe('When RightAsideCtnr is open', () => {
 describe('When RightAsideCtnr is closed', () => {
   beforeEach(() => {
     render(
-      <ChannelsListCpnt
-        title="Public"
-        channels={mockChannels}
-        isRightAsideOpen={false}
-      />
+      <MockedProvider>
+        <ChannelsListCpnt
+          title="Public"
+          channels={mockChannels}
+          isRightAsideOpen={false}
+          toggleRightAside={() => console.log('Hi')}
+        />
+      </MockedProvider>
     );
   });
 
@@ -163,11 +170,14 @@ describe('When RightAsideCtnr is closed', () => {
 describe('When caret icon is clicked for the first time', () => {
   beforeEach(() => {
     render(
-      <ChannelsListCpnt
-        title="Public"
-        channels={mockChannels}
-        isRightAsideOpen={true}
-      />
+      <MockedProvider>
+        <ChannelsListCpnt
+          title="Public"
+          channels={mockChannels}
+          isRightAsideOpen={true}
+          toggleRightAside={() => console.log('Hi')}
+        />
+      </MockedProvider>
     );
     const caretButton = screen.getByRole('wrapper-title-channels-list');
     fireEvent.click(caretButton);
