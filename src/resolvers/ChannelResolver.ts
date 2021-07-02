@@ -19,7 +19,7 @@ type NewChannelPayload = {
 };
 
 type NewChannelForUserPayload = {
-  users: AppUser[];
+  users: AppUserIdInput[];
   channel: Channel;
 };
 
@@ -54,7 +54,7 @@ export default class ChannelResolver {
 
       const channel = new Channel();
       channel.title = channelInput.title;
-      channel.users = Promise.resolve(users);
+      channel.users = Promise.resolve([{ id: user.id }, ...users]);
 
       await channel.save();
 
@@ -100,7 +100,7 @@ export default class ChannelResolver {
   @Mutation(() => Channel)
   async createChannelWithFilteredSub(
     @Arg('channelInput') channelInput: CreateChannelInput,
-    @Arg('users', () => [AppUserIdInput]) users: AppUser[],
+    @Arg('users', () => [AppUserIdInput]) users: AppUserIdInput[],
     @Ctx() { user }: { user: AppUser | null },
     @PubSub('NEW_CHANNEL_FOR_USER')
     publishNewChannelForUser: Publisher<NewChannelForUserPayload>
@@ -110,11 +110,11 @@ export default class ChannelResolver {
 
       const channel = new Channel();
       channel.title = channelInput.title;
-      channel.users = Promise.resolve(users);
+      channel.users = Promise.resolve([{ id: user.id }, ...users]);
 
       await channel.save();
 
-      publishNewChannelForUser({ users, channel });
+      publishNewChannelForUser({ users: [{ id: user.id }, ...users], channel });
 
       return channel;
     } catch (err) {
@@ -134,7 +134,7 @@ export default class ChannelResolver {
     topics: 'NEW_CHANNEL_FOR_USER',
     filter: ({ payload, args }) => {
       const isUserInChannelsUserList = payload.users.some(
-        (payloadUser: AppUser) => payloadUser.id === args.userId
+        (payloadUser: AppUserIdInput) => payloadUser.id === args.userId
       );
 
       return isUserInChannelsUserList;
