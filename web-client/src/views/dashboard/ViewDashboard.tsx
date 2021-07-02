@@ -12,7 +12,9 @@ import ChannelContext from '../../contexts/ChannelContext';
 
 const ViewDashboard = (): JSX.Element => {
   const [isCalendarFormDisplayed, setIsCalendarFormDisplayed] = useState(false);
-  const { loading, data } = useQuery(AM_I_AUTHENTICATED);
+  const { loading, data } = useQuery(AM_I_AUTHENTICATED, {
+    fetchPolicy: 'no-cache',
+  });
   const userLoggedIn = useContext(UserContext);
   const channelContext = useContext(ChannelContext);
 
