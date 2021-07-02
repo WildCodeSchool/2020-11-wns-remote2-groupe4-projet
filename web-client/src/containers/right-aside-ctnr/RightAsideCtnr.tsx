@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 import ChatSearchBar from '../../components/chat-searchbar-cpnt/ChatSearchBar';
 import ChannelsCtnr from '../channels-ctnr/ChannelsCtnr';
+import UserContext from '../../contexts/UserContext';
 
 const RightAsideCtnr = (): JSX.Element => {
+  const userLoggedIn = useContext(UserContext);
   const [isRightAsideOpen, setIsRightAsideOpen] = useState(true);
 
   const toggleRightAside = (): void => {
@@ -24,10 +26,13 @@ const RightAsideCtnr = (): JSX.Element => {
         Chat
       </h3>
       {isRightAsideOpen && <ChatSearchBar />}
-      <ChannelsCtnr
-        isRightAsideOpen={isRightAsideOpen}
-        toggleRightAside={toggleRightAside}
-      />
+      {userLoggedIn.state.userLoggedInDetails && (
+        <ChannelsCtnr
+          isRightAsideOpen={isRightAsideOpen}
+          toggleRightAside={toggleRightAside}
+          user={userLoggedIn.state.userLoggedInDetails}
+        />
+      )}
     </aside>
   );
 };

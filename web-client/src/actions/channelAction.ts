@@ -9,4 +9,5 @@ export type ChannelAction =
   | {
       type: 'CLOSE_CURRENT_CHANNEL';
       isChannelOpen: boolean;
+      currentChannel: null;
     };

@@ -2,7 +2,7 @@ import { ChannelAction } from '../actions/channelAction';
 import { Channel } from '../interfaces/channelInterface';
 
 type ChannelState = {
-  currentChannel?: Channel | null;
+  currentChannel: Channel | null;
   isChannelOpen?: boolean;
 };
 
@@ -18,7 +18,7 @@ const channelReducer = (
         isChannelOpen: true,
       };
     case 'CLOSE_CURRENT_CHANNEL':
-      return { isChannelOpen: false };
+      return { isChannelOpen: false, currentChannel: null };
     default:
       return state;
   }

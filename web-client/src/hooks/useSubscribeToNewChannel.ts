@@ -11,12 +11,14 @@ import {
 import { GET_USER_CHANNELS } from '../queries/userQueries';
 import { SUBSCRIBE_TO_NEW_CHANNEL } from '../subscriptions/channelSubscription';
 
-const useSubscribeToNewChannel = (): UseSubscribeToNewChannelReturn => {
+const useSubscribeToNewChannel = (
+  userId: string
+): UseSubscribeToNewChannelReturn => {
   const { loading, error, data, subscribeToMore } = useQuery<
     UserData,
     UserParams
   >(GET_USER_CHANNELS, {
-    variables: { id: '1' },
+    variables: { id: userId },
   });
 
   const [isSubscribedToNewChannel, setIsSubscribedToNewChannel] = useState(
@@ -29,7 +31,7 @@ const useSubscribeToNewChannel = (): UseSubscribeToNewChannelReturn => {
         // Subscription to execute
         document: SUBSCRIBE_TO_NEW_CHANNEL,
         // Variables to pass when executing subscription
-        variables: { userId: '1' },
+        variables: { userId: userId },
         // Tells how to combine query's currently cached result with subscriptionData pushed by Graphql server
         updateQuery: (prev, { subscriptionData }) => {
           if (!subscriptionData.data) return prev;

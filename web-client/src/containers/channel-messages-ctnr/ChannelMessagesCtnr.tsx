@@ -1,4 +1,6 @@
-import React, { useContext } from 'react';
+
+import React, { ChangeEvent, FormEvent, useContext, useState } from 'react';
+import { useMutation } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUserPlus,
@@ -10,9 +12,19 @@ import MessageCpnt from '../../components/message-cpnt/MessageCpnt';
 import { Message } from '../../interfaces/messageInterface';
 import ChannelContext from '../../contexts/ChannelContext';
 import AutosizeTextareaCpnt from '../../components/autosize-textarea-cpnt/AutosizeTextareaCpnt';
+import { CREATE_CHANNEL_MESSAGES } from '../../mutations/messageMutation';
+import useSubscribeToNewChannelMessage from '../../hooks/useSubscribeToNewChannelMessage';
 
 const ChannelMessagesCtnr = (): JSX.Element => {
   const channelContext = useContext(ChannelContext);
+  const currentChannel = channelContext.channelState.currentChannel;
+  if (!currentChannel) throw new Error('No current channel...');
+  const { loading, error, data } = useSubscribeToNewChannelMessage(
+    currentChannel.id
+  );
+  const [createChannelMessage] = useMutation(CREATE_CHANNEL_MESSAGES);
+
+  const [textareaValue, setTextareaValue] = useState('');
 
   const handleAddUserToChannel = () => {
     // TODO
@@ -23,12 +35,28 @@ const ChannelMessagesCtnr = (): JSX.Element => {
     channelContext.channelDispatch({
       type: 'CLOSE_CURRENT_CHANNEL',
       isChannelOpen: false,
+      currentChannel: null,
     });
   };
 
-  const onSubmitMessage = () => {
-    // TODO
-    console.log('hi');
+  const handleTextareaInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setTextareaValue(e.target.value);
+  };
+
+  const onSubmitMessage = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      await createChannelMessage({
+        variables: {
+          channelId: channelContext.channelState.currentChannel?.id,
+          content: textareaValue,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setTextareaValue('');
+    }
   };
 
   return (
@@ -53,8 +81,8 @@ const ChannelMessagesCtnr = (): JSX.Element => {
 
       <div className="cm-content-wrapper">
         <ul className="cmcw-ul">
-          {channelContext.channelState.currentChannel?.messages?.map(
-            (m: Message, index, arr) => {
+          {data &&
+            data.messagesByChannelId.map((m: Message, index, arr) => {
               if (
                 index >= 1 &&
                 JSON.stringify(m.author) ===
@@ -63,12 +91,14 @@ const ChannelMessagesCtnr = (): JSX.Element => {
                 return <MessageCpnt key={m.id} message={m} />;
               }
               return <MessageCpnt key={m.id} message={m} hasHeader={true} />;
-            }
-          )}
+            })}
         </ul>
 
         <form className="cmcw-form" onSubmit={onSubmitMessage}>
-          <AutosizeTextareaCpnt />
+          <AutosizeTextareaCpnt
+            onChange={handleTextareaInputChange}
+            value={textareaValue}
+          />
           <div className="cmcwf-footer">
             <button className="cmcwff-send-button">
               <FontAwesomeIcon

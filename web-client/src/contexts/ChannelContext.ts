@@ -5,7 +5,7 @@ import { Channel } from '../interfaces/channelInterface';
 
 export type ChannelInitialState = {
   isChannelOpen?: boolean;
-  currentChannel?: Channel | null;
+  currentChannel: Channel | null;
 };
 
 // initial state declared
