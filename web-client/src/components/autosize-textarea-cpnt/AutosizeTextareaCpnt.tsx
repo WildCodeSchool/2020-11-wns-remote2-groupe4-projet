@@ -27,7 +27,6 @@ const AutosizeTextareaCpnt = ({
       rows={1}
       placeholder="Message à envoyer..."
       style={{ height: textareaHeight }}
-      defaultValue={value}
       value={value}
       onChange={handleChange}
     />
