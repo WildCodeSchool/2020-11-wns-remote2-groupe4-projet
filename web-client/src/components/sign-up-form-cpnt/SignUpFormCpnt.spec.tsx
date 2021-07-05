@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { MockedProvider, MockedResponse } from '@apollo/client/testing';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { MockedProvider } from '@apollo/client/testing';
 
 import SignUpFormCpnt, { CREATE_USER } from './SignUpFormCpnt';
 

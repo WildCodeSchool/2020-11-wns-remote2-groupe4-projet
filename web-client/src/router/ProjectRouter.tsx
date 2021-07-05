@@ -10,7 +10,9 @@ import MainCtnr from '../containers/MainCtnr';
 import { AM_I_AUTHENTICATED } from '../queries/userQueries';
 
 const ProjectRouter = (): JSX.Element => {
-  const { loading, data } = useQuery(AM_I_AUTHENTICATED);
+  const { loading, data } = useQuery(AM_I_AUTHENTICATED, {
+    fetchPolicy: 'no-cache',
+  });
   const [isAuthenticatedAfterSignIn, setIsAuthenticatedAfterSignIn] = useState(
     false
   );

@@ -12,7 +12,7 @@ import Channel from './Channel';
 @Entity()
 @ObjectType()
 export default class Message extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
   id!: string;
 

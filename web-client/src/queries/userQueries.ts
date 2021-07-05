@@ -50,3 +50,13 @@ export const GET_EVENTS_CREATED_BY_USER_AUTHENTICATED = gql`
     }
   }
 `;
+
+export const GET_ALL_USERS = gql`
+  query Users {
+    users {
+      id
+      firstname
+      lastname
+    }
+  }
+`;

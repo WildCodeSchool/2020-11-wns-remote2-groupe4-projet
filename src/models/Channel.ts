@@ -14,7 +14,7 @@ import Message from './Message';
 @Entity()
 @ObjectType()
 export default class Channel extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
   id!: string;
 
@@ -33,5 +33,5 @@ export default class Channel extends BaseEntity {
   })
   @JoinTable()
   @Field(() => [AppUser])
-  users!: Promise<AppUser[]>;
+  users!: Promise<{ id: string }[]>;
 }

@@ -16,7 +16,7 @@ import CalendarEvent from './CalendarEvent';
 @Entity()
 @ObjectType()
 export default class AppUser extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
   id!: string;
 
