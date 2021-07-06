@@ -276,7 +276,7 @@
 }
 @media only screen and (max-width: 1200px) {
   .right-aside {
-    max-height: 100vh;
+    max-height: calc(100vh - 60px);
     position: absolute;
     top: 60px;
     right: 0;
@@ -389,9 +389,8 @@
   border-radius: 5px 0 0 5px;
   width: 80%;
 }
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 1200px) {
   .channel-messages {
-    top: 0;
     right: unset;
     width: 100vw;
   }

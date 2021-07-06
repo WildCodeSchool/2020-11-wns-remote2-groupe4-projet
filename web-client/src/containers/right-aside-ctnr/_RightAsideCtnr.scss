@@ -15,7 +15,7 @@
   transition: width 350ms ease-in-out;
 
   @include m.bpFactory($max: v.$l) {
-    max-height: 100vh;
+    max-height: calc(100vh - #{v.$header-mobile-height});
     position: absolute;
     top: v.$header-mobile-height;
     right: 0;

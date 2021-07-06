@@ -17,8 +17,8 @@
   border-radius: 5px 0 0 5px;
   width: 80%;
 
-  @include m.bpFactory($max: v.$s) {
-    top: 0;
+  @include m.bpFactory($max: v.$l) {
+    //top: 0;
     right: unset;
     width: 100vw;
   }
