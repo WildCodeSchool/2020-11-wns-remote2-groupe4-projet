@@ -5,16 +5,19 @@
 /* ************************** */
 
 @use '../../styles/variables.scss'as v;
+@use '../../styles/mixins' as m;
 
 .main-dashboard {
   box-sizing: border-box;
   position: relative;
-  height: 100vh;
-  overflow: scroll;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include m.bpFactory($max: v.$l) {
+    padding-top: calc(#{v.$header-mobile-height} + 25px);
+  }
 
   .md-button-form-wrapper {
     position: relative;

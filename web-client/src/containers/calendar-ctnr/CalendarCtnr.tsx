@@ -42,6 +42,7 @@ const CalendarCtnr = (): JSX.Element => {
           weekends={false}
           events={eventsArrayFormated}
           eventDrop={eventDatasOnDragStop}
+          handleWindowResize={true}
         />
       )}
     </section>
