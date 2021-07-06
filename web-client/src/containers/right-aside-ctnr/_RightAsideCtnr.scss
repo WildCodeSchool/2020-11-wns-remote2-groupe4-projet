@@ -32,18 +32,6 @@
   @include m.bpFactory($min: v.$l) {
     &.ra-visible {
       width: v.$aside-open-default;
-  
-      // @include m.bpFactory($max: v.$l) {
-      //   width: v.$aside-m;
-      // }
-  
-      // @include m.bpFactory($max: v.$m) {
-      //   width: v.$aside-s;
-      // }
-  
-      // @include m.bpFactory($max: v.$s) {
-      //   width: 80%;
-      // }
     }
   }
 
