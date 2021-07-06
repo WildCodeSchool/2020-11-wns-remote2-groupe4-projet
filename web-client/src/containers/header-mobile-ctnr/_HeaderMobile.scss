@@ -6,7 +6,7 @@
   box-sizing: border-box;
   padding: 5px 15px;
   position: fixed;
-  z-index: 100;
+  z-index: 150;
   top: 0;
   left: 0;
   right: 0;
@@ -75,7 +75,7 @@
 
 .menu-mobile {
   position: fixed;
-  z-index: 100;
+  z-index: 150;
   top: v.$header-mobile-height;
   box-sizing: border-box;
   width: 100%;

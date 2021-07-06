@@ -5,9 +5,11 @@ import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 import ChatSearchBar from '../../components/chat-searchbar-cpnt/ChatSearchBar';
 import ChannelsCtnr from '../channels-ctnr/ChannelsCtnr';
 import UserContext from '../../contexts/UserContext';
+import RightAsideCtnrContext from '../../contexts/RightAsideCtnrContext';
 
 const RightAsideCtnr = (): JSX.Element => {
   const userLoggedIn = useContext(UserContext);
+  const rightAsideCtnrContext = useContext(RightAsideCtnrContext)
   const [isRightAsideOpen, setIsRightAsideOpen] = useState(true);
 
   const toggleRightAside = (): void => {
@@ -15,7 +17,7 @@ const RightAsideCtnr = (): JSX.Element => {
   };
 
   return (
-    <aside className={`right-aside ${isRightAsideOpen && 'ra-visible'}`}>
+    <aside className={`right-aside ${isRightAsideOpen && 'ra-visible'} ${rightAsideCtnrContext.rightAsideCtnrState.isRightAsideCtnrOpen && 'ra-mobile-visible'}`}>
       <FontAwesomeIcon
         className={`ra-arrow-left ${!isRightAsideOpen && 'rotate-right'}`}
         icon={faArrowCircleRight}

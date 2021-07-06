@@ -110,6 +110,8 @@
 .main-dashboard {
   box-sizing: border-box;
   position: relative;
+  height: 100vh;
+  overflow: scroll;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -136,6 +138,14 @@
 .main-dashboard .md-button-form-wrapper.large {
   width: 80%;
   overflow: visible;
+}
+@media only screen and (max-width: 1200px) {
+  .main-dashboard .md-button-form-wrapper {
+    width: 90%;
+  }
+  .main-dashboard .md-button-form-wrapper.large {
+    width: 90%;
+  }
 }
 .main-dashboard .md-button-form-wrapper .mdbfw-open-form-button {
   box-sizing: border-box;
@@ -176,6 +186,11 @@
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr auto;
+}
+@media only screen and (max-width: 1200px) {
+  .main-ctrn {
+    grid-template-columns: inherit;
+  }
 }
 
 .left-aside {
@@ -247,7 +262,9 @@
 }
 
 .right-aside {
+  box-sizing: border-box;
   position: relative;
+  z-index: 100;
   height: 100vh;
   overflow: auto;
   width: 100px;
@@ -257,34 +274,24 @@
   align-items: center;
   transition: width 350ms ease-in-out;
 }
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 1200px) {
   .right-aside {
     max-height: 100vh;
     position: absolute;
-    top: 0;
+    top: 60px;
     right: 0;
     width: 0;
+  }
+  .right-aside.ra-mobile-visible {
+    width: 80%;
   }
 }
 .right-aside > * + * {
   margin-top: 1.5rem;
 }
-.right-aside.ra-visible {
-  width: 350px;
-}
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 1200px) {
   .right-aside.ra-visible {
-    width: 300px;
-  }
-}
-@media only screen and (max-width: 980px) {
-  .right-aside.ra-visible {
-    width: 250px;
-  }
-}
-@media only screen and (max-width: 760px) {
-  .right-aside.ra-visible {
-    width: 80%;
+    width: 350px;
   }
 }
 .right-aside .ra-title {
@@ -306,6 +313,11 @@
   top: 20px;
   left: 10px;
   transition: transform 500ms ease-in-out;
+}
+@media only screen and (max-width: 1200px) {
+  .right-aside .ra-arrow-left {
+    display: none;
+  }
 }
 @media only screen and (max-width: 760px) {
   .right-aside .ra-arrow-left {
@@ -333,11 +345,13 @@
 /* ************************** */
 .calendar-section {
   width: 80%;
+  margin-top: 100px;
   background-color: #cbf3f0;
 }
 @media only screen and (max-width: 1200px) {
   .calendar-section {
     width: 90%;
+    margin-top: 0;
   }
 }
 .calendar-section .fc {
@@ -360,10 +374,12 @@
 }
 
 .channel-messages {
+  box-sizing: border-box;
   position: absolute;
   top: 0;
   right: 0;
   height: 100vh;
+  padding-top: 60px;
   display: grid;
   grid-template-rows: max-content 1fr;
   background-color: #e0e0e0;
@@ -469,7 +485,7 @@
   box-sizing: border-box;
   padding: 5px 15px;
   position: fixed;
-  z-index: 100;
+  z-index: 150;
   top: 0;
   left: 0;
   right: 0;
@@ -529,7 +545,7 @@
 
 .menu-mobile {
   position: fixed;
-  z-index: 100;
+  z-index: 150;
   top: 60px;
   box-sizing: border-box;
   width: 100%;

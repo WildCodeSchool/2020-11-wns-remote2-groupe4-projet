@@ -9,35 +9,31 @@
 
 .calendar-section {
   width: 80%;
+  margin-top: 100px;
   background-color: v.$ternary-hover;
-  
+
   @include m.bpFactory($max: v.$l) {
     width: 90%;
+    margin-top: 0;
+  }
 
-    .fc {
-        
-        
-    }
-}
-
-.fc {
+  .fc {
     height: 800px;
-    
+
     @include m.bpFactory($max: v.$l) {
-        height: 550px;
+      height: 550px;
     }
 
     .fc-toolbar-chunk {
-        @include m.bpFactory($max: v.$l) {
-            font-size: .8rem;
-        }
+      @include m.bpFactory($max: v.$l) {
+        font-size: 0.8rem;
+      }
 
-        h2 {
-            @include m.bpFactory($max: v.$l) {
-                font-size: .9rem;
-            }
+      h2 {
+        @include m.bpFactory($max: v.$l) {
+          font-size: 0.9rem;
         }
+      }
     }
   }
-
 }

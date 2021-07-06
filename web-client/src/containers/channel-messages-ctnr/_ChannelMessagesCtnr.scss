@@ -2,10 +2,12 @@
 @use '../../styles/mixins' as m;
 
 .channel-messages {
+  box-sizing: border-box;
   position: absolute;
   top: 0;
   right: 0;
   height: 100vh;
+  padding-top: v.$header-mobile-height;
   display: grid;
   grid-template-rows: max-content 1fr;
   background-color: v.$secondary;

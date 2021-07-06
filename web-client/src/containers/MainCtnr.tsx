@@ -11,7 +11,7 @@ const MainCtnr = ({ children }: RouteProps): JSX.Element => {
       <HeaderMobileCtnr />
       <LeftAsideCtnr />
       {children}
-      {/* <RightAsideCtnr /> */}
+      <RightAsideCtnr />
     </main>
   );
 };
