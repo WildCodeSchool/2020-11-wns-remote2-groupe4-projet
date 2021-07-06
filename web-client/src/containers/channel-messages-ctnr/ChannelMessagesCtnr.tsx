@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useContext, useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUserPlus,
@@ -13,21 +13,31 @@ import ChannelContext from '../../contexts/ChannelContext';
 import AutosizeTextareaCpnt from '../../components/autosize-textarea-cpnt/AutosizeTextareaCpnt';
 import { CREATE_CHANNEL_MESSAGES } from '../../mutations/messageMutation';
 import useSubscribeToNewChannelMessage from '../../hooks/useSubscribeToNewChannelMessage';
+import { GET_ALL_USERS } from '../../queries/userQueries';
+import AddUserToChannelModalCpnt from '../../components/add-user-to-channel-modal/AddUserToChannelModalCpnt';
 
 const ChannelMessagesCtnr = (): JSX.Element => {
   const channelContext = useContext(ChannelContext);
   const currentChannel = channelContext.channelState.currentChannel;
   if (!currentChannel) throw new Error('No current channel...');
+
   const { loading, error, data } = useSubscribeToNewChannelMessage(
     currentChannel.id
   );
   const [createChannelMessage] = useMutation(CREATE_CHANNEL_MESSAGES);
 
+  const [
+    isModalToAddUSerToChannelOpen,
+    setIsModalToAddUSerToChannelOpen,
+  ] = useState(false);
+  const { data: usersData } = useQuery(GET_ALL_USERS, {
+    fetchPolicy: 'no-cache',
+  });
+
   const [textareaValue, setTextareaValue] = useState('');
 
-  const handleAddUserToChannel = () => {
-    // TODO
-    console.log('hi');
+    const handleAddUserToChannelModal = (): void => {
+    setIsModalToAddUSerToChannelOpen(true);
   };
 
   const handleCloseChannel = () => {
@@ -65,7 +75,7 @@ const ChannelMessagesCtnr = (): JSX.Element => {
         <div className="cmh-button-wrapper">
           <button
             className="cmh-button add-border "
-            onClick={handleAddUserToChannel}
+            onClick={handleAddUserToChannelModal}
           >
             <FontAwesomeIcon icon={faUserPlus} className="cmhb-add-user-icon" />
           </button>
@@ -108,6 +118,14 @@ const ChannelMessagesCtnr = (): JSX.Element => {
           </div>
         </form>
       </div>
+
+      <AddUserToChannelModalCpnt
+        isOpen={isModalToAddUSerToChannelOpen}
+        title="Ajouter un(des) utilisateur(s) au channel"
+        onClose={() => setIsModalToAddUSerToChannelOpen(false)}
+        users={usersData && usersData.users}
+        channel={currentChannel}
+      />
     </div>
   );
 };

@@ -33,6 +33,7 @@
 @use './components/message-cpnt/MessageCpnt.scss';
 @use './components/autosize-textarea-cpnt/AutosizeTextareaCpnt.scss';
 @use './components/add-channel-modal/AddChannelModalCpnt.scss';
+@use './components/add-user-to-channel-modal/AddUserToChannelModalCpnt.scss';
 
 * {
   box-sizing: border-box;
