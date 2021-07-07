@@ -29,3 +29,30 @@ export const ADD_CHANNEL = gql`
     }
   }
 `;
+
+export const ADD_USERS_TO_CHANNEL = gql`
+  mutation AddUsersToChannel(
+    $channelId: String!
+    $usersToAdd: [AppUserIdInput!]!
+  ) {
+    addUsersToChannel(channelId: $channelId, usersToAdd: $usersToAdd) {
+      id
+      title
+      messages {
+        id
+        sentAt
+        content
+        author {
+          id
+          firstname
+          lastname
+        }
+      }
+      users {
+        id
+        firstname
+        lastname
+      }
+    }
+  }
+`;
