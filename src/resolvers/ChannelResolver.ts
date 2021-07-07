@@ -71,7 +71,7 @@ export default class ChannelResolver {
   @Mutation(() => Channel)
   async addUsersToChannel(
     @Arg('channelId') channelId: string,
-    @Arg('usersToAdd', () => [AppUserIdInput]) usersToAdd: AppUser[],
+    @Arg('usersToAdd', () => [AppUserIdInput]) usersToAdd: AppUserIdInput[],
     @Ctx() { user }: { user: AppUser | null }
   ): Promise<Channel> {
     try {

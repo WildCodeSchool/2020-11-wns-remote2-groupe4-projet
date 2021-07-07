@@ -980,6 +980,19 @@
 .add-channel-form .acf-fieldset .acf-wrapper-input > * + * {
   margin-top: 0.5rem;
 }
+.add-channel-form .acf-fieldset .select-input {
+  margin-bottom: 7px;
+}
+.add-channel-form .acf-fieldset .acf-error {
+  font-size: 0.9rem;
+  color: red;
+  font-style: italic;
+}
+@media only screen and (max-width: 760px) {
+  .add-channel-form .acf-fieldset .acf-error {
+    font-size: 0.8rem;
+  }
+}
 
 .acf-button {
   padding: 6px 20px;
@@ -1003,6 +1016,82 @@
   background-color: #cbf3f0;
 }
 .acf-button:focus {
+  outline: none;
+  border: 1.5px solid #49beb7;
+}
+
+.MuiDialogTitle-root {
+  border-bottom: 2px solid #49beb7;
+}
+
+.MuiDialogActions-root {
+  padding: 16px 8px !important;
+}
+
+.add-user-to-channel-form {
+  padding: 20px 0;
+  min-width: 400px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+@media only screen and (max-width: 760px) {
+  .add-user-to-channel-form {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .add-user-to-channel-form {
+    font-size: 0.8rem;
+  }
+}
+.add-user-to-channel-form .aucf-fieldset {
+  border: none;
+}
+.add-user-to-channel-form .aucf-fieldset .aucf-wrapper-input {
+  display: flex;
+  flex-direction: column;
+}
+.add-user-to-channel-form .aucf-fieldset .aucf-wrapper-input > * + * {
+  margin-top: 0.5rem;
+}
+.add-user-to-channel-form .aucf-fieldset .select-input {
+  margin-bottom: 7px;
+}
+.add-user-to-channel-form .aucf-fieldset .aucf-error {
+  font-size: 0.9rem;
+  color: red;
+  font-style: italic;
+}
+@media only screen and (max-width: 760px) {
+  .add-user-to-channel-form .aucf-fieldset .aucf-error {
+    font-size: 0.8rem;
+  }
+}
+
+.aucf-button {
+  padding: 6px 20px;
+  align-self: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+@media only screen and (max-width: 760px) {
+  .aucf-button {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .aucf-button {
+    font-size: 0.8rem;
+  }
+}
+.aucf-button:hover {
+  background-color: #cbf3f0;
+}
+.aucf-button:focus {
   outline: none;
   border: 1.5px solid #49beb7;
 }

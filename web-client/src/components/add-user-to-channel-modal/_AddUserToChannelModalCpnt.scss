@@ -9,7 +9,7 @@
   padding: 16px 8px !important;
 }
 
-.add-channel-form {
+.add-user-to-channel-form {
   padding: 20px 0;
   min-width: 400px;
   box-sizing: border-box;
@@ -25,14 +25,10 @@
     font-size: v.$p-xs;
   }
 
-  & > * + * {
-    margin-top: 1rem;
-  }
-
-  .acf-fieldset {
+  .aucf-fieldset {
     border: none;
 
-    .acf-wrapper-input {
+    .aucf-wrapper-input {
       display: flex;
       flex-direction: column;
 
@@ -45,7 +41,7 @@
       margin-bottom: 7px;
     }
 
-    .acf-error {
+    .aucf-error {
       font-size: v.$p-s;
       color: red;
       font-style: italic;
@@ -57,7 +53,7 @@
   }
 }
 
-.acf-button {
+.aucf-button {
   padding: 6px 20px;
   align-self: center;
   border: none;
