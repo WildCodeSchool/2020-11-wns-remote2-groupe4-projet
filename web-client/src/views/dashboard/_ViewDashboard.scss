@@ -10,7 +10,7 @@
 .main-dashboard {
   box-sizing: border-box;
   position: relative;
-  // height: 100vh;
+  height: 100vh;
   overflow: scroll;
   width: 100%;
   display: flex;
@@ -19,6 +19,8 @@
 
   @include m.bpFactory($max: v.$l) {
     padding-top: calc(#{v.$header-mobile-height} + 25px);
+    overflow: inherit;
+    height: inherit;
   }
 
   .md-button-form-wrapper {

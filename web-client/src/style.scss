@@ -11,6 +11,7 @@
 @use './views/sign-in/ViewSignIn.scss';
 @use './views/sign-up/ViewSignUp.scss';
 @use './views/dashboard/ViewDashboard.scss';
+@use './views/parameters/ViewParameters';
 
 // Containers
 @use './containers/MainCtnr.scss';
@@ -35,6 +36,7 @@
 @use './components/autosize-textarea-cpnt/AutosizeTextareaCpnt.scss';
 @use './components/add-channel-modal/AddChannelModalCpnt.scss';
 @use './components/add-user-to-channel-modal/AddUserToChannelModalCpnt.scss';
+@use './components/update-user-form-cpnt/UpdateUserFormCpnt';
 
 * {
   box-sizing: border-box;

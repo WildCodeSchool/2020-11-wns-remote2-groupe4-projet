@@ -110,6 +110,7 @@
 .main-dashboard {
   box-sizing: border-box;
   position: relative;
+  height: 100vh;
   overflow: scroll;
   width: 100%;
   display: flex;
@@ -119,6 +120,8 @@
 @media only screen and (max-width: 1200px) {
   .main-dashboard {
     padding-top: calc(60px + 25px);
+    overflow: inherit;
+    height: inherit;
   }
 }
 .main-dashboard .md-button-form-wrapper {
@@ -181,6 +184,11 @@
   transform: scale(0.9);
 }
 
+/* ************************** */
+/* ************************** */
+/* ***** VIEW PARAMETERS **** */
+/* ************************** */
+/* ************************** */
 .main-ctrn {
   position: relative;
   display: grid;
@@ -637,6 +645,9 @@
 }
 .menu .m-item-wrapper .miw-item:first-child {
   border-top: 1px solid #e0e0e0;
+}
+.menu .m-item-wrapper a {
+  text-decoration: none;
 }
 .menu .m-item-wrapper .miw-item {
   padding: 15px;
@@ -1221,6 +1232,117 @@
 .aucf-button:focus {
   outline: none;
   border: 1.5px solid #49beb7;
+}
+
+/* ************************** */
+/* ************************** */
+/* *** UpdateUserFormCpnt *** */
+/* ************************** */
+/* ************************** */
+.update-user-form {
+  box-sizing: border-box;
+  width: min-content;
+  background-color: #49beb7;
+  padding: 40px 30px;
+  width: 700px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px 8px #cfd6d5;
+}
+@media only screen and (max-width: 760px) {
+  .update-user-form {
+    width: 100%;
+    padding: 0px 50px;
+    min-height: 100vh;
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .update-user-form {
+    padding: 30px 20px;
+    font-size: 0.8rem;
+  }
+}
+.update-user-form .uuf-title {
+  text-align: center;
+}
+.update-user-form .uuf-names-fieldset,
+.update-user-form .uuf-details-fieldset,
+.update-user-form .uuf-passwords-fieldset {
+  border: none;
+}
+.update-user-form .uuf-names-fieldset .uuf-wrapper-input,
+.update-user-form .uuf-details-fieldset .uuf-wrapper-input,
+.update-user-form .uuf-passwords-fieldset .uuf-wrapper-input {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+@media only screen and (max-width: 460px) {
+  .update-user-form .uuf-names-fieldset .uuf-wrapper-input,
+.update-user-form .uuf-details-fieldset .uuf-wrapper-input,
+.update-user-form .uuf-passwords-fieldset .uuf-wrapper-input {
+    margin: 10px 0;
+  }
+}
+.update-user-form .uuf-names-fieldset .uuf-wrapper-input .uuf-label,
+.update-user-form .uuf-details-fieldset .uuf-wrapper-input .uuf-label,
+.update-user-form .uuf-passwords-fieldset .uuf-wrapper-input .uuf-label {
+  margin: 0 0 5px 15px;
+}
+.update-user-form .uuf-names-fieldset .uuf-wrapper-input .uuf-input,
+.update-user-form .uuf-details-fieldset .uuf-wrapper-input .uuf-input,
+.update-user-form .uuf-passwords-fieldset .uuf-wrapper-input .uuf-input {
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+}
+@media only screen and (max-width: 460px) {
+  .update-user-form .uuf-names-fieldset .uuf-wrapper-input .uuf-input,
+.update-user-form .uuf-details-fieldset .uuf-wrapper-input .uuf-input,
+.update-user-form .uuf-passwords-fieldset .uuf-wrapper-input .uuf-input {
+    padding: 5px;
+  }
+}
+.update-user-form .uuf-names-fieldset .uuf-wrapper-input .form-error,
+.update-user-form .uuf-details-fieldset .uuf-wrapper-input .form-error,
+.update-user-form .uuf-passwords-fieldset .uuf-wrapper-input .form-error {
+  font-size: 0.8rem;
+  color: #a64456;
+  margin: 3px 0 0 15px;
+}
+.update-user-form .uuf-names-fieldset {
+  display: flex;
+  justify-content: space-evenly;
+}
+@media only screen and (max-width: 760px) {
+  .update-user-form .uuf-names-fieldset {
+    flex-direction: column;
+  }
+}
+.update-user-form .uuf-submit {
+  padding: 8px 35px;
+  align-self: center;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+@media only screen and (max-width: 760px) {
+  .update-user-form .uuf-submit {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .update-user-form .uuf-submit {
+    font-size: 0.8rem;
+  }
+}
+.update-user-form .uuf-submit:hover {
+  background-color: #cbf3f0;
 }
 
 * {

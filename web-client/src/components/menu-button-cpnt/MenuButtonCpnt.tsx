@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
 
@@ -24,7 +25,7 @@ const MenuButtonCpnt = ({ isLeftAsideOpen }: MenuButtonProps): JSX.Element => {
 
   return (
     <div className={`btn-wrapper ${!isLeftAsideOpen && 'btn-wrapper-column'}`}>
-      <button className="menu-btn parameters">Paramètres</button>
+      <Link to="parameters"><button className="menu-btn parameters">Paramètres</button></Link>
       <button className="menu-btn deconnexion" onClick={logoutClick}>
         Déconnexion
       </button>

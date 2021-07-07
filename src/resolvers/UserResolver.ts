@@ -35,10 +35,12 @@ export default class UserResolver {
 
   @Mutation(() => AppUser)
   async updateUser(
-    @Arg('id') id: string,
+    @Ctx() context: { user: AppUser | null },
     @Arg('data') data: UpdateUserInput
   ): Promise<AppUser> {
-    const appUser = await AppUser.findOne(id);
+    if (!context.user) throw new Error('Incorrect username and/or password.');
+
+    const appUser = await AppUser.findOne(context.user.id);
 
     if (!appUser) throw new Error("This user doesn't exist");
 
