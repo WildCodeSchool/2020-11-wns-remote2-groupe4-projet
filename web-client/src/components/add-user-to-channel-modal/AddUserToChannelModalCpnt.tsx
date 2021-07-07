@@ -8,7 +8,7 @@ import {
   MenuItem,
   Select,
 } from '@material-ui/core';
-import React, { ChangeEvent,  useState } from 'react';
+import React, { useState } from 'react';
 import { Controller, NestedValue, useForm } from 'react-hook-form';
 import { toast, ToastContainer } from 'react-toastify';
 import { Channel } from '../../interfaces/channelInterface';
@@ -39,26 +39,16 @@ const AddUserToChannelModalCpnt = ({
   users,
   channel,
 }: AddUserToChannelModalCpntProps): JSX.Element => {
-  const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(undefined);
 
-  const { register, handleSubmit, setValue, errors, control } = useForm<
+  const { handleSubmit, setValue, errors, control, getValues } = useForm<
     AddUsersToChannelFormData
   >({});
   const [addUsersToChannel] = useMutation(ADD_USERS_TO_CHANNEL);
 
-  const handleChangeMulitpleUsersSelect = (
-    event: ChangeEvent<{ value: unknown }>
-  ) => {
-    setSelectedUsers(event.target.value as string[]);
-    setValue('usersIds', event.target.value as string[]);
-  };
-
   const submitAddNewChannel = handleSubmit(async ({ usersIds }) => {
     try {
       setIsLoading(true);
-      setError(undefined);
 
       const formattedUsers = usersIds.map((id) => {
         return { id };
@@ -72,7 +62,7 @@ const AddUserToChannelModalCpnt = ({
 
       onClose();
     } catch (err) {
-      setError(err.message);
+      console.log('error : ', err.message);
     } finally {
       setIsLoading(false);
     }
@@ -92,7 +82,7 @@ const AddUserToChannelModalCpnt = ({
             onSubmit={submitAddNewChannel}
           >
             <fieldset className="aucf-fieldset">
-              <div className="aucf-wrapper-input">
+              <div className="aucf-wrapper-input select-input">
                 <label className="aucf-label" htmlFor="usersIds">
                   Utilisateurs
                 </label>
@@ -106,17 +96,12 @@ const AddUserToChannelModalCpnt = ({
                       labelId="users-select-label"
                       name="usersIds"
                       multiple
-                      value={selectedUsers}
-                      onChange={handleChangeMulitpleUsersSelect}
-                      input={<Input id="usersIds" name="usersIds" />}
-                      error={!!errors.usersIds}
-                      inputRef={register({ required: true })}
-                      inputProps={{ name: 'usersIds' }}
-                      displayEmpty
-                      defaultValue={[]}
+                      value={getValues('usersIds')}
+                      onChange={(e) => setValue('usersIds', e.target.value)}
+                      input={<Input id="select-usersIds" />}
                     >
-                      <MenuItem key="empty-value" value={[]} disabled>
-                        Choisissez le(s) utilisateur(s) à ajouter
+                      <MenuItem value={[]} disabled>
+                        <em>Choisissez le(s) utilisateur(s) à ajouter</em>
                       </MenuItem>
                       {users &&
                         users
@@ -131,12 +116,13 @@ const AddUserToChannelModalCpnt = ({
                   }
                   rules={{
                     required: true,
+                    validate: () => !!getValues('usersIds').length
                   }}
                 />
               </div>
-              {!!error && (
+              {!!errors.usersIds && (
                 <span className="aucf-error" role="alert">
-                  {error}
+                  Vous devez ajouter au moins un utilisateur
                 </span>
               )}
             </fieldset>

@@ -980,6 +980,19 @@
 .add-channel-form .acf-fieldset .acf-wrapper-input > * + * {
   margin-top: 0.5rem;
 }
+.add-channel-form .acf-fieldset .select-input {
+  margin-bottom: 7px;
+}
+.add-channel-form .acf-fieldset .acf-error {
+  font-size: 0.9rem;
+  color: red;
+  font-style: italic;
+}
+@media only screen and (max-width: 760px) {
+  .add-channel-form .acf-fieldset .acf-error {
+    font-size: 0.8rem;
+  }
+}
 
 .acf-button {
   padding: 6px 20px;
@@ -1043,11 +1056,13 @@
 .add-user-to-channel-form .aucf-fieldset .aucf-wrapper-input > * + * {
   margin-top: 0.5rem;
 }
+.add-user-to-channel-form .aucf-fieldset .select-input {
+  margin-bottom: 7px;
+}
 .add-user-to-channel-form .aucf-fieldset .aucf-error {
   font-size: 0.9rem;
   color: red;
   font-style: italic;
-  line-height: 20px;
 }
 @media only screen and (max-width: 760px) {
   .add-user-to-channel-form .aucf-fieldset .aucf-error {

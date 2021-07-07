@@ -40,6 +40,20 @@
         margin-top: 0.5rem;
       }
     }
+
+    .select-input {
+      margin-bottom: 7px;
+    }
+
+    .acf-error {
+      font-size: v.$p-s;
+      color: red;
+      font-style: italic;
+
+      @include m.bpFactory($max: v.$s) {
+        font-size: v.$p-xs;
+      }
+    }
   }
 }
 

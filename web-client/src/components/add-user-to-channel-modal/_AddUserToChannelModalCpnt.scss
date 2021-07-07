@@ -37,11 +37,14 @@
       }
     }
 
+    .select-input {
+      margin-bottom: 7px;
+    }
+
     .aucf-error {
       font-size: v.$p-s;
       color: red;
       font-style: italic;
-      line-height: 20px;
 
       @include m.bpFactory($max: v.$s) {
         font-size: v.$p-xs;
