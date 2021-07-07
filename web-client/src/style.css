@@ -110,12 +110,16 @@
 .main-dashboard {
   box-sizing: border-box;
   position: relative;
-  height: 100vh;
   overflow: scroll;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media only screen and (max-width: 1200px) {
+  .main-dashboard {
+    padding-top: calc(60px + 25px);
+  }
 }
 .main-dashboard .md-button-form-wrapper {
   position: relative;
@@ -133,6 +137,14 @@
 .main-dashboard .md-button-form-wrapper.large {
   width: 80%;
   overflow: visible;
+}
+@media only screen and (max-width: 1200px) {
+  .main-dashboard .md-button-form-wrapper {
+    width: 90%;
+  }
+  .main-dashboard .md-button-form-wrapper.large {
+    width: 90%;
+  }
 }
 .main-dashboard .md-button-form-wrapper .mdbfw-open-form-button {
   box-sizing: border-box;
@@ -174,6 +186,11 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
 }
+@media only screen and (max-width: 1200px) {
+  .main-ctrn {
+    grid-template-columns: inherit;
+  }
+}
 
 .left-aside {
   position: relative;
@@ -185,6 +202,11 @@
   flex-direction: column;
   justify-content: space-between;
   transition: width 350ms ease-in-out;
+}
+@media only screen and (max-width: 1200px) {
+  .left-aside {
+    display: none;
+  }
 }
 @media only screen and (max-width: 760px) {
   .left-aside {
@@ -239,7 +261,9 @@
 }
 
 .right-aside {
+  box-sizing: border-box;
   position: relative;
+  z-index: 100;
   height: 100vh;
   overflow: auto;
   width: 100px;
@@ -249,34 +273,24 @@
   align-items: center;
   transition: width 350ms ease-in-out;
 }
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 1200px) {
   .right-aside {
-    max-height: 100vh;
-    position: absolute;
-    top: 0;
+    max-height: calc(100vh - 60px);
+    position: fixed;
+    top: 60px;
     right: 0;
     width: 0;
+  }
+  .right-aside.ra-mobile-visible {
+    width: 80%;
   }
 }
 .right-aside > * + * {
   margin-top: 1.5rem;
 }
-.right-aside.ra-visible {
-  width: 350px;
-}
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 1200px) {
   .right-aside.ra-visible {
-    width: 300px;
-  }
-}
-@media only screen and (max-width: 980px) {
-  .right-aside.ra-visible {
-    width: 250px;
-  }
-}
-@media only screen and (max-width: 760px) {
-  .right-aside.ra-visible {
-    width: 80%;
+    width: 350px;
   }
 }
 .right-aside .ra-title {
@@ -298,6 +312,11 @@
   top: 20px;
   left: 10px;
   transition: transform 500ms ease-in-out;
+}
+@media only screen and (max-width: 1200px) {
+  .right-aside .ra-arrow-left {
+    display: none;
+  }
 }
 @media only screen and (max-width: 760px) {
   .right-aside .ra-arrow-left {
@@ -324,15 +343,42 @@
 /* ************************** */
 /* ************************** */
 .calendar-section {
-  margin-top: 25px;
   width: 80%;
+  margin-top: 100px;
+  background-color: #cbf3f0;
+}
+@media only screen and (max-width: 1200px) {
+  .calendar-section {
+    width: 90%;
+    margin-top: 0;
+  }
+}
+.calendar-section .fc {
+  height: 800px;
+}
+@media only screen and (max-width: 1200px) {
+  .calendar-section .fc {
+    height: 550px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .calendar-section .fc .fc-toolbar-chunk {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .calendar-section .fc .fc-toolbar-chunk h2 {
+    font-size: 0.9rem;
+  }
 }
 
 .channel-messages {
+  box-sizing: border-box;
   position: absolute;
   top: 0;
   right: 0;
   height: 100vh;
+  padding-top: 60px;
   display: grid;
   grid-template-rows: max-content 1fr;
   background-color: #e0e0e0;
@@ -342,9 +388,8 @@
   border-radius: 5px 0 0 5px;
   width: 80%;
 }
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 1200px) {
   .channel-messages {
-    top: 0;
     right: unset;
     width: 100vw;
   }
@@ -431,6 +476,88 @@
 }
 .channel-messages .cm-content-wrapper .cmcw-form .cmcwf-footer .cmcwff-send-button .cmcwff-send-icon {
   color: #f6f5f5;
+}
+
+.header-mobile {
+  display: none;
+  box-sizing: border-box;
+  padding: 5px 15px;
+  position: fixed;
+  z-index: 150;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #e0e0e0;
+  justify-content: space-between;
+  align-items: center;
+}
+@media only screen and (max-width: 1200px) {
+  .header-mobile {
+    display: flex;
+  }
+}
+.header-mobile .hm-burger {
+  position: relative;
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.header-mobile .hm-burger .hmb-line {
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background-color: #49beb7;
+  border-radius: 3px;
+}
+.header-mobile .hm-burger .hmb-line:first-child {
+  top: 0;
+  transform: rotate(0deg);
+  transition: transform 250ms ease-in-out;
+}
+.header-mobile .hm-burger .hmb-line:last-child {
+  bottom: 0;
+  transform: rotate(0deg);
+  transition: transform 250ms ease-in-out;
+}
+.header-mobile .hm-burger.burger-cross .hmb-line:first-child {
+  top: inherit;
+  transform: rotate(45deg);
+}
+.header-mobile .hm-burger.burger-cross .hmb-line:nth-child(2) {
+  opacity: 0;
+}
+.header-mobile .hm-burger.burger-cross .hmb-line:last-child {
+  bottom: inherit;
+  transform: rotate(-45deg);
+}
+.header-mobile .hm-chat-button {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  background-color: #49beb7;
+  color: #f6f5f5;
+}
+
+.menu-mobile {
+  position: fixed;
+  z-index: 150;
+  top: 60px;
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background-color: #f6f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  transform: translateX(0);
+  transition: transform 250ms ease-in-out;
+}
+.menu-mobile.menu-mobile-close {
+  transform: translateX(-100%);
 }
 
 /* ************************** */

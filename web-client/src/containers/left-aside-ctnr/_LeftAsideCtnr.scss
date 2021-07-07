@@ -12,6 +12,10 @@
   justify-content: space-between;
 
   transition: width 350ms ease-in-out;
+  
+  @include m.bpFactory($max: v.$l) {
+    display: none;
+  }
 
   @include m.bpFactory($max: v.$s) {
     max-height: 100vh;

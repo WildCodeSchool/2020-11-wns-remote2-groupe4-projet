@@ -5,4 +5,8 @@
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr auto;
+
+  @include m.bpFactory($max: v.$l) {
+    grid-template-columns: inherit;
+  }
 }
