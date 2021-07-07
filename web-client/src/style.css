@@ -110,7 +110,6 @@
 .main-dashboard {
   box-sizing: border-box;
   position: relative;
-  height: 100vh;
   overflow: scroll;
   width: 100%;
   display: flex;
@@ -277,7 +276,7 @@
 @media only screen and (max-width: 1200px) {
   .right-aside {
     max-height: calc(100vh - 60px);
-    position: absolute;
+    position: fixed;
     top: 60px;
     right: 0;
     width: 0;

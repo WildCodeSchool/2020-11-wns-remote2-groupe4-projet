@@ -16,7 +16,7 @@
 
   @include m.bpFactory($max: v.$l) {
     max-height: calc(100vh - #{v.$header-mobile-height});
-    position: absolute;
+    position: fixed;
     top: v.$header-mobile-height;
     right: 0;
     width: 0;
