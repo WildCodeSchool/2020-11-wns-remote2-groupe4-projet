@@ -7,8 +7,6 @@ import UserContext from '../../contexts/UserContext';
 import { AM_I_AUTHENTICATED } from '../../queries/userQueries';
 import CalendarCtnr from '../../containers/calendar-ctnr/CalendarCtnr';
 import CalendarEventFormCpnt from '../../components/calendar-event-form-cpnt/CalendarEventFormCpnt';
-import ChannelMessagesCtnr from '../../containers/channel-messages-ctnr/ChannelMessagesCtnr';
-import ChannelContext from '../../contexts/ChannelContext';
 
 const ViewDashboard = (): JSX.Element => {
   const [isCalendarFormDisplayed, setIsCalendarFormDisplayed] = useState(false);
@@ -16,7 +14,6 @@ const ViewDashboard = (): JSX.Element => {
     fetchPolicy: 'no-cache',
   });
   const userLoggedIn = useContext(UserContext);
-  const channelContext = useContext(ChannelContext);
 
   useEffect(() => {
     if (data) {
@@ -67,7 +64,6 @@ const ViewDashboard = (): JSX.Element => {
               isCalendarFormDisplayed={isCalendarFormDisplayed}
             />
           </div>
-          {channelContext.channelState.isChannelOpen && <ChannelMessagesCtnr />}
         </>
       )}
     </div>

@@ -6,14 +6,14 @@ import ChannelsCtnr from '../channels-ctnr/ChannelsCtnr';
 import UserContext from '../../contexts/UserContext';
 import RightAsideCtnrContext from '../../contexts/RightAsideCtnrContext';
 
-const RightAsideCtnr = (): JSX.Element => {
+type RightAsideCtnrProps = {
+  toggleRightAside: () => void;
+  isRightAsideOpen: boolean;
+}
+
+const RightAsideCtnr = ({toggleRightAside, isRightAsideOpen}: RightAsideCtnrProps): JSX.Element => {
   const userLoggedIn = useContext(UserContext);
   const rightAsideCtnrContext = useContext(RightAsideCtnrContext)
-  const [isRightAsideOpen, setIsRightAsideOpen] = useState(true);
-
-  const toggleRightAside = (): void => {
-    setIsRightAsideOpen(!isRightAsideOpen);
-  };
 
   return (
     <aside

@@ -404,9 +404,10 @@
 
 .channel-messages {
   box-sizing: border-box;
-  position: absolute;
+  position: fixed;
   top: 0;
-  right: 0;
+  right: 100px;
+  left: calc(20% + 350px);
   height: 100vh;
   padding-top: 60px;
   display: grid;
@@ -416,11 +417,20 @@
   margin-top: 0;
   z-index: 10;
   border-radius: 5px 0 0 5px;
-  width: 80%;
+  transition: right 350ms ease-in-out;
+}
+.channel-messages.thin {
+  right: 350px;
+}
+@media only screen and (max-width: 1200px) {
+  .channel-messages.thin {
+    right: 0;
+  }
 }
 @media only screen and (max-width: 1200px) {
   .channel-messages {
-    right: unset;
+    right: 0;
+    left: inherit;
     width: 100vw;
   }
 }
@@ -591,6 +601,11 @@
   align-items: center;
   transform: translateX(0);
   transition: transform 250ms ease-in-out;
+}
+@media only screen and (min-width: 1200px) {
+  .menu-mobile {
+    display: none;
+  }
 }
 .menu-mobile.menu-mobile-close {
   transform: translateX(-100%);

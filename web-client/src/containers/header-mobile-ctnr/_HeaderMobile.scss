@@ -97,6 +97,10 @@
   transform: translateX(0);
   transition: transform 250ms ease-in-out;
 
+  @include m.bpFactory($min: v.$l) {
+    display: none;
+  }
+
   &.menu-mobile-close {
     transform: translateX(-100%);
   }
