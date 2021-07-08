@@ -59,7 +59,8 @@
       font-size: 1rem;
       color: v.$primary;
       max-height: 0;
-      transition: max-height 250ms ease-in-out 250ms, padding 250ms ease-in-out 250ms;
+      transition: max-height 250ms ease-in-out 250ms,
+        padding 250ms ease-in-out 250ms;
 
       &.button-active {
         max-height: 200px;
@@ -68,23 +69,25 @@
     }
 
     .mdbfw-close-form-button {
+      color: v.$black;
       position: absolute;
-      right: 30px;
+      right: 50px;
       top: 10px;
       font-size: 0;
       opacity: 0;
       transform: scale(1);
       cursor: pointer;
-      transition: right 250ms ease-in-out 250ms, opacity 250ms ease-in-out 250ms, transform 150ms ease-in-out;
+      transition: right 250ms ease-in-out 250ms, opacity 250ms ease-in-out 250ms,
+        transform 150ms ease-in-out;
 
       &.button-active {
         font-size: 2rem;
-        right: 10px;
+        right: 20px;
         opacity: 1;
       }
 
       &:hover {
-        transform: scale(.9);
+        transform: scale(0.9);
       }
     }
   }

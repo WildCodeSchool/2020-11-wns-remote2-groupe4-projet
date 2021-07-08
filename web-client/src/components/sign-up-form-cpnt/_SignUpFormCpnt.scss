@@ -19,22 +19,23 @@
   justify-content: space-evenly;
   border-radius: 5px;
   box-shadow: 0px 4px 10px 8px #cfd6d5;
+  color: v.$black;
 
   @include m.bpFactory($max: v.$s) {
     width: 100%;
-    padding :0px 50px;
+    padding: 0px 50px;
     min-height: 100vh;
     font-size: v.$p-s;
   }
 
   @include m.bpFactory($max: v.$xs) {
-    padding :30px 20px;
+    padding: 30px 20px;
     font-size: v.$p-xs;
-    
   }
 
   .sif-title {
     text-align: center;
+    margin-bottom: 1rem;
   }
 
   .sif-names-fieldset,
@@ -45,19 +46,19 @@
     .sif-wrapper-input {
       display: flex;
       flex-direction: column;
-      margin: 20px 0;
+      margin: 1rem 0;
 
       @include m.bpFactory($max: v.$xs) {
         margin: 10px 0;
       }
 
       .sif-label {
-        margin: 0 0 5px 15px;
+        margin-bottom: 10px;
       }
       .sif-input {
         padding: 10px;
         border: none;
-        border-radius: 30px;
+        border-radius: 5px;
 
         @include m.bpFactory($max: v.$xs) {
           padding: 5px;
@@ -66,51 +67,19 @@
 
       .form-error {
         font-size: 0.8rem;
+        font-style: italic;
         color: v.$accent;
-        margin: 3px 0 0 15px;
+        margin-top: 5px;
       }
     }
   }
 
-  .sif-names-fieldset {
-    display: flex;
-    justify-content: space-evenly;
-
-    @include m.bpFactory($max: v.$s) {
-      flex-direction: column;
-    }
-
-    .sifnm-firstname {
-    }
-
-    .sifnm-lastname {
-    }
-  }
-
-  .sif-details-fieldset {
-    .sifdf-email {
-    }
-
-    .sifdf-phone {
-    }
-
-    .sifdf-address {
-    }
-  }
-
-  .sif-passwords-fieldset {
-    .sifpf-password {
-    }
-
-    .sifpf-verify-password {
-    }
-  }
-
   .sif-submit {
+    margin-top: 1.5rem;
     padding: 8px 35px;
     align-self: center;
     border: none;
-    border-radius: 20px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
 

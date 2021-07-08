@@ -11,6 +11,7 @@
   box-sizing: border-box;
   min-width: 320px;
   background-color: v.$ternary;
+  color: v.$black;
   padding: 0 30px;
   width: 100%;
   display: flex;
@@ -18,7 +19,8 @@
   border-radius: 5px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 400ms ease-in-out 250ms, padding 400ms ease-in-out 250ms;
+  transition: max-height 400ms ease-in-out 250ms,
+    padding 400ms ease-in-out 250ms;
 
   &.form-active {
     padding: 40px 30px;
@@ -34,22 +36,29 @@
     margin: 10px 0;
     display: flex;
     flex-direction: column;
-    text-align: center;
 
-    .cfic-input, .cficbc-input {
+    .cfic-input,
+    .cficbc-input {
       padding: 10px;
       margin: 3px 0;
       border: none;
-      border-radius: 30px;
+      border-radius: 5px;
     }
 
     .cfic-box {
       .cficb-box-child {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
+
+        @include m.bpFactory($min: v.$s) {
+          justify-content: flex-start;
+
+          & > * + * {
+            margin-left: 20px;
+          }
+        }
       }
     }
-
   }
   .checkbox-container {
     display: flex;
@@ -57,17 +66,18 @@
     justify-content: left;
     align-items: center;
     .cfic-checkbox {
-        margin: 0 20px 0 0;
-        width: 25px;
-        height: 25px;
+      margin: 0 20px 0 0;
+      width: 25px;
+      height: 25px;
     }
   }
 
   .cfic-submit {
+    margin-top: 20px;
     padding: 8px 35px;
     align-self: center;
     border: none;
-    border-radius: 20px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
 

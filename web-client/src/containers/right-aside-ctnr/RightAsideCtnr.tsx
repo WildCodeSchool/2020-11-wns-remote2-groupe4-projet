@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import ChannelsCtnr from '../channels-ctnr/ChannelsCtnr';
 import UserContext from '../../contexts/UserContext';
@@ -21,7 +21,7 @@ const RightAsideCtnr = (): JSX.Element => {
     >
       <FontAwesomeIcon
         className={`ra-arrow-left ${!isRightAsideOpen && 'rotate-right'}`}
-        icon={faArrowCircleRight}
+        icon={faChevronRight}
         onClick={toggleRightAside}
         data-testid="ArrowIconRightAsideCtnr"
       />

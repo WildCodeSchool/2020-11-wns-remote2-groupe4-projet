@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import UserContext from '../../contexts/UserContext';
 import { AM_I_AUTHENTICATED } from '../../queries/userQueries';
@@ -51,7 +51,7 @@ const ViewDashboard = (): JSX.Element => {
               className={`mdbfw-close-form-button ${
                 isCalendarFormDisplayed && 'button-active'
               }`}
-              icon={faTimesCircle}
+              icon={faTimes}
               onClick={closeCalendarForm}
             />
             <button
