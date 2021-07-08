@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import ChannelContext from '../../contexts/ChannelContext';
+import RightAsideCtnrContext from '../../contexts/RightAsideCtnrContext';
 
 import { Channel } from '../../interfaces/channelInterface';
 
@@ -13,6 +14,7 @@ const ChannelsListItemCpnt = ({
   toggleRightAside,
 }: ChannelsListItemCpntProps): JSX.Element => {
   const channelContext = useContext(ChannelContext);
+  const rightAsideCtnrContext = useContext(RightAsideCtnrContext)
 
   const onSetCurrentChannel = () => {
     channelContext.channelDispatch({
@@ -20,6 +22,11 @@ const ChannelsListItemCpnt = ({
       currentChannel: channel,
       isChannelOpen: true,
     });
+
+    rightAsideCtnrContext.rightAsideCtnrDispatch({
+      type: 'TOGGLE_RIGHT_ASIDE_CTNR',
+      isRightAsideCtnrOpen: true,
+    })
 
     if (window.innerWidth <= 760) {
       toggleRightAside();

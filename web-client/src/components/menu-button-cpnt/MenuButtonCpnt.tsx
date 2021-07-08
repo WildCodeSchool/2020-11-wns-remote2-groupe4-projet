@@ -7,9 +7,10 @@ import { DELETE_SESSION } from '../../queries/sessionQueries';
 
 type MenuButtonProps = {
   isLeftAsideOpen: boolean;
+  onItemClick?: () => void;
 };
 
-const MenuButtonCpnt = ({ isLeftAsideOpen }: MenuButtonProps): JSX.Element => {
+const MenuButtonCpnt = ({ isLeftAsideOpen, onItemClick }: MenuButtonProps): JSX.Element => {
   const [deleteSession] = useMutation(DELETE_SESSION);
 
   const history = useHistory();
@@ -25,7 +26,11 @@ const MenuButtonCpnt = ({ isLeftAsideOpen }: MenuButtonProps): JSX.Element => {
 
   return (
     <div className={`btn-wrapper ${!isLeftAsideOpen && 'btn-wrapper-column'}`}>
-      <Link to="parameters"><button className="menu-btn parameters">Paramètres</button></Link>
+      <Link to="parameters">
+        <button className="menu-btn parameters" onClick={onItemClick}>
+          Paramètres
+        </button>
+      </Link>
       <button className="menu-btn deconnexion" onClick={logoutClick}>
         Déconnexion
       </button>

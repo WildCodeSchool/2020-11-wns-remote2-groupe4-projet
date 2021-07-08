@@ -10,7 +10,7 @@
 .calendar-section {
   width: 80%;
   margin-top: 100px;
-  background-color: v.$ternary-hover;
+  background-color: rgba(v.$secondary, 0.2);
 
   @include m.bpFactory($max: v.$l) {
     width: 90%;
@@ -25,6 +25,27 @@
     }
 
     .fc-toolbar-chunk {
+      .fc-button {
+        background-color: v.$ternary;
+        border: none;
+
+        &:hover {
+          background-color: v.$ternary-hover;
+          color: v.$ternary;
+        }
+      }
+
+      .fc-button-active {
+        background-color: v.$ternary !important;
+        color: v.$black !important;
+        border: 2px solid rgba(v.$black, 0.7) !important;
+
+        &:hover {
+          background-color: v.$ternary-hover !important;
+          color: v.$ternary !important;
+        }
+      }
+
       @include m.bpFactory($max: v.$l) {
         font-size: 0.8rem;
       }
@@ -34,6 +55,12 @@
           font-size: 0.9rem;
         }
       }
+    }
+  }
+
+  .fc-scrollgrid-sync-table {
+    .fc-day-today {
+      background-color: v.$ternary-hover !important;
     }
   }
 }

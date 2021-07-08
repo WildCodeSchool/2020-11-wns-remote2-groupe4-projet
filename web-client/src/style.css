@@ -189,6 +189,12 @@
 /* ***** VIEW PARAMETERS **** */
 /* ************************** */
 /* ************************** */
+.main-parameters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .main-ctrn {
   position: relative;
   display: grid;
@@ -311,7 +317,6 @@
 @media only screen and (max-width: 760px) {
   .right-aside .ra-title.ra-title-mini {
     padding-left: 0;
-    display: none;
   }
 }
 .right-aside .ra-arrow-left {
@@ -353,7 +358,7 @@
 .calendar-section {
   width: 80%;
   margin-top: 100px;
-  background-color: #cbf3f0;
+  background-color: rgba(224, 224, 224, 0.2);
 }
 @media only screen and (max-width: 1200px) {
   .calendar-section {
@@ -369,6 +374,23 @@
     height: 550px;
   }
 }
+.calendar-section .fc .fc-toolbar-chunk .fc-button {
+  background-color: #49beb7;
+  border: none;
+}
+.calendar-section .fc .fc-toolbar-chunk .fc-button:hover {
+  background-color: #cbf3f0;
+  color: #49beb7;
+}
+.calendar-section .fc .fc-toolbar-chunk .fc-button-active {
+  background-color: #49beb7 !important;
+  color: #141414 !important;
+  border: 2px solid rgba(20, 20, 20, 0.7) !important;
+}
+.calendar-section .fc .fc-toolbar-chunk .fc-button-active:hover {
+  background-color: #cbf3f0 !important;
+  color: #49beb7 !important;
+}
 @media only screen and (max-width: 1200px) {
   .calendar-section .fc .fc-toolbar-chunk {
     font-size: 0.8rem;
@@ -378,6 +400,9 @@
   .calendar-section .fc .fc-toolbar-chunk h2 {
     font-size: 0.9rem;
   }
+}
+.calendar-section .fc-scrollgrid-sync-table .fc-day-today {
+  background-color: #cbf3f0 !important;
 }
 
 .channel-messages {
@@ -543,10 +568,16 @@
 }
 .header-mobile .hm-chat-button {
   border: none;
-  padding: 5px 10px;
   border-radius: 3px;
-  background-color: #49beb7;
+  background-color: transparent;
   color: #f6f5f5;
+}
+.header-mobile .hm-chat-button .hmcb-icon {
+  color: #49beb7;
+  font-size: 1.5rem;
+}
+.header-mobile .hm-chat-button .hmcb-icon.icon-active {
+  color: #a64456;
 }
 
 .menu-mobile {
@@ -1250,7 +1281,6 @@
   flex-direction: column;
   justify-content: space-evenly;
   border-radius: 5px;
-  box-shadow: 0px 4px 10px 8px #cfd6d5;
 }
 @media only screen and (max-width: 760px) {
   .update-user-form {
@@ -1279,7 +1309,7 @@
 .update-user-form .uuf-passwords-fieldset .uuf-wrapper-input {
   display: flex;
   flex-direction: column;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 @media only screen and (max-width: 460px) {
   .update-user-form .uuf-names-fieldset .uuf-wrapper-input,
@@ -1298,7 +1328,7 @@
 .update-user-form .uuf-passwords-fieldset .uuf-wrapper-input .uuf-input {
   padding: 10px;
   border: none;
-  border-radius: 30px;
+  border-radius: 5px;
 }
 @media only screen and (max-width: 460px) {
   .update-user-form .uuf-names-fieldset .uuf-wrapper-input .uuf-input,
@@ -1314,20 +1344,15 @@
   color: #a64456;
   margin: 3px 0 0 15px;
 }
-.update-user-form .uuf-names-fieldset {
+.update-user-form .uuf-fieldset {
   display: flex;
-  justify-content: space-evenly;
-}
-@media only screen and (max-width: 760px) {
-  .update-user-form .uuf-names-fieldset {
-    flex-direction: column;
-  }
+  flex-direction: column;
 }
 .update-user-form .uuf-submit {
   padding: 8px 35px;
   align-self: center;
   border: none;
-  border-radius: 20px;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
 }

@@ -3,7 +3,7 @@ import UpdateUserFormCpnt from '../../components/update-user-form-cpnt/UpdateUse
 
 const ViewParameters = (): JSX.Element => {
   return (
-    <div className="parameters">
+    <div className="main-parameters">
       <UpdateUserFormCpnt />
     </div>
   );

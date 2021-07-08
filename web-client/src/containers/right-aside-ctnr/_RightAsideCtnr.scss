@@ -35,8 +35,6 @@
     }
   }
 
-  
-
   .ra-title {
     color: v.$black;
     font-weight: bold;
@@ -46,7 +44,7 @@
 
       @include m.bpFactory($max: v.$s) {
         padding-left: 0;
-        display: none;
+        // display: none;
       }
     }
   }

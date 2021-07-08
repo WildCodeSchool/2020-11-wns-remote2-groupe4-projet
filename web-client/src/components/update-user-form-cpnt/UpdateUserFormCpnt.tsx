@@ -17,7 +17,9 @@ const UpdateUserFormCpnt = (): JSX.Element => {
     const { register, handleSubmit, errors, setValue } = useForm<FormData>({});
   
     const [updateUser] = useMutation(UPDATE_USER);
-    const { loading, error, data } = useQuery(AM_I_AUTHENTICATED);
+    const { loading, error, data } = useQuery(AM_I_AUTHENTICATED, {
+      fetchPolicy: 'no-cache',
+    });
   
   
     const submitSignIn = handleSubmit(
@@ -39,8 +41,28 @@ const UpdateUserFormCpnt = (): JSX.Element => {
       { loading ? 
         <p>loading...</p> : 
         <form className="update-user-form" onSubmit={submitSignIn}>
-          <h1 className="uuf-title">WildHub</h1>
-          <fieldset className="uuf-names-fieldset">
+          <h2 className="uuf-title">Modifiez vos informations</h2>
+          <fieldset className="uuf-fieldset uuf-names-fieldset">
+            <div className="uufnm-lastname uuf-wrapper-input ">
+              <label className="uufnml-label-lastname uuf-label" htmlFor="lastname">
+                Nom
+              </label>
+              <input
+                className="uufnml-lastname-input uuf-input"
+                type="text"
+                name="lastname"
+                ref={register({ required: true })}
+                id="lastname"
+                aria-label="lastname"
+                defaultValue={data && data.amIAuthenticated.lastname}
+                onChange={(e) => setValue('lastname', e.target.value)}
+              />
+              {errors.lastname && (
+                <span className="uufnml-error form-error" role="alert">
+                  Ce champ est requis
+                </span>
+              )}
+            </div>
             <div className="uufnm-firstname uuf-wrapper-input ">
               <label
                 className="uufnmf-label-firstname uuf-label"
@@ -64,28 +86,8 @@ const UpdateUserFormCpnt = (): JSX.Element => {
                 </span>
               )}
             </div>
-            <div className="uufnm-lastname uuf-wrapper-input ">
-              <label className="uufnml-label-lastname uuf-label" htmlFor="lastname">
-                Nom
-              </label>
-              <input
-                className="uufnml-lastname-input uuf-input"
-                type="text"
-                name="lastname"
-                ref={register({ required: true })}
-                id="lastname"
-                aria-label="lastname"
-                defaultValue={data && data.amIAuthenticated.lastname}
-                onChange={(e) => setValue('lastname', e.target.value)}
-              />
-              {errors.lastname && (
-                <span className="uufnml-error form-error" role="alert">
-                  Ce champ est requis
-                </span>
-              )}
-            </div>
           </fieldset>
-          <fieldset className="uuf-details-fieldset">
+          <fieldset className="uuf-fieldset uuf-details-fieldset">
             <div className="uufdf-phone uuf-wrapper-input ">
               <label className="uufdf-label-phone uuf-label" htmlFor="phone">
                 Téléphone
@@ -127,7 +129,7 @@ const UpdateUserFormCpnt = (): JSX.Element => {
               )}
             </div>
           </fieldset>
-          <input type="submit" className="uuf-submit" value="Inscription" />
+          <input type="submit" className="uuf-submit" value="Modifier" />
           <ToastContainer
             position="bottom-center"
             autoClose={1500}

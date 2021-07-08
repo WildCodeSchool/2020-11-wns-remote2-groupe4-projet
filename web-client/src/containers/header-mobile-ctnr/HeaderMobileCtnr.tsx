@@ -1,22 +1,24 @@
 import { Avatar } from '@material-ui/core';
 import React, { useState, useContext } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCommentDots } from '@fortawesome/free-solid-svg-icons'
 
 import RightAsideCtnrContext from '../../contexts/RightAsideCtnrContext';
 import MenuButtonCpnt from '../../components/menu-button-cpnt/MenuButtonCpnt';
 import MenuCpnt from '../../components/menu-cpnt/MenuCpnt';
 
 const HeaderMobileCtnr = (): JSX.Element => {
-  const [isMobileMenuOpen, setIsMenuMobileOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMenuMobileOpen] = useState<boolean>(false);
   const rightAsideCtnrContext = useContext(RightAsideCtnrContext);
 
-  const onBurgerClick = () => {
+  const onBurgerClick = (): void => {
     setIsMenuMobileOpen(!isMobileMenuOpen);
   }
 
   const onChatClick = () => {
     rightAsideCtnrContext.rightAsideCtnrDispatch({
       type: 'TOGGLE_RIGHT_ASIDE_CTNR',
-      isRightAsideCtnrOpen: true
+      isRightAsideCtnrOpen: true,
     })
   }
 
@@ -31,11 +33,16 @@ const HeaderMobileCtnr = (): JSX.Element => {
 
         <Avatar />
 
-        <button className="hm-chat-button" onClick={onChatClick}>Chat</button>
+        <button className="hm-chat-button" onClick={onChatClick}>
+          <FontAwesomeIcon
+            className={`hmcb-icon ${rightAsideCtnrContext.rightAsideCtnrState.isRightAsideCtnrOpen && "icon-active"}`}
+            icon={faCommentDots}
+          />
+        </button>
       </header>
       <div className={`menu-mobile ${!isMobileMenuOpen && "menu-mobile-close"}`}>
-        <MenuCpnt />
-        <MenuButtonCpnt isLeftAsideOpen={false} />
+        <MenuCpnt onItemClick={onBurgerClick} />
+        <MenuButtonCpnt isLeftAsideOpen={false} onItemClick={onBurgerClick}/>
       </div>
     </>
   )

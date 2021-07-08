@@ -17,7 +17,9 @@ const RightAsideCtnr = (): JSX.Element => {
   };
 
   return (
-    <aside className={`right-aside ${isRightAsideOpen && 'ra-visible'} ${rightAsideCtnrContext.rightAsideCtnrState.isRightAsideCtnrOpen && 'ra-mobile-visible'}`}>
+    <aside
+      className={`right-aside ${isRightAsideOpen && 'ra-visible'} ${rightAsideCtnrContext.rightAsideCtnrState.isRightAsideCtnrOpen && 'ra-mobile-visible'}`}
+    >
       <FontAwesomeIcon
         className={`ra-arrow-left ${!isRightAsideOpen && 'rotate-right'}`}
         icon={faArrowCircleRight}
@@ -27,7 +29,6 @@ const RightAsideCtnr = (): JSX.Element => {
       <h3 className={`ra-title ${!isRightAsideOpen && 'ra-title-mini'}`}>
         Chat
       </h3>
-      {isRightAsideOpen && <ChatSearchBar />}
       {userLoggedIn.state.userLoggedInDetails && (
         <ChannelsCtnr
           isRightAsideOpen={isRightAsideOpen}
