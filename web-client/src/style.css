@@ -86,7 +86,7 @@
   position: absolute;
   top: 30px;
   left: 30px;
-  color: #141414;
+  color: #141414e6;
   font-size: 2.2rem;
 }
 @media only screen and (max-width: 980px) {
@@ -308,7 +308,7 @@
   }
 }
 .right-aside .ra-title {
-  color: #141414;
+  color: #141414e6;
   font-weight: bold;
 }
 .right-aside .ra-title.ra-title-mini {
@@ -368,6 +368,7 @@
 }
 .calendar-section .fc {
   height: 800px;
+  color: #141414e6;
 }
 @media only screen and (max-width: 1200px) {
   .calendar-section .fc {
@@ -383,13 +384,8 @@
   color: #49beb7;
 }
 .calendar-section .fc .fc-toolbar-chunk .fc-button-active {
-  background-color: #49beb7 !important;
-  color: #141414 !important;
-  border: 2px solid rgba(20, 20, 20, 0.7) !important;
-}
-.calendar-section .fc .fc-toolbar-chunk .fc-button-active:hover {
-  background-color: #cbf3f0 !important;
-  color: #49beb7 !important;
+  background-color: #facf5a !important;
+  color: #141414e6 !important;
 }
 @media only screen and (max-width: 1200px) {
   .calendar-section .fc .fc-toolbar-chunk {
@@ -415,7 +411,7 @@
   display: grid;
   grid-template-rows: max-content 1fr;
   background-color: #e0e0e0;
-  box-shadow: 2px 0 2px -3px #141414;
+  box-shadow: 2px 0 2px -3px #141414e6;
   margin-top: 0;
   z-index: 10;
   border-radius: 5px 0 0 5px;
@@ -429,7 +425,7 @@
 }
 .channel-messages .cm-header {
   padding: 1rem;
-  box-shadow: 0 4px 6px -6px #141414;
+  box-shadow: 0 4px 6px -6px #141414e6;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -465,10 +461,10 @@
   color: #49beb7;
 }
 .channel-messages .cm-header .cmh-button-wrapper .cmh-button.close-border {
-  border: 1.5px solid #141414;
+  border: 1.5px solid #141414e6;
 }
 .channel-messages .cm-header .cmh-button-wrapper .cmh-button .cmhb-cross-icon {
-  color: #141414;
+  color: #141414e6;
 }
 .channel-messages .cm-content-wrapper {
   padding: 1rem;
@@ -577,7 +573,7 @@
   font-size: 1.5rem;
 }
 .header-mobile .hm-chat-button .hmcb-icon.icon-active {
-  color: #a64456;
+  color: #facf5a;
 }
 
 .menu-mobile {
@@ -630,7 +626,7 @@
   margin: 40px 0;
 }
 .avatar .a-name {
-  color: #141414;
+  color: #141414e6;
   font-size: 1.5rem;
   margin-top: 0.5rem;
   text-align: center;
@@ -683,7 +679,7 @@
 .menu .m-item-wrapper .miw-item {
   padding: 15px;
   font-size: 1.2rem;
-  color: #141414;
+  color: #141414e6;
   border-bottom: 1px solid #e0e0e0;
   transition: background-color 250ms ease-in-out, color 350ms ease-in-out;
 }
@@ -695,12 +691,21 @@
 .btn-wrapper {
   display: flex;
   justify-content: space-around;
-  color: #141414;
-  flex-direction: row;
+  color: #141414e6;
+  min-width: 50%;
 }
 .btn-wrapper.btn-wrapper-column {
   flex-direction: column;
   font-size: 0.5rem;
+}
+@media only screen and (max-width: 1200px) {
+  .btn-wrapper.btn-wrapper-column {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+.btn-wrapper a {
+  text-align: center;
 }
 .btn-wrapper .menu-btn {
   border: none;
@@ -708,6 +713,10 @@
   text-decoration: underline;
   cursor: pointer;
   margin-bottom: 20px;
+}
+.btn-wrapper .menu-btn .mb-icon {
+  font-size: 1.9rem;
+  color: #141414e6;
 }
 
 .channels-list {
@@ -747,6 +756,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: #141414e6;
 }
 .channels-list .cl-wrapper-header .cl-title-icon {
   padding: 0 0.5rem;
@@ -844,7 +854,7 @@
 }
 .loginForm .l-wrapperInput .lu-error {
   font-size: 0.8rem;
-  color: #a64456;
+  color: #ff5959;
   margin: 3px 0 0 15px;
 }
 .loginForm .lu-input {
@@ -950,7 +960,7 @@
 .sign-up-form .sif-details-fieldset .sif-wrapper-input .form-error,
 .sign-up-form .sif-passwords-fieldset .sif-wrapper-input .form-error {
   font-size: 0.8rem;
-  color: #a64456;
+  color: #ff5959;
   margin: 3px 0 0 15px;
 }
 .sign-up-form .sif-names-fieldset {
@@ -1341,7 +1351,7 @@
 .update-user-form .uuf-details-fieldset .uuf-wrapper-input .form-error,
 .update-user-form .uuf-passwords-fieldset .uuf-wrapper-input .form-error {
   font-size: 0.8rem;
-  color: #a64456;
+  color: #ff5959;
   margin: 3px 0 0 15px;
 }
 .update-user-form .uuf-fieldset {

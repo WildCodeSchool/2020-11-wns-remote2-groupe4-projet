@@ -1,22 +1,36 @@
 @use '../../styles/variables.scss' as v;
 @use '../../styles/mixins' as m;
 
-.btn-wrapper{
-    display:flex;
-    justify-content: space-around;
-    color: v.$black;
-    flex-direction: row;
-    
-    &.btn-wrapper-column{
-        flex-direction:column;
-        font-size: 0.5rem;
-    }
+.btn-wrapper {
+  display: flex;
+  justify-content: space-around;
+  color: v.$black;
+  min-width: 50%;
 
-    .menu-btn {
-        border: none;
-        background-color: transparent;
-        text-decoration: underline;
-        cursor: pointer;
-        margin-bottom:20px;
+  &.btn-wrapper-column {
+    flex-direction: column;
+    font-size: 0.5rem;
+
+    @include m.bpFactory($max: v.$l) {
+      flex-direction: row;
+      justify-content: space-around;
     }
+  }
+
+  a {
+    text-align: center;
+  }
+
+  .menu-btn {
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 20px;
+
+    .mb-icon {
+      font-size: 1.9rem;
+      color: v.$black;
+    }
+  }
 }

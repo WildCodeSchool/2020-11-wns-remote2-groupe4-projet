@@ -76,7 +76,7 @@
       font-size: 1.5rem;
 
       &.icon-active {
-        color: v.$accent;
+        color: rgba(v.$quaternary, 1);
       }
     }
   }
