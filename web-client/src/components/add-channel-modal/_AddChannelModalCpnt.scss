@@ -47,7 +47,7 @@
 
     .acf-error {
       font-size: v.$p-s;
-      color: red;
+      color: v.$accent;
       font-style: italic;
 
       @include m.bpFactory($max: v.$s) {

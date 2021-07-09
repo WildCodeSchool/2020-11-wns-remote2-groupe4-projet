@@ -16,7 +16,11 @@ import useSubscribeToNewChannelMessage from '../../hooks/useSubscribeToNewChanne
 import { GET_ALL_USERS } from '../../queries/userQueries';
 import AddUserToChannelModalCpnt from '../../components/add-user-to-channel-modal/AddUserToChannelModalCpnt';
 
-const ChannelMessagesCtnr = (): JSX.Element => {
+type ChannelMessagesCtnrProps = {
+  isRightAsideOpen: boolean;
+}
+
+const ChannelMessagesCtnr = ({ isRightAsideOpen }: ChannelMessagesCtnrProps): JSX.Element => {
   const channelContext = useContext(ChannelContext);
   const currentChannel = channelContext.channelState.currentChannel;
   if (!currentChannel) throw new Error('No current channel...');
@@ -69,7 +73,7 @@ const ChannelMessagesCtnr = (): JSX.Element => {
   };
 
   return (
-    <div className="channel-messages">
+    <div className={`channel-messages ${isRightAsideOpen && "thin"}`}>
       <div className="cm-header">
         <h4>{channelContext.channelState.currentChannel?.title}</h4>
         <div className="cmh-button-wrapper">

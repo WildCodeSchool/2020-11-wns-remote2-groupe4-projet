@@ -6,6 +6,8 @@ export const AM_I_AUTHENTICATED = gql`
       id
       firstname
       lastname
+      phone
+      address
     }
   }
 `;

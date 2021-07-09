@@ -66,10 +66,19 @@
 
   .hm-chat-button {
     border: none;
-    padding: 5px 10px;
+    // padding: 5px 10px;
     border-radius: 3px;
-    background-color: v.$ternary;
+    background-color: transparent;
     color: v.$primary;
+
+    .hmcb-icon {
+      color: v.$ternary;
+      font-size: 1.5rem;
+
+      &.icon-active {
+        color: rgba(v.$quaternary, 1);
+      }
+    }
   }
 }
 
@@ -87,6 +96,10 @@
   align-items: center;
   transform: translateX(0);
   transition: transform 250ms ease-in-out;
+
+  @include m.bpFactory($min: v.$l) {
+    display: none;
+  }
 
   &.menu-mobile-close {
     transform: translateX(-100%);

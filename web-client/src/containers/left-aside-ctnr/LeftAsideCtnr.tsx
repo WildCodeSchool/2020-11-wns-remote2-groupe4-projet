@@ -3,7 +3,7 @@ import AvatarCpnt from '../../components/avatar-cpnt/AvatarCpnt';
 import MenuCpnt from '../../components/menu-cpnt/MenuCpnt';
 import MenuButtonCpnt from '../../components/menu-button-cpnt/MenuButtonCpnt';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 const LeftAsideCtnr = (): JSX.Element => {
   const [isLeftAsideOpen, setIsLeftAsideOpen] = useState(true);
@@ -16,7 +16,7 @@ const LeftAsideCtnr = (): JSX.Element => {
     <aside className={`left-aside ${isLeftAsideOpen && 'left-aside-visible'}`}>
       <FontAwesomeIcon
         className={`la-arrow-right ${!isLeftAsideOpen && 'rotate-left'}`}
-        icon={faArrowCircleLeft}
+        icon={faChevronLeft}
         onClick={toggleLeftAside}
         data-testid="buttonCpntTested"
       />

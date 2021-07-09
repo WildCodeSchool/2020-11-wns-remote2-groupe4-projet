@@ -1,13 +1,13 @@
 /* ************************** */
 /* ************************** */
-/* ***** SignInFormCpnt ***** */
+/* *** UpdateUserFormCpnt *** */
 /* ************************** */
 /* ************************** */
 
 @use '../../styles/variables.scss' as v;
 @use '../../styles/mixins' as m;
 
-.sign-up-form {
+.update-user-form {
   box-sizing: border-box;
   width: min-content;
   background-color: v.$ternary;
@@ -18,8 +18,6 @@
   flex-direction: column;
   justify-content: space-evenly;
   border-radius: 5px;
-  box-shadow: 0px 4px 10px 8px #cfd6d5;
-  color: v.$black;
 
   @include m.bpFactory($max: v.$s) {
     width: 100%;
@@ -33,29 +31,28 @@
     font-size: v.$p-xs;
   }
 
-  .sif-title {
+  .uuf-title {
     text-align: center;
-    margin-bottom: 1rem;
   }
 
-  .sif-names-fieldset,
-  .sif-details-fieldset,
-  .sif-passwords-fieldset {
+  .uuf-names-fieldset,
+  .uuf-details-fieldset,
+  .uuf-passwords-fieldset {
     border: none;
 
-    .sif-wrapper-input {
+    .uuf-wrapper-input {
       display: flex;
       flex-direction: column;
-      margin: 1rem 0;
+      margin: 10px 0;
 
       @include m.bpFactory($max: v.$xs) {
         margin: 10px 0;
       }
 
-      .sif-label {
-        margin-bottom: 10px;
+      .uuf-label {
+        margin: 0 0 5px 15px;
       }
-      .sif-input {
+      .uuf-input {
         padding: 10px;
         border: none;
         border-radius: 5px;
@@ -67,15 +64,43 @@
 
       .form-error {
         font-size: 0.8rem;
-        font-style: italic;
         color: v.$accent;
-        margin-top: 5px;
+        margin: 3px 0 0 15px;
       }
     }
   }
 
-  .sif-submit {
-    margin-top: 1.5rem;
+  .uuf-fieldset {
+    display: flex;
+    flex-direction: column;
+
+    .uufnm-firstname {
+    }
+
+    .uufnm-lastname {
+    }
+  }
+
+  .uuf-details-fieldset {
+    .uufdf-email {
+    }
+
+    .uufdf-phone {
+    }
+
+    .uufdf-address {
+    }
+  }
+
+  .uuf-passwords-fieldset {
+    .uufpf-password {
+    }
+
+    .uufpf-verify-password {
+    }
+  }
+
+  .uuf-submit {
     padding: 8px 35px;
     align-self: center;
     border: none;

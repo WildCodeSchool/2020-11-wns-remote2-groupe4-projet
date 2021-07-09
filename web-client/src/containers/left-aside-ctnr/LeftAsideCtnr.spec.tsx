@@ -2,13 +2,16 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import LeftAsideCtnr from './LeftAsideCtnr';
+import { BrowserRouter as Router } from 'react-router-dom'
 
 describe('LeftAsideCntr by default', () => {
   beforeEach(() => {
     render(
-      <MockedProvider>
-        <LeftAsideCtnr />
-      </MockedProvider>
+      <Router>
+        <MockedProvider>
+          <LeftAsideCtnr />
+        </MockedProvider>
+      </Router>
     );
   });
 
@@ -31,9 +34,11 @@ describe('LeftAsideCntr by default', () => {
 describe('when button clicked', () => {
   beforeEach(() => {
     render(
-      <MockedProvider>
-        <LeftAsideCtnr />
-      </MockedProvider>
+      <Router>
+        <MockedProvider>
+          <LeftAsideCtnr />
+        </MockedProvider>
+      </Router>
     );
   });
 

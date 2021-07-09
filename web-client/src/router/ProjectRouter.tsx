@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client';
 import ProtectedRoute from './ProtectedRoute';
 import ViewSignIn from '../views/sign-in/ViewSignIn';
 import ViewDashboard from '../views/dashboard/ViewDashboard';
+import ViewParameters from '../views/parameters/ViewParameters'
 import ViewSignUp from '../views/sign-up/ViewSignUp';
 import MainCtnr from '../containers/MainCtnr';
 import { AM_I_AUTHENTICATED } from '../queries/userQueries';
@@ -39,6 +40,12 @@ const ProjectRouter = (): JSX.Element => {
               exact
               path="/dashboard"
               component={ViewDashboard}
+              isAuthenticated={!!data || isAuthenticatedAfterSignIn}
+            />
+            <ProtectedRoute
+              exact
+              path="/parameters"
+              component={ViewParameters}
               isAuthenticated={!!data || isAuthenticatedAfterSignIn}
             />
           </MainCtnr>
