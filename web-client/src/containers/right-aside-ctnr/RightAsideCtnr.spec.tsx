@@ -5,6 +5,9 @@ import { MockedProvider } from '@apollo/client/testing';
 import RightAsideCtnr from './RightAsideCtnr';
 import UserContext from '../../contexts/UserContext';
 
+let isRightAsideOpen = false;
+const toggleRightAside = jest.fn();
+
 const userInitialState = {
   userLoggedInDetails: {
     id: '1',
@@ -20,7 +23,7 @@ describe('RightAsideCtnr by default', () => {
         <UserContext.Provider
           value={{ state: userInitialState, dispatch: () => null }}
         >
-          <RightAsideCtnr />
+          <RightAsideCtnr toggleRightAside={toggleRightAside} isRightAsideOpen={true} />
         </UserContext.Provider>
       </MockedProvider>
     );
@@ -34,11 +37,6 @@ describe('RightAsideCtnr by default', () => {
   it('should have default title', () => {
     const titleRightAsideCtnr = screen.getByRole('heading', { level: 3 });
     expect(titleRightAsideCtnr).not.toHaveClass('ra-title-mini');
-  });
-
-  it('should display the search bar', () => {
-    const searchBar = document.querySelector('.chat-searchbar-wrapper');
-    expect(searchBar).toBeInTheDocument();
   });
 
   it("should display ChannelsCtnr with icons and titles as channels's category name", () => {
@@ -59,13 +57,17 @@ describe('When arrow button on RightAsideCtnr is clicked for the first time', ()
         <UserContext.Provider
           value={{ state: userInitialState, dispatch: () => null }}
         >
-          <RightAsideCtnr />
+          <RightAsideCtnr toggleRightAside={toggleRightAside} isRightAsideOpen={false} />
         </UserContext.Provider>
       </MockedProvider>
     );
     const arrowButton = screen.getByTestId('ArrowIconRightAsideCtnr');
     fireEvent.click(arrowButton);
   });
+
+  it('should call toggleRightAside function', () => {
+    expect(toggleRightAside).toBeCalled();
+  })
 
   it('should be closed', () => {
     const rightAside = screen.getByRole('complementary');
@@ -92,30 +94,5 @@ describe('When arrow button on RightAsideCtnr is clicked for the first time', ()
     expect(arrowIcon).toHaveClass('rotate-right');
   });
 
-  describe('When arrow button on RightAsideCtnr is clicked for the second time', () => {
-    beforeEach(() => {
-      const arrowButton = screen.getByTestId('ArrowIconRightAsideCtnr');
-      fireEvent.click(arrowButton);
-    });
 
-    it('should be open', () => {
-      const rightAside = screen.getByRole('complementary');
-      expect(rightAside).toHaveClass('ra-visible');
-    });
-
-    it('should have default title', () => {
-      const titleRightAsideCtnr = screen.getByRole('heading', { level: 3 });
-      expect(titleRightAsideCtnr).not.toHaveClass('ra-title-mini');
-    });
-
-    it('should display the search bar', () => {
-      const searchBar = document.querySelector('.chat-searchbar-wrapper');
-      expect(searchBar).toBeInTheDocument();
-    });
-
-    it('should rotate the arrow icon of RightAsideCtnr', () => {
-      const arrowIcon = screen.getByTestId('ArrowIconRightAsideCtnr');
-      expect(arrowIcon).not.toHaveClass('rotate-right');
-    });
-  });
 });

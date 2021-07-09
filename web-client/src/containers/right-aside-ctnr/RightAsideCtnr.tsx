@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,11 +13,14 @@ type RightAsideCtnrProps = {
 
 const RightAsideCtnr = ({toggleRightAside, isRightAsideOpen}: RightAsideCtnrProps): JSX.Element => {
   const userLoggedIn = useContext(UserContext);
-  const rightAsideCtnrContext = useContext(RightAsideCtnrContext)
+  const rightAsideCtnrContext = useContext(RightAsideCtnrContext);
 
   return (
     <aside
-      className={`right-aside ${isRightAsideOpen && 'ra-visible'} ${rightAsideCtnrContext.rightAsideCtnrState.isRightAsideCtnrOpen && 'ra-mobile-visible'}`}
+      className={
+        `right-aside ${isRightAsideOpen && 'ra-visible'}
+        ${rightAsideCtnrContext.rightAsideCtnrState.isRightAsideCtnrOpen && 'ra-mobile-visible'}`
+      } 
     >
       <FontAwesomeIcon
         className={`ra-arrow-left ${!isRightAsideOpen && 'rotate-right'}`}
