@@ -79,16 +79,10 @@ const ChannelMessagesCtnr = ({
       <div className="cm-header">
         <h4>{channelContext.channelState.currentChannel?.title}</h4>
         <div className="cmh-button-wrapper">
-          <button
-            className="cmh-button add-border "
-            onClick={handleAddUserToChannelModal}
-          >
+          <button className="cmh-button" onClick={handleAddUserToChannelModal}>
             <FontAwesomeIcon icon={faUserPlus} className="cmhb-add-user-icon" />
           </button>
-          <button
-            className="cmh-button close-border"
-            onClick={handleCloseChannel}
-          >
+          <button className="cmh-button" onClick={handleCloseChannel}>
             <FontAwesomeIcon icon={faTimes} className="cmhb-cross-icon" />
           </button>
         </div>

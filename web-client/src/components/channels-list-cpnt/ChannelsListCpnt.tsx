@@ -4,7 +4,7 @@ import {
   faCaretRight,
   faDesktop,
   faMugHot,
-  faPlusSquare,
+  faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 
 import ChannelsListItemCpnt from '../channels-list-item-cpnt/ChannelsListItemCpnt';
@@ -68,7 +68,7 @@ const ChannelsListCpnt = ({
             role="plus-icon-wrapper-channels-list"
             onClick={openModal}
           >
-            <FontAwesomeIcon icon={faPlusSquare} />
+            <FontAwesomeIcon icon={faPlus} />
           </button>
         </div>
       </div>

@@ -409,7 +409,6 @@
   right: 100px;
   left: calc(20% + 350px);
   height: 100vh;
-  padding-top: 60px;
   display: grid;
   grid-template-rows: max-content 1fr;
   background-color: #e0e0e0;
@@ -432,6 +431,7 @@
     right: 0;
     left: inherit;
     width: 100vw;
+    padding-top: 60px;
   }
 }
 .channel-messages .cm-header {
@@ -465,14 +465,8 @@
   background-color: rgba(73, 190, 182, 0.3);
   border-radius: 5px;
 }
-.channel-messages .cm-header .cmh-button-wrapper .cmh-button.add-border {
-  border: 1.5px solid #49beb7;
-}
 .channel-messages .cm-header .cmh-button-wrapper .cmh-button .cmhb-add-user-icon {
   color: #49beb7;
-}
-.channel-messages .cm-header .cmh-button-wrapper .cmh-button.close-border {
-  border: 1.5px solid #141414e6;
 }
 .channel-messages .cm-header .cmh-button-wrapper .cmh-button .cmhb-cross-icon {
   color: #141414e6;
@@ -744,6 +738,7 @@
 .channels-list .cl-wrapper-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0 1rem;
 }
 .channels-list .cl-wrapper-header .cl-wrapper-title-icon {
@@ -753,7 +748,7 @@
 .channels-list .cl-wrapper-header .cl-caret-icon {
   transform: rotate(0deg);
   transition: all 300ms ease-in-out;
-  padding: 0 0.5rem;
+  padding: 0.1rem 0.4rem;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -801,15 +796,12 @@
 }
 
 .channels-list-item {
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
   padding: 0 1rem;
   cursor: pointer;
 }
 .channels-list-item:hover {
   background-color: #d9d9d9;
-  text-overflow: ellipsis;
 }
 .channels-list-item .cl-button {
   background-color: transparent;
@@ -819,14 +811,9 @@
   width: 100%;
   text-align: start;
 }
-
-.chat-searchbar-wrapper {
-  margin-top: 2rem;
-  padding: 0 1rem;
-  width: 100%;
-}
-.chat-searchbar-wrapper > div {
-  width: inherit;
+.channels-list-item .cl-button > p {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ************************** */
@@ -871,6 +858,7 @@
 }
 .loginForm .l-wrapperInput .lu-error {
   font-size: 0.8rem;
+  font-style: italic;
   color: #ff5959;
   margin-top: 5px;
 }

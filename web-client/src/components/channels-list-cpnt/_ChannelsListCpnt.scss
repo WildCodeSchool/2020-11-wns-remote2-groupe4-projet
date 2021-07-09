@@ -9,6 +9,7 @@
   .cl-wrapper-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0 1rem;
 
     .cl-wrapper-title-icon {
@@ -19,7 +20,7 @@
     .cl-caret-icon {
       transform: rotate(0deg);
       transition: all 300ms ease-in-out;
-      padding: 0 0.5rem;
+      padding: 0.1rem 0.4rem;
       border: none;
       background: transparent;
       cursor: pointer;
