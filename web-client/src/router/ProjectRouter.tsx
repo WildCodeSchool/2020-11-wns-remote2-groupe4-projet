@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import ProtectedRoute from './ProtectedRoute';
 import ViewSignIn from '../views/sign-in/ViewSignIn';
 import ViewDashboard from '../views/dashboard/ViewDashboard';
-import ViewParameters from '../views/parameters/ViewParameters'
+import ViewParameters from '../views/parameters/ViewParameters';
 import ViewSignUp from '../views/sign-up/ViewSignUp';
 import MainCtnr from '../containers/MainCtnr';
 import { AM_I_AUTHENTICATED } from '../queries/userQueries';

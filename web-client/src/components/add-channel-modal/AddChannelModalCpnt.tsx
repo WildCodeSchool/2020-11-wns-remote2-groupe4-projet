@@ -44,9 +44,14 @@ const AddChannelModalCpnt = ({
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const { register, handleSubmit, setValue, errors, control, getValues } = useForm<
-    AddChannelFormData
-  >({});
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    errors,
+    control,
+    getValues,
+  } = useForm<AddChannelFormData>({});
   const [createChannelWithFilteredSub] = useMutation(ADD_CHANNEL);
 
   const submitAddNewChannel = handleSubmit(async ({ title, usersIds }) => {
@@ -140,7 +145,7 @@ const AddChannelModalCpnt = ({
                   }
                   rules={{
                     required: true,
-                    validate: () => !!getValues('usersIds').length
+                    validate: () => !!getValues('usersIds').length,
                   }}
                 />
               </div>

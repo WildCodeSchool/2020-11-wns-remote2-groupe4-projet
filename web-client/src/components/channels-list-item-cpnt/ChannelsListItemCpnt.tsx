@@ -14,7 +14,7 @@ const ChannelsListItemCpnt = ({
   toggleRightAside,
 }: ChannelsListItemCpntProps): JSX.Element => {
   const channelContext = useContext(ChannelContext);
-  const rightAsideCtnrContext = useContext(RightAsideCtnrContext)
+  const rightAsideCtnrContext = useContext(RightAsideCtnrContext);
 
   const onSetCurrentChannel = () => {
     channelContext.channelDispatch({
@@ -26,7 +26,7 @@ const ChannelsListItemCpnt = ({
     rightAsideCtnrContext.rightAsideCtnrDispatch({
       type: 'TOGGLE_RIGHT_ASIDE_CTNR',
       isRightAsideCtnrOpen: true,
-    })
+    });
 
     if (window.innerWidth <= 760) {
       toggleRightAside();

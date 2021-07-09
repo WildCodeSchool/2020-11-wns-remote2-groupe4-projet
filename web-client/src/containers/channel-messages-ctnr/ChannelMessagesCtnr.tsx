@@ -18,9 +18,11 @@ import AddUserToChannelModalCpnt from '../../components/add-user-to-channel-moda
 
 type ChannelMessagesCtnrProps = {
   isRightAsideOpen: boolean;
-}
+};
 
-const ChannelMessagesCtnr = ({ isRightAsideOpen }: ChannelMessagesCtnrProps): JSX.Element => {
+const ChannelMessagesCtnr = ({
+  isRightAsideOpen,
+}: ChannelMessagesCtnrProps): JSX.Element => {
   const channelContext = useContext(ChannelContext);
   const currentChannel = channelContext.channelState.currentChannel;
   if (!currentChannel) throw new Error('No current channel...');
@@ -40,7 +42,7 @@ const ChannelMessagesCtnr = ({ isRightAsideOpen }: ChannelMessagesCtnrProps): JS
 
   const [textareaValue, setTextareaValue] = useState('');
 
-    const handleAddUserToChannelModal = (): void => {
+  const handleAddUserToChannelModal = (): void => {
     setIsModalToAddUSerToChannelOpen(true);
   };
 
@@ -73,7 +75,7 @@ const ChannelMessagesCtnr = ({ isRightAsideOpen }: ChannelMessagesCtnrProps): JS
   };
 
   return (
-    <div className={`channel-messages ${isRightAsideOpen && "thin"}`}>
+    <div className={`channel-messages ${isRightAsideOpen && 'thin'}`}>
       <div className="cm-header">
         <h4>{channelContext.channelState.currentChannel?.title}</h4>
         <div className="cmh-button-wrapper">
