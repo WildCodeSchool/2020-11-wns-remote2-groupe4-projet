@@ -5,7 +5,6 @@ import { MockedProvider } from '@apollo/client/testing';
 import RightAsideCtnr from './RightAsideCtnr';
 import UserContext from '../../contexts/UserContext';
 
-let isRightAsideOpen = false;
 const toggleRightAside = jest.fn();
 
 const userInitialState = {
@@ -77,11 +76,6 @@ describe('When arrow button on RightAsideCtnr is clicked for the first time', ()
   it('should have smaller title', () => {
     const titleRightAsideCtnr = screen.getByRole('heading', { level: 3 });
     expect(titleRightAsideCtnr).toHaveClass('ra-title-mini');
-  });
-
-  it('should hide the search bar', () => {
-    const searchBar = document.querySelector('.chat-searchbar-wrapper');
-    expect(searchBar).not.toBeInTheDocument();
   });
 
   it('should display ChannelsCtnr', () => {
