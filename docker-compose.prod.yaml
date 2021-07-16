@@ -6,8 +6,7 @@ services:
 
   api:
     depends_on:
-      db:
-        condition: service_started
+      - db
     command: sh -c "npm run build && npm run start"
     expose:
       - 4000
@@ -17,8 +16,7 @@ services:
 
   web-client:
     depends_on:
-      api:
-        condition: service_started
+      - api
     command: sh -c "npm run build"
     volumes:
       - web-client-build:/app/build
@@ -28,10 +26,8 @@ services:
 
   nginx:
     depends_on:
-      api:
-        condition: service_started
-      web-client:
-        condition: service_started
+      - api
+      - web-client
     image: nginx:1.19.10
     restart: always
     ports:
