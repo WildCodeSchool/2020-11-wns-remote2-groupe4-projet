@@ -5,6 +5,7 @@ services:
     stdin_open: true
     volumes:
       - ./src:/app/src
+      - /app/node_modules
     ports:
       - ${API_PORT}:4000
     environment:
