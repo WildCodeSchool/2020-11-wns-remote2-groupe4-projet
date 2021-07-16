@@ -14,6 +14,9 @@ export const rightAsideCtnrInitialState = {
 const RightAsideCtnrContext = createContext<{
   rightAsideCtnrState: RightAsideCtnrInitialState;
   rightAsideCtnrDispatch: Dispatch<RightAsideCtnrAction>;
-}>({ rightAsideCtnrState: rightAsideCtnrInitialState, rightAsideCtnrDispatch: () => null });
+}>({
+  rightAsideCtnrState: rightAsideCtnrInitialState,
+  rightAsideCtnrDispatch: () => null,
+});
 
 export default RightAsideCtnrContext;

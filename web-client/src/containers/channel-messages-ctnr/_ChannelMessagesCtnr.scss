@@ -8,7 +8,6 @@
   right: v.$aside-close-default;
   left: calc(20% + #{v.$aside-open-default});
   height: 100vh;
-  padding-top: v.$header-mobile-height;
   display: grid;
   grid-template-rows: max-content 1fr;
   background-color: v.$secondary;
@@ -27,10 +26,10 @@
   }
 
   @include m.bpFactory($max: v.$l) {
-    //top: 0;
     right: 0;
     left: inherit;
     width: 100vw;
+    padding-top: v.$header-mobile-height;
   }
 
   .cm-header {
@@ -67,16 +66,8 @@
           border-radius: 5px;
         }
 
-        &.add-border {
-          border: 1.5px solid v.$ternary;
-        }
-
         .cmhb-add-user-icon {
           color: v.$ternary;
-        }
-
-        &.close-border {
-          border: 1.5px solid v.$black;
         }
 
         .cmhb-cross-icon {

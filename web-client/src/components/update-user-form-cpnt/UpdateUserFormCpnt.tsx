@@ -1,11 +1,10 @@
 import React from 'react';
-import { useMutation, useQuery } from '@apollo/client'
-import { useForm } from 'react-hook-form'
-import { ToastContainer, toast} from 'react-toastify'
+import { useMutation, useQuery } from '@apollo/client';
+import { useForm } from 'react-hook-form';
+import { ToastContainer, toast } from 'react-toastify';
 
 import { UPDATE_USER } from '../../mutations/userMutation';
-import { AM_I_AUTHENTICATED } from '../../queries/userQueries'
-;
+import { AM_I_AUTHENTICATED } from '../../queries/userQueries';
 type FormData = {
   firstname: string;
   lastname: string;
@@ -14,37 +13,40 @@ type FormData = {
 };
 
 const UpdateUserFormCpnt = (): JSX.Element => {
-    const { register, handleSubmit, errors, setValue } = useForm<FormData>({});
-  
-    const [updateUser] = useMutation(UPDATE_USER);
-    const { loading, error, data } = useQuery(AM_I_AUTHENTICATED, {
-      fetchPolicy: 'no-cache',
-    });
-  
-  
-    const submitSignIn = handleSubmit(
-      async ({ firstname, lastname, phone, address }) => {
-        try {
-          await updateUser({
-            variables: { firstname, lastname, phone, address },
-          });
+  const { register, handleSubmit, errors, setValue } = useForm<FormData>({});
 
-          toast.success('Vos information ont été enregistrées', {});
-        } catch (error) {
-          console.log('error');
-        }
+  const [updateUser] = useMutation(UPDATE_USER);
+  const { loading, error, data } = useQuery(AM_I_AUTHENTICATED, {
+    fetchPolicy: 'no-cache',
+  });
+
+  const submitSignIn = handleSubmit(
+    async ({ firstname, lastname, phone, address }) => {
+      try {
+        await updateUser({
+          variables: { firstname, lastname, phone, address },
+        });
+
+        toast.success('Vos information ont été enregistrées', {});
+      } catch (error) {
+        console.log('error');
       }
-    );
-  
+    }
+  );
+
   return (
     <>
-      { loading ? 
-        <p>loading...</p> : 
+      {loading ? (
+        <p>loading...</p>
+      ) : (
         <form className="update-user-form" onSubmit={submitSignIn}>
           <h2 className="uuf-title">Modifiez vos informations</h2>
           <fieldset className="uuf-fieldset uuf-names-fieldset">
             <div className="uufnm-lastname uuf-wrapper-input ">
-              <label className="uufnml-label-lastname uuf-label" htmlFor="lastname">
+              <label
+                className="uufnml-label-lastname uuf-label"
+                htmlFor="lastname"
+              >
                 Nom
               </label>
               <input
@@ -109,7 +111,10 @@ const UpdateUserFormCpnt = (): JSX.Element => {
               )}
             </div>
             <div className="uufdf-address uuf-wrapper-input ">
-              <label className="uufdf-label-address uuf-label" htmlFor="address">
+              <label
+                className="uufdf-label-address uuf-label"
+                htmlFor="address"
+              >
                 Adresse
               </label>
               <input
@@ -141,9 +146,9 @@ const UpdateUserFormCpnt = (): JSX.Element => {
             draggable
             pauseOnHover
           />
-      </form>
-      }
-      </>
+        </form>
+      )}
+    </>
   );
 };
 

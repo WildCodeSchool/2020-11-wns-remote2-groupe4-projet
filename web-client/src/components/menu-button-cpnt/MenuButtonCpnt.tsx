@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,7 +12,10 @@ type MenuButtonProps = {
   onItemClick?: () => void;
 };
 
-const MenuButtonCpnt = ({ isLeftAsideOpen, onItemClick }: MenuButtonProps): JSX.Element => {
+const MenuButtonCpnt = ({
+  isLeftAsideOpen,
+  onItemClick,
+}: MenuButtonProps): JSX.Element => {
   const [deleteSession] = useMutation(DELETE_SESSION);
 
   const history = useHistory();

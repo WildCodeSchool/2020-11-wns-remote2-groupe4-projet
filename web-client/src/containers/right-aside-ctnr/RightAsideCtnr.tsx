@@ -9,18 +9,22 @@ import RightAsideCtnrContext from '../../contexts/RightAsideCtnrContext';
 type RightAsideCtnrProps = {
   toggleRightAside: () => void;
   isRightAsideOpen: boolean;
-}
+};
 
-const RightAsideCtnr = ({toggleRightAside, isRightAsideOpen}: RightAsideCtnrProps): JSX.Element => {
+const RightAsideCtnr = ({
+  toggleRightAside,
+  isRightAsideOpen,
+}: RightAsideCtnrProps): JSX.Element => {
   const userLoggedIn = useContext(UserContext);
   const rightAsideCtnrContext = useContext(RightAsideCtnrContext);
 
   return (
     <aside
-      className={
-        `right-aside ${isRightAsideOpen && 'ra-visible'}
-        ${rightAsideCtnrContext.rightAsideCtnrState.isRightAsideCtnrOpen && 'ra-mobile-visible'}`
-      } 
+      className={`right-aside ${isRightAsideOpen && 'ra-visible'}
+        ${
+          rightAsideCtnrContext.rightAsideCtnrState.isRightAsideCtnrOpen &&
+          'ra-mobile-visible'
+        }`}
     >
       <FontAwesomeIcon
         className={`ra-arrow-left ${!isRightAsideOpen && 'rotate-right'}`}

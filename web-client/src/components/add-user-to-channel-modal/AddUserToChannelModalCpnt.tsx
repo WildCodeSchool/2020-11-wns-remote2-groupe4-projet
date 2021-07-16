@@ -105,18 +105,23 @@ const AddUserToChannelModalCpnt = ({
                       </MenuItem>
                       {users &&
                         users
-                        .filter(
-                            (user: User) => !channel.users.some((channelUser: User) => user.id === channelUser.id)
-                          ).map((user: User) => (
-                          <MenuItem key={user.id} value={user.id}>
-                            {`${user.lastname} ${user.firstname}`}
-                          </MenuItem>
-                        ))}
+                          .filter(
+                            (user: User) =>
+                              !channel.users.some(
+                                (channelUser: User) =>
+                                  user.id === channelUser.id
+                              )
+                          )
+                          .map((user: User) => (
+                            <MenuItem key={user.id} value={user.id}>
+                              {`${user.lastname} ${user.firstname}`}
+                            </MenuItem>
+                          ))}
                     </Select>
                   }
                   rules={{
                     required: true,
-                    validate: () => !!getValues('usersIds').length
+                    validate: () => !!getValues('usersIds').length,
                   }}
                 />
               </div>

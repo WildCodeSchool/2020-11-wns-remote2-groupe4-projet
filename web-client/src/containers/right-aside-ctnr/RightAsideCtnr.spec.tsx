@@ -22,7 +22,10 @@ describe('RightAsideCtnr by default', () => {
         <UserContext.Provider
           value={{ state: userInitialState, dispatch: () => null }}
         >
-          <RightAsideCtnr toggleRightAside={toggleRightAside} isRightAsideOpen={true} />
+          <RightAsideCtnr
+            toggleRightAside={toggleRightAside}
+            isRightAsideOpen={true}
+          />
         </UserContext.Provider>
       </MockedProvider>
     );
@@ -56,7 +59,10 @@ describe('When arrow button on RightAsideCtnr is clicked for the first time', ()
         <UserContext.Provider
           value={{ state: userInitialState, dispatch: () => null }}
         >
-          <RightAsideCtnr toggleRightAside={toggleRightAside} isRightAsideOpen={false} />
+          <RightAsideCtnr
+            toggleRightAside={toggleRightAside}
+            isRightAsideOpen={false}
+          />
         </UserContext.Provider>
       </MockedProvider>
     );
@@ -66,7 +72,7 @@ describe('When arrow button on RightAsideCtnr is clicked for the first time', ()
 
   it('should call toggleRightAside function', () => {
     expect(toggleRightAside).toBeCalled();
-  })
+  });
 
   it('should be closed', () => {
     const rightAside = screen.getByRole('complementary');
@@ -87,6 +93,4 @@ describe('When arrow button on RightAsideCtnr is clicked for the first time', ()
     const arrowIcon = screen.getByTestId('ArrowIconRightAsideCtnr');
     expect(arrowIcon).toHaveClass('rotate-right');
   });
-
-
 });
