@@ -15,5 +15,6 @@ services:
       - TYPEORM_DATABASE=postgres
       - TYPEORM_USERNAME=postgres
       - TYPEORM_PASSWORD=password
+      - TYPEORM_ENTITIES = dist/models/*.js
   web-client:
     build: ./web-client
